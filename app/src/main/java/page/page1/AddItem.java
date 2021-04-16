@@ -51,10 +51,7 @@ public class AddItem extends AppCompatActivity {
         String[] ctype = new String[]{"生活用品", "学习用品", "电子产品", "体育用品"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ctype);  //创建一个数组适配器
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);     //设置下拉列表框的下拉选项样式
-        Spinner spinner = (Spinner) super.findViewById(R.id.m1_style);
-        spinner.setAdapter(adapter);
-        sp = (Spinner) findViewById(R.id.m1_style);
-        final String kind = (String) sp.getSelectedItem();
+
 
         imageButton=(ImageButton)findViewById(R.id.m1_image);
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -74,24 +71,21 @@ public class AddItem extends AppCompatActivity {
             }
         });
 
-        Button fabu=(Button)findViewById(R.id.fabu);
+        Button fabu=(Button)findViewById(R.id.release_comment);
         fabu.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 EditText title=(EditText)findViewById(R.id.m1_title);
                 EditText price=(EditText)findViewById(R.id.m1_price);
-                EditText phone=(EditText)findViewById(R.id.m1_phone);
                 EditText nr=(EditText)findViewById(R.id.m1_nr);
                 Date curDate = new Date(System.currentTimeMillis());
                 String time = formatter.format(curDate);
                 ContentValues values=new ContentValues();
                 values.put("title",title.getText().toString());
                 values.put("userId",post_userid);
-                values.put("kind", kind);
                 values.put("time",time);
                 values.put("price",price.getText().toString());
-                values.put("contact",phone.getText().toString());
                 values.put("info",nr.getText().toString());
                 values.put("image",image);
                 db.insert("iteminfo",null,values);
@@ -101,8 +95,8 @@ public class AddItem extends AppCompatActivity {
             }
         });
 
-        Button but1 = (Button)findViewById(R.id.but1_m1);
-        Button but2 = (Button)findViewById(R.id.but2_m1);
+        ImageButton but1 = (ImageButton)findViewById(R.id.but1_m1);
+        ImageButton but2 = (ImageButton)findViewById(R.id.but2_m1);
         but2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

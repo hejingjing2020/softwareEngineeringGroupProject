@@ -36,7 +36,7 @@ public class RegisterMainActivity extends AppCompatActivity {
         //调用构造函数
         dbHelper = new MyDatabaseHelper(this, "StudentStore.db", null, 1);//新建一个对象
 
-        Button createDatabase = (Button) findViewById(R.id.create_database);
+        Button createDatabase = (Button) findViewById(R.id.register);
 
         //点击事件
         createDatabase.setOnClickListener(new View.OnClickListener(){

@@ -7,42 +7,35 @@
     android:orientation="vertical"
     tools:context="page.page1.MyItems">
 
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#1E90FF"
         android:layout_gravity="center_vertical"
         >
-        <Button
+
+        <ImageButton
             android:id="@+id/but1"
-            android:background="#1E90FF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_alignParentLeft="true"
-            android:textSize="20dp"
-            android:text="首页"/>
+            android:background="#1E90FF" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:gravity="center"
             android:layout_centerInParent="true"
-            android:textColor="#F0FFFF"
-            android:text="我的发布"/>
-
-        <Button
-            android:id="@+id/but2"
-            android:background="#1E90FF"
-            android:layout_alignParentRight="true"
             android:gravity="center"
+            android:text="My Release"
+            android:textColor="#F0FFFF"
+            android:textSize="30dp" />
+
+        <ImageButton
+            android:id="@+id/but2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:text="刷新"/>
+            android:layout_alignParentRight="true"
+            android:background="#1E90FF" />
     </RelativeLayout>
 
     <!--<LinearLayout

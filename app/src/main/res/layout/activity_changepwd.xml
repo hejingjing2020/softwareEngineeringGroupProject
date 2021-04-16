@@ -20,107 +20,127 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:text="Change Password"
             android:textColor="#ffffff"
-            android:text="修改密码"
             android:textSize="25dp"
             android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="center|clip_vertical|start|right|center_horizontal"
+        android:layout_margin="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_weight="1"
+        android:gravity="fill_horizontal|fill_vertical"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:padding="25dp">
+        android:padding="25dp"
+        android:textDirection="ltr">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="欢迎用户:  "
-                android:textSize="30dp"/>
-            <TextView
+                android:text="User:"
+                android:textSize="18sp" />
+
+            <EditText
                 android:id="@+id/showuser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="user"
-                android:textSize="25dp"/>
+                android:textSize="25dp" />
         </LinearLayout>
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
             android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="旧密码: "
-                android:textSize="30dp"
-                />
+                android:text="Old Password"
+                android:textSize="18sp" />
+
             <EditText
                 android:id="@+id/oldpwd"
-                android:layout_width="wrap_content"
+                android:layout_width="221dp"
                 android:layout_height="wrap_content"
-                android:hint="请输入旧密码"
-                android:textSize="25dp"/>
+                android:textSize="25dp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="新密码: "
-                android:textSize="30dp"
-                />
+                android:layout_height="49dp"
+                android:text="New Password"
+                android:textSize="18sp" />
+
             <EditText
                 android:id="@+id/newpwd"
-                android:layout_width="wrap_content"
+                android:layout_width="207dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-10dp"
-                android:hint="请输入新密码     "
-                android:textSize="25dp"/>
+                android:textSize="25dp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_gravity="center_vertical"
-            android:orientation="horizontal"
-            >
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="确认密码: "
-                android:textSize="30dp"
-                />
+                android:text="Confirm password"
+                android:textSize="18sp" />
+
             <EditText
                 android:id="@+id/newpwd1"
-                android:layout_width="wrap_content"
+                android:layout_width="175dp"
                 android:layout_height="wrap_content"
-                android:hint="请确认密码"
-                android:textSize="25dp"/>
+                android:textSize="25dp" />
 
         </LinearLayout>
 
         <Button
             android:id="@+id/change"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:gravity="center"
-            android:text="确认修改"
-            android:textSize="25dp"
-            />
+            android:text="Confirm"
+            android:textSize="25dp" />
+
         <Button
             android:id="@+id/back"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="返   回"
-            android:textSize="25dp"
-            />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Back "
+            android:textSize="25dp" />
 
     </LinearLayout>
 </LinearLayout>

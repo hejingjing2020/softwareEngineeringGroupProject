@@ -8,80 +8,81 @@
     tools:context="page.page1.AddItem">
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#1E90FF"
         android:layout_gravity="center_vertical"
-        >
-        <Button
+        android:background="#BFE6C3EF">
+
+        <ImageButton
             android:id="@+id/but1_m1"
-            android:background="#1E90FF"
-            android:layout_width="wrap_content"
+            android:layout_width="52dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_alignParentLeft="true"
-            android:textSize="20dp"
-            android:text="首页"/>
+            android:layout_marginLeft="-2dp"
+            android:background="#BFE6C3EF"
+            android:src="@drawable/pic_home" />
+
+        <ImageButton
+            android:id="@+id/but2_m1"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="2dp"
+            android:background="#BFE6C3EF"
+            android:src="@drawable/pic_my" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:gravity="center"
-            android:layout_centerInParent="true"
-            android:textColor="#F0FFFF"
-            android:text="发布商品"/>
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:text="Course Evaluation"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="30sp" />
 
-        <Button
-            android:id="@+id/but2_m1"
-            android:background="#1E90FF"
-            android:layout_alignParentRight="true"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:text="我的发布"/>
     </RelativeLayout>
+
     <LinearLayout
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="148dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <ImageButton
             android:id="@+id/m1_image"
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:src="@drawable/m1_sc"/>
+            android:src="@drawable/tupian" />
+
     </LinearLayout>
 
     <LinearLayout
+        android:layout_width="361dp"
+        android:layout_height="456dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:layout_width="340dp"
-        android:orientation="vertical"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="32dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textSize="20dp"
-                android:text="标题"/>
+                android:text="Course Code"
+                android:textSize="20dp" />
+
             <EditText
                 android:id="@+id/m1_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:minWidth="250dp"
-                android:textSize="20dp"
-                />
+                android:textSize="20dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -93,39 +94,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textSize="20dp"
-                android:text="选项"/>
-            <Spinner
-                android:id="@+id/m1_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:textAlignment="center"
-                >
+                android:text="Professor"
+                android:textSize="20dp" />
 
-            </Spinner>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textSize="20dp"
-                android:text="价格"/>
             <EditText
                 android:id="@+id/m1_price"
-                android:layout_marginLeft="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="262dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
                 android:minWidth="100dp"
-                android:textSize="20dp"
-                />
+                android:textSize="20dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -137,39 +116,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textSize="20dp"
-                android:text="联系方式"/>
-            <EditText
-                android:id="@+id/m1_phone"
-                android:layout_marginLeft="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:minWidth="210dp"
-                android:textSize="20dp"
-                />
-        </LinearLayout>
+                android:text="Comments"
+                android:textSize="20dp" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textSize="20dp"
-                android:text="描述"/>
             <EditText
                 android:id="@+id/m1_nr"
-                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="193dp"
                 android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
                 android:minWidth="250dp"
-                android:textSize="20dp"
-                />
+                android:textSize="20dp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -180,14 +137,16 @@
         android:orientation="vertical"
         android:gravity="center_vertical|center"
         >
-        <Button
-            android:id="@+id/fabu"
-            android:layout_width="400dp"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:background="#1E90FF"
-            android:text="发布"/>
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/release_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#BFE6C3EF"
+        android:text="Confirm"
+        android:textSize="30dp" />
 
 
 </LinearLayout>

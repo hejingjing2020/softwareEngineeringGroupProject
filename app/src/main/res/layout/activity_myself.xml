@@ -15,12 +15,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="个人中心"
-            android:textSize="30dp"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
+            android:layout_gravity="center"
             android:gravity="center"
-            android:layout_gravity="center" />
+            android:text="Personal Center"
+            android:textColor="#ffffff"
+            android:textSize="30dp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
@@ -54,15 +54,16 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
                 android:src="@drawable/person"/>
+
             <Button
                 android:id="@+id/myself"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
-                android:text="个人信息"
-                android:textSize="25dp"
+                android:layout_marginRight="20dp"
                 android:gravity="left"
+                android:text="Info"
+                android:textSize="25dp"
 
                 />
         </LinearLayout>
@@ -77,15 +78,16 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/pic_search"/>
+
             <Button
                 android:id="@+id/myShow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
-                android:text="我的发布"
-                android:textSize="25dp"
+                android:layout_marginRight="20dp"
                 android:gravity="left"
+                android:text="My Release"
+                android:textSize="25dp"
 
                 />
         </LinearLayout>
@@ -100,15 +102,16 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/pic_set"/>
+
             <Button
                 android:id="@+id/changepwd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
-                android:text="修改密码"
-                android:textSize="25dp"
+                android:layout_marginRight="20dp"
                 android:gravity="left"
+                android:text="Change Password"
+                android:textSize="25dp"
 
                 />
         </LinearLayout>
@@ -123,15 +126,16 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/pic_about"/>
+
             <Button
                 android:id="@+id/about"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
-                android:text="关 于"
-                android:textSize="25dp"
+                android:layout_marginRight="20dp"
                 android:gravity="left"
+                android:text="About US"
+                android:textSize="25dp"
 
                 />
         </LinearLayout>
@@ -151,10 +155,10 @@
                 android:id="@+id/login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
                 android:gravity="left"
-                android:text="登 录"
+                android:text="Login"
                 android:textSize="25dp"
 
                 />
@@ -184,16 +188,16 @@
         <!--第一个RadioButton-->
         <RadioButton
             android:id="@+id/button_1"
-            android:text="首页"
-            android:textStyle="bold"
-            android:button="@null"
-            android:textColor="#666666"
-            android:background="#ffffff"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/pic_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:button="@null"
+            android:drawableTop="@drawable/pic_home"
+            android:gravity="center"
+            android:text="Home Page"
+            android:textColor="#666666"
+            android:textStyle="bold"
 
             />
         <View
@@ -203,33 +207,34 @@
         <!--第二个RadioButton-->
         <RadioButton
             android:id="@+id/button_2"
-            android:text="发布闲置"
-            android:button="@null"
-            android:textStyle="bold"
-            android:textColor="#666666"
-            android:background="#ffffff"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/pic_add"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:button="@null"
+            android:drawableTop="@drawable/pic_add"
+            android:gravity="center"
+            android:text="Course Evaluation"
+            android:textColor="#666666"
+            android:textStyle="bold" />
         <!--第三个RadioButton-->
         <View
             android:background="#CCCCCC"
             android:layout_width="2dp"
             android:layout_height="match_parent"/>
+
         <RadioButton
             android:id="@+id/button_3"
-            android:text="个人中心"
-            android:textStyle="bold"
-            android:button="@null"
-            android:textColor="#666666"
-            android:background="#ffffff"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/pic_my"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:button="@null"
+            android:drawableTop="@drawable/pic_my"
+            android:gravity="center"
+            android:text="Personal center"
+            android:textColor="#666666"
+            android:textStyle="bold" />
 
 
 
