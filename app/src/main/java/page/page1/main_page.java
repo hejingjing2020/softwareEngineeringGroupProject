@@ -1,15 +1,34 @@
-package page.page1;
 
+package page.page1;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RadioButton;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
-public class main_page extends AppCompatActivity implements OnClickListener{
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+public class main_page extends AppCompatActivity implements View.OnClickListener{
     Intent intent;
     private Button button_4;
     private Button button_5;
@@ -19,7 +38,7 @@ public class main_page extends AppCompatActivity implements OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_main_page);
+        setContentView(R.layout.main_page);
 
         RadioButton btn4 = (RadioButton)findViewById(R.id.button_4);
         RadioButton btn5 = (RadioButton)findViewById(R.id.button_5);
@@ -47,20 +66,19 @@ public class main_page extends AppCompatActivity implements OnClickListener{
                 startActivity(KindIntent2);
                 break;
             case R.id.button_4:
-                Intent button1 = new Intent(main_page.this,main_page.class);
+                Intent button1 = new Intent(this,main_page.class);
                 startActivity(button1);
                 break;
             case R.id.button_5:
-                Intent button2 = new Intent(main_page.this,AddItem.class);
+                Intent button2 = new Intent(this,AddItem.class);
                 startActivity(button2);
                 break;
             case R.id.button_6:
-                Intent button3 = new Intent(main_page.this,MyselfActivity.class);
+                Intent button3 = new Intent(this,MyselfActivity.class);
                 startActivity(button3);
                 break;
         }
     }
+
 }
-
-
 

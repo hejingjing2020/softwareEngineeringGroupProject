@@ -19,9 +19,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColor="#ffffff"
             android:gravity="center"
-            android:text="个人信息"
+            android:text="Personal Info"
+            android:textColor="#ffffff"
             android:textSize="25dp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -35,12 +35,12 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="用户账号:"
-                android:textSize="30dp"
-                />
+                android:text="Account:"
+                android:textSize="30dp" />
 
             <TextView
                 android:id="@+id/showUser"
@@ -54,20 +54,20 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="用户姓名:"
-                android:textSize="30dp"
-                />
+                android:text="User Name:"
+                android:textSize="30dp" />
+
             <TextView
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:maxLines="1"
-                android:text="姓名"
-                android:textSize="25dp"
-                />
+                android:text="name"
+                android:textSize="25dp" />
 
         </LinearLayout>
         <LinearLayout
@@ -76,20 +76,20 @@
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="用户专业:"
-                android:textSize="30dp"
-                />
+                android:text="Major:"
+                android:textSize="30dp" />
+
             <TextView
                 android:id="@+id/subject"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:maxLines="1"
-                android:text="专业"
-                android:textSize="25dp"
-                />
+                android:text="major"
+                android:textSize="25dp" />
 
         </LinearLayout>
         <LinearLayout
@@ -98,20 +98,20 @@
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="联系方式:"
-                android:textSize="30dp"
-                />
+                android:text="Contact Info:"
+                android:textSize="30dp" />
+
             <TextView
                 android:id="@+id/phone"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:maxLines="1"
-                android:text="电话"
-                android:textSize="25dp"
-                />
+                android:text="phone number"
+                android:textSize="25dp" />
 
         </LinearLayout>
         <LinearLayout
@@ -120,20 +120,20 @@
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="QQ号:"
-                android:textSize="30dp"
-                />
+                android:text="Wechat ID:"
+                android:textSize="30dp" />
+
             <TextView
                 android:id="@+id/qq"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:maxLines="1"
-                android:text="QQ号"
-                android:textSize="25dp"
-                />
+                android:text="wechat id"
+                android:textSize="25dp" />
 
         </LinearLayout>
         <LinearLayout
@@ -163,20 +163,19 @@
             android:id="@+id/changemsg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="修改用户信息"
-            android:textSize="30dp"
-            android:background="#FF9900"
-            android:textColor="#ffffff"
             android:layout_marginTop="20dp"
-            />
+            android:background="#FF9900"
+            android:text="Change User Info"
+            android:textColor="#ffffff"
+            android:textSize="30dp" />
+
         <Button
             android:id="@+id/back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="返   回"
-            android:textSize="30dp"
-            android:background="#66CCFF"
             android:layout_marginTop="10dp"
-            />
+            android:background="#66CCFF"
+            android:text="Return "
+            android:textSize="30dp" />
     </LinearLayout>
 </LinearLayout>

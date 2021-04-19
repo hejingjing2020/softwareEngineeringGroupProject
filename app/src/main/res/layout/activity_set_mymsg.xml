@@ -20,8 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:text="Personal Info"
             android:textColor="#ffffff"
-            android:text="个人信息"
             android:textSize="25dp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -36,16 +36,17 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="用户账号:"
-                android:textSize="30dp"
-                />
+                android:text="Account:"
+                android:textSize="30dp" />
+
             <TextView
                 android:id="@+id/showUser"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="22dp"
                 android:text="user"
                 android:textSize="25dp" />
         </LinearLayout>
@@ -54,20 +55,20 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="用户姓名:"
-                android:textSize="30dp"
-                />
+                android:text="User Name:"
+                android:textSize="30dp" />
+
             <EditText
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:hint="name"
                 android:maxLines="1"
-                android:hint="请填写姓名"
-                android:textSize="25dp"
-                />
+                android:textSize="25dp" />
 
         </LinearLayout>
         <LinearLayout
@@ -75,20 +76,20 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="用户专业:"
-                android:textSize="30dp"
-                />
+                android:text="Major:"
+                android:textSize="30dp" />
+
             <EditText
                 android:id="@+id/subject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:hint="major"
                 android:maxLines="1"
-                android:hint="请填写专业    "
-                android:textSize="25dp"
-                />
+                android:textSize="25dp" />
 
         </LinearLayout>
         <LinearLayout
@@ -96,20 +97,20 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="联系方式:"
-                android:textSize="30dp"
-                />
+                android:text="Contact Info:"
+                android:textSize="30dp" />
+
             <EditText
                 android:id="@+id/phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:hint="phone number"
                 android:maxLines="1"
-                android:hint="请填写电话    "
-                android:textSize="25dp"
-                />
+                android:textSize="25dp" />
 
         </LinearLayout>
         <LinearLayout
@@ -117,20 +118,20 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="QQ号:"
-                android:textSize="30dp"
-                />
+                android:text="Wechat ID:"
+                android:textSize="30dp" />
+
             <EditText
                 android:id="@+id/qq"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:hint="wechat id"
                 android:maxLines="1"
-                android:hint="请填写QQ号         "
-                android:textSize="25dp"
-                />
+                android:textSize="25dp" />
 
         </LinearLayout>
         <LinearLayout
@@ -159,20 +160,19 @@
             android:id="@+id/save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="保存用户信息"
-            android:textSize="30dp"
             android:background="#FF9900"
+            android:text="Save Info"
             android:textColor="#ffffff"
-            />
+            android:textSize="30dp" />
+
         <Button
             android:id="@+id/back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="返   回"
-            android:textSize="30dp"
-            android:background="#66CCFF"
             android:layout_marginTop="10dp"
-            />
+            android:background="#66CCFF"
+            android:text="Return"
+            android:textSize="30dp" />
     </LinearLayout>
 
 

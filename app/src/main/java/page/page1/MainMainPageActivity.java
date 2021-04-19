@@ -1,6 +1,5 @@
-
 package page.page1;
-//这一页是发布交易
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -37,30 +36,15 @@ public class MainMainPageActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_page);
+        setContentView(R.layout.activity_main_main_page);
         DatabaseHelper database = new DatabaseHelper(this);
         final SQLiteDatabase db = database.getWritableDatabase();
         ListView listView = (ListView)findViewById(R.id.listView);
         Map<String, Object> item;  // 列表项内容用Map存储
         final List<Map<String, Object>> data = new ArrayList<Map<String, Object>>(); // 列表
         Cursor cursor = db.query(TABLENAME,null,null,null,null,null,null,null); // 数据库查询
-        if (cursor.moveToFirst()){
-            while (!cursor.isAfterLast()){
-                item = new HashMap<String, Object>();  // 为列表项赋值
-                item.put("id",cursor.getInt(0));
-                item.put("userid",cursor.getString(1));
-                item.put("title",cursor.getString(2));
-                item.put("kind",cursor.getString(3));
-                item.put("info",cursor.getString(4));
-                item.put("price",cursor.getString(5));
-                imagedata = cursor.getBlob(6);
-                imagebm = BitmapFactory.decodeByteArray(imagedata, 0, imagedata.length);
-                item.put("image",imagebm);
-                cursor.moveToNext();
-                data.add(item); // 加入到列表中
-            }
-        }
-/*
+
+
         item = new HashMap<String, Object>();
         item.put("userid","ysh");
         item.put("image", R.drawable.buy_item1);
@@ -86,8 +70,21 @@ public class MainMainPageActivity extends AppCompatActivity implements View.OnCl
         item.put("price", "59元");
         data.add(item);
 
- */
-
+        if (cursor.moveToFirst()){
+            while (!cursor.isAfterLast()){
+                item = new HashMap<String, Object>();  // 为列表项赋值
+                item.put("id",cursor.getInt(0));
+                item.put("userid",cursor.getString(1));
+                item.put("title",cursor.getString(2));
+                item.put("kind",cursor.getString(3));
+                item.put("info",cursor.getString(4));
+                item.put("price",cursor.getString(5));
+                imagedata = cursor.getBlob(6);
+                item.put("image",imagebm);
+                cursor.moveToNext();
+                data.add(item); // 加入到列表中
+            }
+        }
         // 使用SimpleAdapter布局listview
         SimpleAdapter simpleAdapter = new SimpleAdapter(this, data, R.layout.listitem, new String[] { "image", "title", "kind", "info", "price" },
                 new int[] { R.id.item_image, R.id.title, R.id.kind, R.id.info, R.id.price });
@@ -151,7 +148,7 @@ public class MainMainPageActivity extends AppCompatActivity implements View.OnCl
                 startActivity(KindIntent4);
                 break;
             case R.id.button_1:
-                Intent button1 = new Intent(MainMainPageActivity.this,MainMainPageActivity.class);
+                Intent button1 = new Intent(MainMainPageActivity.this,main_page.class);
                 startActivity(button1);
                 break;
             case R.id.button_2:

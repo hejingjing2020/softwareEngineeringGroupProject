@@ -55,12 +55,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:text="联系方式："
-                    android:layout_marginTop="15dp"/>
+                    android:layout_marginTop="15dp"
+                    android:text="Phone Number:"
+                    android:textSize="20dp" />
                 <TextView
                     android:id="@+id/contact"
                     android:layout_width="wrap_content"
@@ -73,26 +74,28 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
-                android:text="添加评论："
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="15dp"
+                android:text="Add Comment:"
+                android:textSize="25dp" />
             <EditText
                 android:id="@+id/comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
             <Button
                 android:id="@+id/submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:text="提交评论"/>
+                android:text="Release"
+                android:textSize="18dp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
-                android:text="大家的评论："
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"/>
+                android:layout_marginBottom="15dp"
+                android:text="Comments:"
+                android:textSize="25dp" />
             <ListView
                 android:id="@+id/commentList"
                 android:layout_width="wrap_content"

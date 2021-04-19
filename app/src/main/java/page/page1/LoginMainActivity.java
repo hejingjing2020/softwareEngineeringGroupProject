@@ -83,7 +83,7 @@ public class LoginMainActivity extends Activity {
             }
             else{
                 Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(LoginMainActivity.this,MainMainPageActivity.class);
+                Intent intent = new Intent(LoginMainActivity.this,main_page.class);
                 post_userid=user;
                 startActivity(intent);
             }
