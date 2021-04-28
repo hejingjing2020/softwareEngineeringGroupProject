@@ -1,107 +1,87 @@
 package page.page1;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Message;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.ImageButton;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Handler;
 
 public class MainMainPageActivity extends AppCompatActivity implements View.OnClickListener{
 
-    String TABLENAME = "iteminfo";
+    String TABLENAME = "Comment";
     Intent intent;
     byte[] imagedata;
     Bitmap imagebm;
+    private EditText et_name;
+    private LinkedList<CommentData> mList;
+    private myAdapter mAdapter;
+    private ListView mListView;
+    private Handler mHandler;
+
+    /*
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+
+        onCreate(null);
+
+    }*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_main_page);
+
+
         DatabaseHelper database = new DatabaseHelper(this);
         final SQLiteDatabase db = database.getWritableDatabase();
         ListView listView = (ListView)findViewById(R.id.listView);
+        mList = new LinkedList<CommentData>();
+
+        mAdapter = new myAdapter(mList, MainMainPageActivity.this);
+        //这里在每次更新数据时刷新listView
+        //listView.setAdapter(mAdapter);
+
+
         Map<String, Object> item;  // 列表项内容用Map存储
         final List<Map<String, Object>> data = new ArrayList<Map<String, Object>>(); // 列表
         Cursor cursor = db.query(TABLENAME,null,null,null,null,null,null,null); // 数据库查询
 
 
-        item = new HashMap<String, Object>();
-        item.put("userid","ysh");
-        item.put("image", R.drawable.buy_item1);
-        item.put("title","一个九成新的篮球");
-        item.put("kind","体育用品");
-        item.put("info", "刚买没多久，希望转卖出去...");
-        item.put("price", "59元");
-        data.add(item);
-        item = new HashMap<String, Object>();
-        item.put("userid","xg");
-        item.put("image", R.drawable.buy_item2);
-        item.put("title","一个八成新的篮球");
-        item.put("kind","体育用品");
-        item.put("info", "刚买没多久，希望转卖出去...");
-        item.put("price", "59元");
-        data.add(item);
-        item = new HashMap<String, Object>();
-        item.put("userid","hdq");
-        item.put("image", R.drawable.buy_item3);
-        item.put("title","一个八成新的篮球");
-        item.put("kind","体育用品");
-        item.put("info", "刚买没多久，希望转卖出去...");
-        item.put("price", "59元");
-        data.add(item);
-
         if (cursor.moveToFirst()){
             while (!cursor.isAfterLast()){
                 item = new HashMap<String, Object>();  // 为列表项赋值
-                item.put("id",cursor.getInt(0));
-                item.put("userid",cursor.getString(1));
-                item.put("title",cursor.getString(2));
-                item.put("kind",cursor.getString(3));
-                item.put("info",cursor.getString(4));
-                item.put("price",cursor.getString(5));
-                imagedata = cursor.getBlob(6);
-                item.put("image",imagebm);
+                item.put("s_id",cursor.getInt(0));
+                item.put("course_code",cursor.getString(1));
+                item.put("prof_name",cursor.getString(2));
+                item.put("comment",cursor.getString(3));
+                //imagedata = cursor.getBlob(6);
+                //item.put("image",imagebm);
                 cursor.moveToNext();
                 data.add(item); // 加入到列表中
             }
         }
-        // 使用SimpleAdapter布局listview
-        SimpleAdapter simpleAdapter = new SimpleAdapter(this, data, R.layout.listitem, new String[] { "image", "title", "kind", "info", "price" },
-                new int[] { R.id.item_image, R.id.title, R.id.kind, R.id.info, R.id.price });
-        simpleAdapter.setViewBinder(new SimpleAdapter.ViewBinder() {
-            @Override
-            public boolean setViewValue(View view, Object data, String textRepresentation) {
-                if(view instanceof ImageView  && data instanceof Bitmap){
-                    ImageView iv = (ImageView)view;
-                    iv.setImageBitmap( (Bitmap)data );
-                    return true;
-                }else{
-                    return false;
-                }
-            }
-        });
-        listView.setAdapter(simpleAdapter);
-
+        // 使用SimpleAdapter布局 listview
+        // listitem.xml
+        //myAdapter mAdapter = new myAdapter();
 
         ImageView kind1 = (ImageView) findViewById(R.id.kind1);
         kind1.setOnClickListener(this);
@@ -111,10 +91,14 @@ public class MainMainPageActivity extends AppCompatActivity implements View.OnCl
         kind3.setOnClickListener(this);
         ImageView kind4 = (ImageView) findViewById(R.id.kind4);
         kind4.setOnClickListener(this);
+
+
+
         // 为列表项设置监听器
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 intent = new Intent(MainMainPageActivity.this, item_info.class);
                 intent.putExtra("id", data.get(position).get("id").toString()); // 获取该列表项的key为id的键值，即商品的id，将其储存在Bundle传递给打开的页面
                 startActivity(intent);
@@ -128,6 +112,17 @@ public class MainMainPageActivity extends AppCompatActivity implements View.OnCl
         btn2.setOnClickListener(this);
         btn3.setOnClickListener(this);
     }
+    private ArrayList<Map<String, Object>> getData(){
+        ArrayList<Map<String, Object>> list=new ArrayList<Map<String, Object>>();
+        Map<String,Object> hashmap=new HashMap<String, Object>();
+        for(int i=0;i<5;i++){
+            hashmap.put("key1", "data1");
+            hashmap.put("key2", "data2");
+            list.add(hashmap);
+        }
+        return list;
+    }
+
     @Override
     public void onClick(View v){
         switch (v.getId()){
@@ -147,16 +142,16 @@ public class MainMainPageActivity extends AppCompatActivity implements View.OnCl
                 Intent KindIntent4 = new Intent(this,kind_page4.class);
                 startActivity(KindIntent4);
                 break;
-            case R.id.button_1:
-                Intent button1 = new Intent(MainMainPageActivity.this,main_page.class);
+            case R.id.button_main_page:
+                Intent button1 = new Intent(MainMainPageActivity.this, main_page.class);
                 startActivity(button1);
                 break;
-            case R.id.button_2:
-                Intent button2 = new Intent(this,AddItem.class);
+            case R.id.button_post_comment:
+                Intent button2 = new Intent(MainMainPageActivity.this, AddItem.class);
                 startActivity(button2);
                 break;
-            case R.id.button_3:
-                Intent button3 = new Intent(this,MyselfActivity.class);
+            case R.id.button_self_center:
+                Intent button3 = new Intent(this, MyselfActivity.class);
                 startActivity(button3);
                 break;
 
