@@ -18,31 +18,82 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static page.page1.LoginMainActivity.post_userid;
 
+
+
+
 public class AddItem extends AppCompatActivity {
     private static final byte REQUEST_SYSTEM_PIC = 10;
-    private  DatabaseHelper dbHelper;
-    private Spinner  sp;
+    //private static PreparedStatement dbHelper;
+    public static DatabaseHelper dbHelper;
+    static final SQLiteDatabase db = dbHelper.getReadableDatabase();
+    private Spinner sp;
     private ImageButton imageButton;
     private byte[] image;
+
+    public AddItem() throws SQLException {
+    }
+
+
+    public static List<HashMap<String,Object>> getinfo() throws SQLException {
+
+        String TABLENAME = "Comment";
+//       先定义一个List<HashMap<String,Object>>类型的数据并实例化
+        List<HashMap<String,Object>> list=new ArrayList<HashMap<String, Object>>();
+
+//        定义sql语句
+        Cursor cursor = db.query(TABLENAME,null,null,null,null,null,null,null);
+        Map<String, Object> item = new HashMap<String, Object>();
+        List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
+        if (cursor.moveToFirst()){
+            while (!cursor.isAfterLast()){
+                item = new HashMap<String, Object>();  // 为列表项赋值
+                item.put("s_id",cursor.getInt(0));
+                item.put("course_code",cursor.getString(1));
+                item.put("prof_name",cursor.getString(2));
+                item.put("comment",cursor.getString(3));
+                cursor.moveToNext();
+                data.add(item); // 加入到列表中
+            }
+        }
+        return list;
+    }
+
+    List<HashMap<String,Object>> listItem = getinfo();
+    // activity_main_m1.xml
+    SimpleAdapter mAdapter = new SimpleAdapter(getApplicationContext(), listItem, R.layout.activity_main_m1,
+            new String[]{"s_id", "course_code", "prof_name", "comment"}, new int[]{R.id.m1_sid, R.id.m1_course_code, R.id.m1_prof, R.id.m1_comment});
+/*
+    @Override
+    protected void onResume() {
+        super.onResume();
+        onCreate(null);
+    }
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main_m1);
         final SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss ");
         //dbHelper=new MyDatabaseHelper(this,"1600802129.db",null,1);
@@ -76,27 +127,28 @@ public class AddItem extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                EditText title=(EditText)findViewById(R.id.m1_title);
-                EditText price=(EditText)findViewById(R.id.m1_price);
-                EditText nr=(EditText)findViewById(R.id.m1_nr);
+                EditText courseTitle=(EditText)findViewById(R.id.m1_course_code);
+                EditText prof=(EditText)findViewById(R.id.m1_prof);
+                EditText comment=(EditText)findViewById(R.id.m1_comment);
                 Date curDate = new Date(System.currentTimeMillis());
-                String time = formatter.format(curDate);
+                //String time = formatter.format(curDate);
                 ContentValues values=new ContentValues();
-                values.put("title",title.getText().toString());
-                values.put("userId",post_userid);
-                values.put("time",time);
-                values.put("price",price.getText().toString());
-                values.put("info",nr.getText().toString());
-                values.put("image",image);
-                db.insert("iteminfo",null,values);
+                values.put("s_id",post_userid);
+                values.put("course_code",courseTitle.getText().toString());
+                //values.put("time",time);
+                values.put("prof_name",prof.getText().toString());
+               // values.put("info",nr.getText().toString());
+                values.put("comment", comment.getText().toString());
+                db.insert("Comment",null,values);
                 Intent intent=new Intent(AddItem.this,AddItem.class);
-                Toast.makeText(getApplicationContext(), "发布成功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Comment Submitted", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
 
         ImageButton but1 = (ImageButton)findViewById(R.id.but1_m1);
         ImageButton but2 = (ImageButton)findViewById(R.id.but2_m1);
+
         but2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
