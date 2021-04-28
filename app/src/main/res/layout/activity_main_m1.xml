@@ -76,7 +76,23 @@
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/m1_title"
+                android:id="@+id/m1_sid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:minWidth="250dp"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Student ID"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/m1_course_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -98,7 +114,7 @@
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/m1_price"
+                android:id="@+id/m1_prof"
                 android:layout_width="262dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
@@ -120,7 +136,7 @@
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/m1_nr"
+                android:id="@+id/m1_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="193dp"
                 android:layout_gravity="center"
