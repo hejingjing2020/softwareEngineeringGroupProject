@@ -188,7 +188,7 @@
         <!--第一个RadioButton-->
         <RadioButton
             android:id="@+id/button_1"
-            android:layout_width="wrap_content"
+            android:layout_width="116dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#ffffff"
@@ -205,23 +205,11 @@
             android:layout_width="2dp"
             android:layout_height="match_parent"/>
         <!--第二个RadioButton-->
-        <RadioButton
-            android:id="@+id/button_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#ffffff"
-            android:button="@null"
-            android:drawableTop="@drawable/pic_add"
-            android:gravity="center"
-            android:text="Course Evaluation"
-            android:textColor="#666666"
-            android:textStyle="bold" />
         <!--第三个RadioButton-->
         <View
-            android:background="#CCCCCC"
-            android:layout_width="2dp"
-            android:layout_height="match_parent"/>
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#CCCCCC" />
 
         <RadioButton
             android:id="@+id/button_3"

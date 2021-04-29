@@ -3,9 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
     android:orientation="vertical"
-    tools:context="page.page1.MyItems">
+    tools:context="page.page1.MyRelease">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -364,6 +366,67 @@
     <ListView
         android:id="@+id/show_fabu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="626dp"></ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.8"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#333333" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!--第一个RadioButton-->
+            <RadioButton
+                android:id="@+id/button_main_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#ffffff"
+                android:button="@null"
+                android:drawableTop="@drawable/pic_home"
+                android:gravity="center"
+                android:text="Main page"
+                android:textColor="#666666"
+                android:textStyle="bold"
+
+                />
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#CCCCCC" />
+            <!--第二个RadioButton-->
+            <!--第三个RadioButton-->
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#CCCCCC" />
+
+            <RadioButton
+                android:id="@+id/button_self_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#ffffff"
+                android:button="@null"
+                android:drawableTop="@drawable/pic_my"
+                android:gravity="center"
+                android:text="Self Center"
+                android:textColor="#666666"
+                android:textStyle="bold" />
+        </RadioGroup>
+    </LinearLayout>
 
 </LinearLayout>

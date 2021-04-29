@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainMainPageActivity"></activity>
+        <activity android:name=".releaseRecruitment_USTF"></activity>
+        <activity android:name=".releaseRecruitment_RA" />
+        <activity android:name=".releaseCourseEvaluation" />
         <activity android:name=".LoginMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +21,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".kind_page1" />
+        <activity android:name=".recruitment_prof" />
+        <activity android:name=".courseEvaluation_prof" />
+        <activity android:name=".RA" />
+        <activity android:name=".LHS" />
+        <activity android:name=".SME" />
+        <activity android:name=".SDS" />
+        <activity android:name=".HSS" />
+        <activity android:name=".SSE" />
+        <activity android:name=".USTF" />
+        <activity android:name=".courseEvaluation" />
+        <activity android:name=".recruitment" />
         <activity android:name=".item_info" />
         <activity android:name=".AboutMainActivity" />
         <activity android:name=".changepwdActivity" />
@@ -28,11 +40,7 @@
         <activity android:name=".RegisterMainActivity" />
         <activity android:name=".setMymsgActivity" />
         <activity android:name=".userMsgActivity" />
-        <activity android:name=".MyItems" />
-        <activity android:name=".AddItem" />
-        <activity android:name=".kind_page2" />
-        <activity android:name=".kind_page3" />
-        <activity android:name=".kind_page4" />
+        <activity android:name=".MyRelease" />
     </application>
 
 </manifest>

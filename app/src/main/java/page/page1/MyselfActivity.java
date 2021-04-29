@@ -31,7 +31,6 @@ public class MyselfActivity extends AppCompatActivity {
 
 
         button1=(RadioButton)findViewById(R.id.button_1);
-        button2=(RadioButton)findViewById(R.id.button_2);
         button3=(RadioButton)findViewById(R.id.button_3);
         myself=(Button)findViewById(R.id.myself);
         myshow=(Button)findViewById(R.id.myShow);
@@ -44,9 +43,9 @@ public class MyselfActivity extends AppCompatActivity {
 
         Log.i("123",a);
         if(a.equals("")||a==null){
-            login.setText("登 录");
+            login.setText("Log in");
         }else{
-            login.setText("退出登录");
+            login.setText("Log out");
         }
         //跳转到主页
         button1.setOnClickListener(new View.OnClickListener() {
@@ -57,18 +56,6 @@ public class MyselfActivity extends AppCompatActivity {
             }
         });
 
-        //跳转到发布闲置
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {if(a.equals("")||a==null){
-                Toast.makeText(getApplicationContext(), "请先登录！", Toast.LENGTH_SHORT).show();
-                intent = new Intent(MyselfActivity.this,LoginMainActivity.class);
-                startActivity(intent);
-            }
-                intent = new Intent(MyselfActivity.this,AddItem.class);
-                startActivity(intent);
-            }
-        });
 
         //跳转到个人中心
         button3.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +71,7 @@ public class MyselfActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(a.equals("")){
-                    Toast.makeText(getApplicationContext(), "请先登录！", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please login first！", Toast.LENGTH_SHORT).show();
                     intent = new Intent(MyselfActivity.this,LoginMainActivity.class);
                     startActivity(intent);
                 }
@@ -99,12 +86,12 @@ public class MyselfActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(a.equals("")||a==null){
-                    Toast.makeText(getApplicationContext(), "请先登录！", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please login first！", Toast.LENGTH_SHORT).show();
                     intent = new Intent(MyselfActivity.this,LoginMainActivity.class);
                     startActivity(intent);
                 }
                 else {
-                    intent = new Intent(MyselfActivity.this, MyItems.class);
+                    intent = new Intent(MyselfActivity.this, MyRelease.class);
                     startActivity(intent);
                 }
             }
@@ -115,7 +102,7 @@ public class MyselfActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(a.equals("")||a==null){
-                    Toast.makeText(getApplicationContext(), "请先登录！", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please login first！", Toast.LENGTH_SHORT).show();
                     intent = new Intent(MyselfActivity.this,LoginMainActivity.class);
                     startActivity(intent);
                 }
@@ -141,7 +128,7 @@ public class MyselfActivity extends AppCompatActivity {
                     intent = new Intent(MyselfActivity.this,LoginMainActivity.class);
                     startActivity(intent);
                 }else{
-                    Toast.makeText(getApplicationContext(), "退出成功", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Successful exit", Toast.LENGTH_SHORT).show();
                     LoginMainActivity.post_userid="";
                     intent = new Intent(MyselfActivity.this,LoginMainActivity.class);
                     startActivity(intent);

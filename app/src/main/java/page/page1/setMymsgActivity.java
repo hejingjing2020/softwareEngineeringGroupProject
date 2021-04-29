@@ -48,7 +48,7 @@ public class setMymsgActivity extends AppCompatActivity {
         id=LoginMainActivity.post_userid;
         userid.setText(id);
         if(id.equals("")||id==null){
-            Toast.makeText(getApplicationContext(), "请先登录！", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Please login first！", Toast.LENGTH_SHORT).show();
             intent = new Intent(setMymsgActivity.this,MyselfActivity.class);
             startActivity(intent);
         }
@@ -82,7 +82,7 @@ public class setMymsgActivity extends AppCompatActivity {
                     values.put("address", post_address);
                 }
                 saveValues(values);
-                Toast.makeText(getApplicationContext(), "修改成功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Successfully changed", Toast.LENGTH_SHORT).show();
                 intent = new Intent(setMymsgActivity.this,userMsgActivity.class);
                 startActivity(intent);
             }

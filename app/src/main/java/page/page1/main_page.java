@@ -41,13 +41,11 @@ public class main_page extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.main_page);
 
         RadioButton btn4 = (RadioButton)findViewById(R.id.button_4);
-        RadioButton btn5 = (RadioButton)findViewById(R.id.button_5);
         RadioButton btn6 = (RadioButton)findViewById(R.id.button_6);
         Button btn7 = (Button)findViewById(R.id.course_evaluation_page);
         Button btn8 = (Button)findViewById(R.id.recruit_page);
 
         btn4.setOnClickListener(this);
-        btn5.setOnClickListener(this);
         btn6.setOnClickListener(this);
         btn7.setOnClickListener(this);
         btn8.setOnClickListener(this);
@@ -58,20 +56,16 @@ public class main_page extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.course_evaluation_page:
-                Intent KindIntent1 = new Intent(main_page.this, MainMainPageActivity.class);
+                Intent KindIntent1 = new Intent(main_page.this, courseEvaluation.class);
                 startActivity(KindIntent1);
                 break;
             case R.id.recruit_page:
-                Intent KindIntent2 = new Intent(main_page.this, MainMainPageActivity.class);
+                Intent KindIntent2 = new Intent(main_page.this, recruitment.class);
                 startActivity(KindIntent2);
                 break;
             case R.id.button_4:
                 Intent button1 = new Intent(this,main_page.class);
                 startActivity(button1);
-                break;
-            case R.id.button_5:
-                Intent button2 = new Intent(this,AddItem.class);
-                startActivity(button2);
                 break;
             case R.id.button_6:
                 Intent button3 = new Intent(this,MyselfActivity.class);

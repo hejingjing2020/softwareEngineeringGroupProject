@@ -43,7 +43,7 @@ public class userMsgActivity extends AppCompatActivity {
         id = LoginMainActivity.post_userid;
         userid.setText(id);
         if (id.equals("") || id == null) {
-            Toast.makeText(getApplicationContext(), "请先登录！", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Please login first！", Toast.LENGTH_SHORT).show();
             intent = new Intent(userMsgActivity.this, LoginMainActivity.class);
             startActivity(intent);
         } else {//账号userId，密码passWord，姓名name，专业subject，电话phone，QQ号qq,地址address
@@ -53,7 +53,7 @@ public class userMsgActivity extends AppCompatActivity {
                 String sql = "SELECT * FROM users WHERE userId=?";
                 Cursor cursor = db.rawQuery(sql, new String[]{id});
                 if (cursor.getCount() == 0) {
-                    Toast.makeText(getApplicationContext(), "用户不存在！", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "User does not exist！", Toast.LENGTH_SHORT).show();
                 } else {
                     if (cursor.moveToFirst()) {
                         name = cursor.getString(cursor.getColumnIndex("name"));
@@ -74,7 +74,7 @@ public class userMsgActivity extends AppCompatActivity {
                 cursor.close();
                 db.close();
             } catch (SQLiteException e) {
-                Toast.makeText(getApplicationContext(), "无法显示个人信息", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Unable to display personal information", Toast.LENGTH_SHORT).show();
             }
         }
 

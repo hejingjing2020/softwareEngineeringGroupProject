@@ -10,11 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -22,9 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static page.page1.LoginMainActivity.post_userid;
-
-public class MyItems extends AppCompatActivity implements View.OnClickListener{
+public class MyRelease extends AppCompatActivity implements View.OnClickListener{
     String TABLENAME = "iteminfo";
     byte[] imagedata;
     Bitmap imagebm;
@@ -32,7 +28,7 @@ public class MyItems extends AppCompatActivity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_my_release);
         DatabaseHelper database = new DatabaseHelper(this);
         final SQLiteDatabase db = database.getWritableDatabase();
         ListView listView = (ListView)findViewById(R.id.show_fabu);
@@ -102,29 +98,13 @@ public class MyItems extends AppCompatActivity implements View.OnClickListener{
         });
         listView.setAdapter(simpleAdapter);
 
-        Button button1=(Button)findViewById(R.id.but1);
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(MyItems.this,main_page.class);
-                startActivity(intent);
-            }
-        });
 
-        Button button2=(Button)findViewById(R.id.but2);
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(MyItems.this,MyItems.class);
-                startActivity(intent);
-            }
-        });
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 String delId = data.get(position).get("id").toString();
                 if(db.delete(TABLENAME,"id=?",new String[]{delId}) > 0) {
-                    Toast.makeText(getApplicationContext(), "删除成功，请刷新", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Delete successfully, please refresh page", Toast.LENGTH_SHORT).show();
                     return true;
                 }
                 else {
@@ -139,6 +119,14 @@ public class MyItems extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View v){
         switch (v.getId()){
+            case R.id.button_main_page:
+                Intent button1 = new Intent(MyRelease.this, main_page.class);
+                startActivity(button1);
+                break;
+            case R.id.button_self_center:
+                Intent button3 = new Intent(this, MyselfActivity.class);
+                startActivity(button3);
+                break;
         }
     }
 }

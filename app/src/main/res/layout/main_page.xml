@@ -71,14 +71,14 @@
             <!--第一个RadioButton-->
             <RadioButton
                 android:id="@+id/button_4"
-                android:layout_width="wrap_content"
+                android:layout_width="105dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#ffffff"
                 android:button="@null"
                 android:drawableTop="@drawable/pic_home"
                 android:gravity="center"
-                android:text="首页"
+                android:text="Main Page"
                 android:textColor="#666666"
                 android:textStyle="bold"
 
@@ -89,18 +89,6 @@
                 android:layout_height="match_parent"
                 android:background="#CCCCCC" />
             <!--第二个RadioButton-->
-            <RadioButton
-                android:id="@+id/button_5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#ffffff"
-                android:button="@null"
-                android:drawableTop="@drawable/pic_add"
-                android:gravity="center"
-                android:text="发布闲置"
-                android:textColor="#666666"
-                android:textStyle="bold" />
             <!--第三个RadioButton-->
             <View
                 android:layout_width="2dp"
@@ -116,7 +104,7 @@
                 android:button="@null"
                 android:drawableTop="@drawable/pic_my"
                 android:gravity="center"
-                android:text="个人中心"
+                android:text="Personal Center"
                 android:textColor="#666666"
                 android:textStyle="bold" />
         </RadioGroup>
