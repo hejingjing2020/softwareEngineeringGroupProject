@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/buttonColor"
+    android:orientation="vertical"
     tools:context="page.page1.RegisterMainActivity">
 
     <LinearLayout
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#1E90FF"
+        android:background="@color/blue"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:background="@color/blue"
             android:gravity="center"
             android:text="Create your account"
             android:textColor="#ffffff"
@@ -27,12 +28,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="60dp"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ImageView
                 android:id="@+id/pic_user"
                 android:layout_width="30dp"
@@ -58,13 +60,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
+
             <ImageView
 
                 android:layout_width="30dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
-                android:src="@drawable/passwd"
                 android:layout_marginTop="15dp"
+                android:src="@drawable/passwd"
 
 
                 />
@@ -93,8 +96,8 @@
                 android:layout_width="30dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
-                android:src="@drawable/passwd"
                 android:layout_marginTop="15dp"
+                android:src="@drawable/passwd"
 
 
                 />
@@ -119,7 +122,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
-            android:background="#00CC33"
+            android:background="#4F6E2397"
             android:text="Create account"
             android:textColor="#ffffff"
             android:textSize="28dp"
@@ -131,7 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
-            android:background="#FF0000"
+            android:background="#90FF0000"
             android:text="Cancel"
             android:textColor="#ffffff"
             android:textSize="28dp"
@@ -139,10 +142,10 @@
 
 
     </LinearLayout>
+
     <FrameLayout
         android:id="@+id/framelayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        />
+        android:layout_weight="1" />
 </LinearLayout>

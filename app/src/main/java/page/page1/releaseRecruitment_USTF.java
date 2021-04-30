@@ -145,8 +145,8 @@ public class releaseRecruitment_USTF extends AppCompatActivity {
             }
         });
 
-        ImageButton but1 = (ImageButton)findViewById(R.id.but1_m1);
-        ImageButton but2 = (ImageButton)findViewById(R.id.but2_m1);
+        ImageButton but1 = (ImageButton)findViewById(R.id.imageButton_home);
+        ImageButton but2 = (ImageButton)findViewById(R.id.imageButton_info);
 
         but2.setOnClickListener(new View.OnClickListener() {
             @Override

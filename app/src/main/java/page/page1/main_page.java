@@ -40,8 +40,8 @@ public class main_page extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
 
-        RadioButton btn4 = (RadioButton)findViewById(R.id.button_4);
-        RadioButton btn6 = (RadioButton)findViewById(R.id.button_6);
+        RadioButton btn4 = (RadioButton)findViewById(R.id.button_main_page);
+        RadioButton btn6 = (RadioButton)findViewById(R.id.button_self_center);
         Button btn7 = (Button)findViewById(R.id.course_evaluation_page);
         Button btn8 = (Button)findViewById(R.id.recruit_page);
 
@@ -63,11 +63,11 @@ public class main_page extends AppCompatActivity implements View.OnClickListener
                 Intent KindIntent2 = new Intent(main_page.this, recruitment.class);
                 startActivity(KindIntent2);
                 break;
-            case R.id.button_4:
+            case R.id.button_main_page:
                 Intent button1 = new Intent(this,main_page.class);
                 startActivity(button1);
                 break;
-            case R.id.button_6:
+            case R.id.button_self_center:
                 Intent button3 = new Intent(this,MyselfActivity.class);
                 startActivity(button3);
                 break;

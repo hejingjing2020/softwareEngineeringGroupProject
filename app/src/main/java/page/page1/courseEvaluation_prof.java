@@ -105,9 +105,9 @@ public class courseEvaluation_prof extends AppCompatActivity implements View.OnC
             }
         });
 
-        RadioButton btn1 = (RadioButton)findViewById(R.id.button_1);
-        RadioButton btn2 = (RadioButton)findViewById(R.id.button_2);
-        RadioButton btn3 = (RadioButton)findViewById(R.id.button_3);
+        RadioButton btn1 = (RadioButton)findViewById(R.id.button_main_page);
+        RadioButton btn2 = (RadioButton)findViewById(R.id.button_post_comment);
+        RadioButton btn3 = (RadioButton)findViewById(R.id.button_self_center);
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
         btn3.setOnClickListener(this);

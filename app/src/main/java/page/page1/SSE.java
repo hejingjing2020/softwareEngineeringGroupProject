@@ -67,15 +67,15 @@ public class SSE extends AppCompatActivity {
     }
     public void onClick(View v){
         switch (v.getId()){
-            case R.id.button_1:
+            case R.id.button_main_page:
                 Intent button1 = new Intent(SSE.this, main_page.class);
                 startActivity(button1);
                 break;
-            case R.id.button_2:
+            case R.id.button_post_comment:
                 Intent button2 = new Intent(SSE.this, releaseCourseEvaluation.class);
                 startActivity(button2);
                 break;
-            case R.id.button_3:
+            case R.id.button_self_center:
                 Intent button3 = new Intent(this, MyselfActivity.class);
                 startActivity(button3);
                 break;

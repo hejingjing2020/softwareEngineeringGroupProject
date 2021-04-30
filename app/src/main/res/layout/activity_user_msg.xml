@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/buttonColor"
     android:orientation="vertical"
     tools:context="page.page1.userMsgActivity">
+
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#1E90FF"
-        android:orientation="horizontal"
         android:layout_gravity="center"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:background="@color/blue"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -25,16 +27,17 @@
             android:textSize="25dp"
             android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="45dp">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -49,11 +52,11 @@
                 android:text="user"
                 android:textSize="25dp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -70,12 +73,12 @@
                 android:textSize="25dp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="10dp"
-            >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -92,12 +95,12 @@
                 android:textSize="25dp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="10dp"
-            >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -114,12 +117,12 @@
                 android:textSize="25dp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="10dp"
-            >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -136,37 +139,21 @@
                 android:textSize="25dp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="10dp"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="地址:"
-                android:textSize="30dp"
-                />
-            <TextView
-                android:id="@+id/address"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:maxLines="1"
-                android:text="地址"
-                android:textSize="25dp"
-                />
-
-        </LinearLayout>
+            android:orientation="horizontal"/>
 
         <Button
             android:id="@+id/changemsg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="#FF9900"
+            android:layout_marginTop="50dp"
+            android:background="#9FFF9900"
             android:text="Change User Info"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textSize="30dp" />
 
         <Button
@@ -174,8 +161,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="#66CCFF"
+            android:background="#9766CCFF"
             android:text="Return "
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            tools:layout_marginTop="20dp" />
     </LinearLayout>
 </LinearLayout>

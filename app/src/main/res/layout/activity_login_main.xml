@@ -12,13 +12,14 @@
 
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#1E90FF"
+        android:background="@color/blue"
         android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:background="@color/purple"
             android:gravity="center"
             android:text="Login"
             android:textColor="#ffffff"
@@ -29,8 +30,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:background="@color/buttonColor"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -62,10 +63,10 @@
                 android:id="@+id/pic_pass"
                 android:layout_width="40dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="50dp"
-                android:src="@drawable/passwd"
-                android:layout_marginTop="15dp"
                 android:layout_below="@+id/pic_user"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/passwd"
 
                 />
 
@@ -83,14 +84,15 @@
                 android:textColorHint="#708090"
                 android:textSize="18sp" />
         </RelativeLayout>
+
         <RadioGroup
             android:id="@+id/radioGroupRole"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_marginTop="50dp">
+            android:orientation="horizontal">
 
 
             <RadioButton
@@ -98,7 +100,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="Teacher" />
+                android:text="Teacher"
+                android:textColorHighlight="#2E0909"
+                android:textColorLink="#674F4F" />
 
             <RadioButton
                 android:id="@+id/radioStudent"
@@ -106,12 +110,13 @@
                 android:layout_height="wrap_content"
                 android:text="Student" />
         </RadioGroup>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp">
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="match_parent"
@@ -121,14 +126,15 @@
                 android:textColor="#CCCCCC"
                 android:textSize="20dp"
                 android:textStyle="bold" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="            "
-                android:textSize="20dp"
                 android:textColor="#CCCCCC"
-                android:textStyle="bold"/>
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/toRegister"
@@ -148,9 +154,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="80dp"
-            android:background="#FF6600"
+            android:background="#366E2397"
             android:text="Sign In"
-            android:textColor="#ffffff"
+            android:textColor="#2C2929"
             android:textSize="28dp"
             android:textStyle="bold" />
     </LinearLayout>

@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/buttonColor"
+    android:orientation="vertical"
     tools:context="page.page1.MyselfActivity">
     >
+
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#1E90FF">
+        android:background="@color/blue">
 
         <TextView
             android:layout_width="match_parent"
@@ -28,32 +31,33 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="vertical">
+
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:src="@drawable/pic_myself"
-            />
+            android:background="#00FFFFFF"
+            android:src="@drawable/pic_myself" />
+
         <TextView
             android:id="@+id/myId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="User"
-            android:textSize="25dp"
             android:gravity="center"
-            />
+            android:text="User"
+            android:textSize="25dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
-                android:src="@drawable/person"/>
+                android:src="@drawable/person"
+                app:srcCompat="@drawable/jiushini" />
 
             <Button
                 android:id="@+id/myself"
@@ -67,17 +71,18 @@
 
                 />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/pic_search"/>
+                android:src="@drawable/pic_search"
+                app:srcCompat="@drawable/dingdan" />
 
             <Button
                 android:id="@+id/myShow"
@@ -91,17 +96,18 @@
 
                 />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/pic_set"/>
+                android:src="@drawable/pic_set"
+                app:srcCompat="@drawable/shezhi" />
 
             <Button
                 android:id="@+id/changepwd"
@@ -115,17 +121,18 @@
 
                 />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/pic_about"/>
+                android:src="@drawable/pic_about"
+                app:srcCompat="@drawable/gonggao" />
 
             <Button
                 android:id="@+id/about"
@@ -139,17 +146,18 @@
 
                 />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/pic_login"/>
+                android:src="@drawable/pic_login"
+                app:srcCompat="@drawable/yuanquan_guanbi" />
 
             <Button
                 android:id="@+id/login"
@@ -158,32 +166,31 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:gravity="left"
-                android:text="Login"
+                android:text="Log out"
                 android:textSize="25dp"
 
                 />
         </LinearLayout>
     </LinearLayout>
+
     <FrameLayout
         android:id="@+id/framelayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        />
+        android:layout_weight="1" />
     <!--中间为一条分割线-->
     <View
-        android:background="#666666"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginBottom="1dp"
-        />
+        android:background="#666666" />
 
     <!--最下边为RadioGroup-->
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <!--第一个RadioButton-->
         <RadioButton
@@ -200,10 +207,11 @@
             android:textStyle="bold"
 
             />
+
         <View
-            android:background="#CCCCCC"
             android:layout_width="2dp"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:background="#CCCCCC" />
         <!--第二个RadioButton-->
         <!--第三个RadioButton-->
         <View
@@ -223,7 +231,6 @@
             android:text="Personal center"
             android:textColor="#666666"
             android:textStyle="bold" />
-
 
 
     </RadioGroup>

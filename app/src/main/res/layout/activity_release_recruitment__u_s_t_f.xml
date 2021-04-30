@@ -4,50 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/purple"
     android:orientation="vertical"
-    tools:context="page.page1.releaseRecruitment_USTF">
+    tools:context="page.page1.releaseRecruitment_RA">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:background="#BFE6C3EF">
-
-        <ImageButton
-            android:id="@+id/but1_m1"
-            android:layout_width="52dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="-2dp"
-            android:background="#BFE6C3EF"
-            android:src="@drawable/pic_home" />
-
-        <ImageButton
-            android:id="@+id/but2_m1"
-            android:layout_width="55dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="2dp"
-            android:background="#BFE6C3EF"
-            android:src="@drawable/pic_my" />
+        android:background="@color/blue">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:text="Reruitment"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:text="Recruitment"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="30sp" />
+
+        <ImageButton
+            android:id="@+id/imageButton_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:backgroundTint="#00FFFFFF"
+            app:srcCompat="@drawable/pic_home" />
+
+        <ImageButton
+            android:id="@+id/imageButton_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentRight="true"
+            android:backgroundTint="#00FFFFFF"
+            app:srcCompat="@drawable/pic_my" />
 
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="361dp"
-        android:layout_height="456dp"
+        android:layout_height="643dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_marginTop="60dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -117,7 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Requirement"
+                android:text="Comments"
                 android:textSize="20dp" />
 
             <EditText
@@ -130,24 +133,24 @@
                 android:textSize="20dp" />
         </LinearLayout>
 
+        <Button
+            android:id="@+id/release_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@color/blue"
+            android:text="Confirm"
+            android:textSize="30dp" />
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center_vertical|center"
-        >
+        android:orientation="vertical">
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/release_comment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#BFE6C3EF"
-        android:text="Confirm"
-        android:textSize="30dp" />
 
 
 </LinearLayout>

@@ -4,24 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/purple"
     android:orientation="vertical"
     tools:context="page.page1.main_page">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:background="#BFE6C3EF"
+        android:layout_height="46dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/blue"
         android:gravity="center"
         android:text="RA"
         android:textColor="#000000"
         android:textSize="25dp" />
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="-10dp"
-        android:paddingBottom="10dp"
-        android:src="@drawable/line"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -31,10 +27,11 @@
         <ListView
             android:id="@+id/kind_list1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"/>
+            android:layout_height="606dp"
+            android:layout_marginTop="10dp" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -44,66 +41,68 @@
 
         <View
             android:id="@+id/line"
-            android:background="#333333"
             android:layout_width="match_parent"
             android:layout_height="5dp"
-            />
+            android:background="#333333" />
+
         <RadioGroup
             android:id="@+id/radioGroup"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <!--第一个RadioButton-->
             <RadioButton
-                android:id="@+id/button_1"
-                android:layout_width="78dp"
+                android:id="@+id/button_main_page"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#ffffff"
+                android:background="@color/buttonColor"
                 android:button="@null"
+                android:buttonTint="#FFFFFF"
                 android:drawableTop="@drawable/pic_home"
                 android:gravity="center"
                 android:text="Main Page"
-                android:textColor="#666666"
-                android:textStyle="bold"
 
-                />
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <View
-                android:layout_width="3dp"
+                android:layout_width="2dp"
                 android:layout_height="match_parent"
                 android:background="#CCCCCC" />
             <!--第二个RadioButton-->
             <RadioButton
-                android:id="@+id/button_2"
+                android:id="@+id/button_post_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#ffffff"
+                android:background="@color/buttonColor"
                 android:button="@null"
                 android:drawableTop="@drawable/pic_add"
                 android:gravity="center"
                 android:text="Recruitment"
-                android:textColor="#666666"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
             <!--第三个RadioButton-->
             <View
-                android:background="#CCCCCC"
                 android:layout_width="2dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:background="#CCCCCC" />
+
             <RadioButton
-                android:id="@+id/button_3"
-                android:text="Personal Center"
-                android:textStyle="bold"
-                android:button="@null"
-                android:textColor="#666666"
-                android:background="#ffffff"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/pic_my"
+                android:id="@+id/button_self_center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#6FD1DCE3"
+                android:button="@null"
+                android:buttonTint="#004527A0"
+                android:drawableTop="@drawable/pic_my"
+                android:gravity="center"
+                android:text="Self Center"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
         </RadioGroup>
 
     </LinearLayout>

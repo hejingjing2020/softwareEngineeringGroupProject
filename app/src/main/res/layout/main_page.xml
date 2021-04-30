@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/buttonColor"
     android:orientation="vertical">
 
     <LinearLayout
@@ -70,19 +71,19 @@
 
             <!--第一个RadioButton-->
             <RadioButton
-                android:id="@+id/button_4"
-                android:layout_width="105dp"
+                android:id="@+id/button_main_page"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#ffffff"
+                android:background="@color/buttonColor"
                 android:button="@null"
+                android:buttonTint="#FFFFFF"
                 android:drawableTop="@drawable/pic_home"
                 android:gravity="center"
                 android:text="Main Page"
-                android:textColor="#666666"
-                android:textStyle="bold"
 
-                />
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <View
                 android:layout_width="2dp"
@@ -96,16 +97,17 @@
                 android:background="#CCCCCC" />
 
             <RadioButton
-                android:id="@+id/button_6"
+                android:id="@+id/button_self_center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#ffffff"
+                android:background="#6FD1DCE3"
                 android:button="@null"
+                android:buttonTint="#004527A0"
                 android:drawableTop="@drawable/pic_my"
                 android:gravity="center"
-                android:text="Personal Center"
-                android:textColor="#666666"
+                android:text="Self Center"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
         </RadioGroup>
 
