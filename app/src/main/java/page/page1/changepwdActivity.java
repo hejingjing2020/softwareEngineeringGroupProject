@@ -79,7 +79,7 @@ public class changepwdActivity extends AppCompatActivity {
     }
 
     private void checkpass(String oldpass,String newpass){
-        DatabaseHelper dbhelper = new DatabaseHelper(this);
+        DatabaseHelper dbhelper = new DatabaseHelper(this, "users.db", null, 1);
         SQLiteDatabase db=dbhelper.getReadableDatabase();
         try{
             String sql="SELECT * FROM users WHERE userId=? and passWord=?";

@@ -19,7 +19,7 @@ public class AboutMainActivity extends AppCompatActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.imageButton_home:
-                Intent KindIntent1 = new Intent(AboutMainActivity.this, courseEvaluation.class);
+                Intent KindIntent1 = new Intent(AboutMainActivity.this, main_page.class);
                 startActivity(KindIntent1);
                 break;
 

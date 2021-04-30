@@ -51,7 +51,7 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_recruitment);
 
 
-        DatabaseHelper database = new DatabaseHelper(this);
+        DatabaseHelper database = new DatabaseHelper(this, "recruitmemt.db", null, 1);
         final SQLiteDatabase db = database.getWritableDatabase();
         ListView listView = (ListView)findViewById(R.id.listView);
         mList = new LinkedList<CommentData>();

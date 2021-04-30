@@ -36,7 +36,7 @@ public class item_info extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_info);
-        final DatabaseHelper dbtest = new DatabaseHelper(this);
+        final DatabaseHelper dbtest = new DatabaseHelper(this, "courseEvaluation.db", null, 1);
         final Intent intent = getIntent();
         final SQLiteDatabase db = dbtest.getWritableDatabase();
         ImageView image = (ImageView)findViewById(R.id.imageView);

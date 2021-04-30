@@ -71,7 +71,7 @@ public class LoginMainActivity extends Activity {
     }
 
     private void checkUser(String user,String password){
-        DatabaseHelper dbhelper = new DatabaseHelper(this);
+        DatabaseHelper dbhelper = new DatabaseHelper(this, "users.db", null, 1);
         SQLiteDatabase db=dbhelper.getReadableDatabase();
         try{
             String sql="SELECT * FROM users WHERE userId=? and passWord=?";

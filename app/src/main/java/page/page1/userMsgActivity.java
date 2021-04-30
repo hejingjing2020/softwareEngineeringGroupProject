@@ -47,7 +47,7 @@ public class userMsgActivity extends AppCompatActivity {
             intent = new Intent(userMsgActivity.this, LoginMainActivity.class);
             startActivity(intent);
         } else {//账号userId，密码passWord，姓名name，专业subject，电话phone，QQ号qq,地址address
-            DatabaseHelper dbhelper = new DatabaseHelper(this);
+            DatabaseHelper dbhelper = new DatabaseHelper(this, "users.db", null, 1);
             SQLiteDatabase db = dbhelper.getReadableDatabase();
             try {
                 String sql = "SELECT * FROM users WHERE userId=?";

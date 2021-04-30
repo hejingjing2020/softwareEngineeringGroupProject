@@ -1,27 +1,38 @@
 package page.page1;
 
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
-    private static final String dbname="mydb";
-    public DatabaseHelper(Context context) {
-        super(context, dbname, null, 1);
+    private Context mContext;
+
+    public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, name, factory, version);
+        mContext = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("create table Comment("
+        db.execSQL("create table if not exists Comment("
                 + "s_id integer not null,"
                 + "course_code varchar(10) not null,"
+                + "prof_name varchar(20) not null,"
                 + "comment varchar(1000) not null,"
                 + "primary key(s_id, course_code)"//主键
-                + ");");
+                + ")");
+        ContentValues cv = new ContentValues();
+        cv.put("s_id",2);
+        cv.put("course_code","csc4001");
+        cv.put("prof_name","Jane");
+        cv.put("comment","hi");
+        Long l = db.insert("comment", null, cv);
+
         //账号userId，密码passWord，姓名name，专业subject，电话phone，QQ号qq,地址address
-        db.execSQL("create table if not exists users" +
+        db.execSQL("create table if not exists User" +
                 "(userId varchar(20) primary key," +
                 "passWord varchar(20) not null," +
                 "name varchar(20)," +

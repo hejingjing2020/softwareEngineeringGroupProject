@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -44,8 +45,8 @@ import static page.page1.LoginMainActivity.post_userid;
 public class releaseCourseEvaluation extends AppCompatActivity {
     private static final byte REQUEST_SYSTEM_PIC = 10;
     //private static PreparedStatement dbHelper;
-    public static DatabaseHelper dbHelper;
-    static final SQLiteDatabase db = dbHelper.getReadableDatabase();
+    DatabaseHelper dbHelper = new DatabaseHelper(this, "courseEvaluation.db", null, 1);
+    //SQLiteDatabase db = dbHelper.getWritableDatabase();
     private Spinner sp;
     private ImageButton imageButton;
     private byte[] image;
@@ -54,12 +55,14 @@ public class releaseCourseEvaluation extends AppCompatActivity {
     }
 
 
-    public static List<HashMap<String,Object>> getinfo() throws SQLException {
+    public List<HashMap<String,Object>> getinfo() throws SQLException {
 
-        String TABLENAME = "Comment";
-//       先定义一个List<HashMap<String,Object>>类型的数据并实例化
+
         List<HashMap<String,Object>> list=new ArrayList<HashMap<String, Object>>();
-
+/*        String TABLENAME = "Comment";
+//       先定义一个List<HashMap<String,Object>>类型的数据并实例化
+        DatabaseHelper dbHelper = new DatabaseHelper(releaseCourseEvaluation.this, "courseEvaluation.db", null, 1);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 //        定义sql语句
         Cursor cursor = db.query(TABLENAME,null,null,null,null,null,null,null);
         Map<String, Object> item = new HashMap<String, Object>();
@@ -75,27 +78,31 @@ public class releaseCourseEvaluation extends AppCompatActivity {
                 data.add(item); // 加入到列表中
             }
         }
+        */
         return list;
-    }
 
-    List<HashMap<String,Object>> listItem = getinfo();
-    // activity_main_m1.xml
-    SimpleAdapter mAdapter = new SimpleAdapter(getApplicationContext(), listItem, R.layout.activity_release_course_evaluation,
-            new String[]{"s_id", "course_code", "prof_name", "comment"}, new int[]{R.id.m1_sid, R.id.m1_course_code, R.id.m1_prof, R.id.m1_comment});
-    /*
-        @Override
-        protected void onResume() {
-            super.onResume();
-            onCreate(null);
-        }
-    */
+
+    }
+        List<HashMap<String,Object>> listItem = getinfo();
+        // activity_main_m1.l
+
+/*
+    SimpleAdapter mAdapter = new SimpleAdapter(releaseCourseEvaluation.this, listItem, R.layout.activity_release_course_evaluation,
+                new String[]{"s_id", "course_code", "prof_name", "comment"}, new int[]{R.id.m1_sid, R.id.m1_course_code, R.id.m1_prof, R.id.m1_comment});
+
+            @Override
+            protected void onResume() {
+                super.onResume();
+                onCreate(null);
+            }
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_release_course_evaluation);
-        final SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss ");
-        //dbHelper=new MyDatabaseHelper(this,"1600802129.db",null,1);
+/*        final SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss ");
+        //dbHelper=new MyDatabaseHelper(this,"courseEvaluation.db",null,1);
         dbHelper = new DatabaseHelper(this);
         final SQLiteDatabase db = dbHelper.getReadableDatabase();
         String[] ctype = new String[]{"生活用品", "学习用品", "电子产品", "体育用品"};
@@ -145,29 +152,30 @@ public class releaseCourseEvaluation extends AppCompatActivity {
             }
         });
 
-        ImageButton but1 = (ImageButton)findViewById(R.id.imageButton_home);
-        ImageButton but2 = (ImageButton)findViewById(R.id.imageButton_info);
+        ImageButton butHome = (ImageButton)findViewById(R.id.imageButton_home);
+        ImageButton butInfo = (ImageButton)findViewById(R.id.imageButton_info);
 
-        but2.setOnClickListener(new View.OnClickListener() {
+        butInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent =  new Intent(releaseCourseEvaluation.this, MyRelease.class);
                 startActivity(intent);
             }
         });
-        but1.setOnClickListener(new View.OnClickListener() {
+        butHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =  new Intent(releaseCourseEvaluation.this,main_page.class);
+                Intent intent =  new Intent(releaseCourseEvaluation.this, main_page.class);
                 startActivity(intent);
             }
         });
-
+*/
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+
+        super.onActivityResult(requestCode, resultCode, data);/*
         //获取图片路径
         if (requestCode == 1 && resultCode == Activity.RESULT_OK && data != null) {
             Uri selectedImage = data.getData();
@@ -179,19 +187,22 @@ public class releaseCourseEvaluation extends AppCompatActivity {
             showImage(imagePath);
             c.close();
         }
+        */
     }
 
     //加载图片
     private void showImage(String imaePath) {
+        /*
         Bitmap bm = BitmapFactory.decodeFile(imaePath);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bm.compress(Bitmap.CompressFormat.PNG, 100, baos);
         image = baos.toByteArray();
-        imageButton.setImageBitmap(bm);
+        imageButton.setImageBitmap(bm);*/
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        /*
         switch (requestCode) {
             case 1:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -200,6 +211,6 @@ public class releaseCourseEvaluation extends AppCompatActivity {
                 }
                 break;
             default:
-        }
+        }*/
     }
 }

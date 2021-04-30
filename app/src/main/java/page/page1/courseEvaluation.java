@@ -51,7 +51,7 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_course_evaluation);
 
 
-        DatabaseHelper database = new DatabaseHelper(this);
+        DatabaseHelper database = new DatabaseHelper(this, "courseEvaluation.db", null, 1);
         final SQLiteDatabase db = database.getWritableDatabase();
         ListView listView = (ListView)findViewById(R.id.listView);
         mList = new LinkedList<CommentData>();
