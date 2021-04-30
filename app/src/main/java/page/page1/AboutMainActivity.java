@@ -16,5 +16,14 @@ public class AboutMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_about_main);
 
     }
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.imageButton_home:
+                Intent KindIntent1 = new Intent(AboutMainActivity.this, courseEvaluation.class);
+                startActivity(KindIntent1);
+                break;
+
+        }
+    }
 
 }
