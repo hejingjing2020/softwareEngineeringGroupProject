@@ -151,7 +151,7 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
                 startActivity(button1);
                 break;
             case R.id.button_post_comment:
-                Intent button2 = new Intent(courseEvaluation.this, releaseCourseEvaluation.class);
+                Intent button2 = new Intent(this, releaseCourseEvaluation.class);
                 startActivity(button2);
                 break;
             case R.id.button_self_center:
