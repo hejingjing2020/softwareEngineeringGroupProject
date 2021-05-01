@@ -5,13 +5,21 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String dbname="mydb";
-    public DatabaseHelper(Context context) {
-        super(context, dbname, null, 1);
+
+    private Context mContext;
+
+    public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version){
+        super(context, name, factory, version);
+        mContext = context;
     }
 
+
+    //public DatabaseHelper(Context context) {super(context, dbname, null, 1);}
+    //private Context mContext;
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -39,6 +47,9 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 "itemId integer," +
                 "comment varchar(1000)," +
                 "time DATETIME)");
+        Toast.makeText(mContext, "Successfully Create successed", Toast.LENGTH_SHORT).show();
+
+
     }
 
     @Override

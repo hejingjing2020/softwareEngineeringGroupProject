@@ -40,7 +40,7 @@ public class main_page extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
-        DatabaseHelper database = new DatabaseHelper(this);
+        DatabaseHelper database = new DatabaseHelper(this,"new.dp", null, 1);
         final SQLiteDatabase db = database.getWritableDatabase();
 
 

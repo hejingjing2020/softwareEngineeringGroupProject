@@ -45,7 +45,7 @@ import static page.page1.LoginMainActivity.post_userid;
 public class releaseCourseEvaluation extends AppCompatActivity {
     private static final byte REQUEST_SYSTEM_PIC = 10;
     //private static PreparedStatement dbHelper;
-    DatabaseHelper dbHelper = new DatabaseHelper(this);
+    DatabaseHelper dbHelper = new DatabaseHelper(this,"new.dp", null, 1);
     //SQLiteDatabase db = dbHelper.getWritableDatabase();
     private Spinner sp;
     private ImageButton imageButton;
@@ -103,7 +103,7 @@ public class releaseCourseEvaluation extends AppCompatActivity {
         setContentView(R.layout.activity_release_course_evaluation);
        final SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss ");
         //dbHelper=new MyDatabaseHelper(this,"courseEvaluation.db",null,1);
-        dbHelper = new DatabaseHelper(this);
+        dbHelper = new DatabaseHelper(this,"new.dp", null, 1);
         final SQLiteDatabase db = dbHelper.getReadableDatabase();
         String[] ctype = new String[]{"生活用品", "学习用品", "电子产品", "体育用品"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ctype);  //创建一个数组适配器

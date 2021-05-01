@@ -29,7 +29,7 @@ public class MyRelease extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_release);
-        DatabaseHelper database = new DatabaseHelper(this);
+        DatabaseHelper database = new DatabaseHelper(this,"new.dp", null, 1);
         final SQLiteDatabase db = database.getWritableDatabase();
         ListView listView = (ListView)findViewById(R.id.show_fabu);
         Map<String, Object> item;  // 列表项内容用Map存储

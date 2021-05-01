@@ -96,7 +96,7 @@ public class releaseRecruitment_USTF extends AppCompatActivity {
         setContentView(R.layout.activity_release_recruitment__u_s_t_f);
         final SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss ");
         //dbHelper=new MyDatabaseHelper(this,"1600802129.db",null,1);
-        dbHelper = new DatabaseHelper(this);
+        dbHelper = new DatabaseHelper(this,"new.dp", null, 1);
         final SQLiteDatabase db = dbHelper.getReadableDatabase();
         String[] ctype = new String[]{"生活用品", "学习用品", "电子产品", "体育用品"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ctype);  //创建一个数组适配器

@@ -26,7 +26,7 @@ public class RA extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_r);
-        DatabaseHelper dbtest = new DatabaseHelper(this);
+        DatabaseHelper dbtest = new DatabaseHelper(this,"new.dp", null, 1);
         final SQLiteDatabase db = dbtest.getWritableDatabase();
         ListView listView = (ListView)findViewById(R.id.kind_list1);
         Map<String, Object> item = new HashMap<String, Object>();

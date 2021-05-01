@@ -67,7 +67,7 @@ public class RegisterMainActivity extends AppCompatActivity {
 
     //检查学号是否存在
     private void checkUser(String user,String pwd){
-        DatabaseHelper dbhelper = new DatabaseHelper(this);
+        DatabaseHelper dbhelper = new DatabaseHelper(this,"new.dp", null, 1);
         SQLiteDatabase db=dbhelper.getReadableDatabase();
         try{
             String sql="SELECT * FROM users WHERE userId=?";
