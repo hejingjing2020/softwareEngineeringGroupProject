@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class AboutMainActivity extends AppCompatActivity {
     private Button cometo;
-    private MyDatabaseHelper dbHelper;
+    private DatabaseHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

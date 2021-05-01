@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class RegisterMainActivity extends AppCompatActivity {
-    private Button cometo;
     private EditText User;
     private EditText Password1;
     private EditText Password2;
@@ -25,31 +24,10 @@ public class RegisterMainActivity extends AppCompatActivity {
     String user=null;
     String password1=null;
     String password2=null;
-    private MyDatabaseHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_main);
-
-
-        //测试我的数据库
-        //调用构造函数
-        dbHelper = new MyDatabaseHelper(this, "StudentStore.db", null, 1);//新建一个对象
-
-        Button createDatabase = (Button) findViewById(R.id.register);
-
-        //点击事件
-        createDatabase.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view) {
-                //创建或打开现有数据库
-                //若没有，新建名为StudentStore的数据库
-                dbHelper.getWritableDatabase();
-            }
-        });
-
-        cometo=(Button)findViewById(R.id.cometo);
 
         User=(EditText)findViewById(R.id.user);
         Password1=(EditText)findViewById(R.id.password1);
@@ -65,13 +43,13 @@ public class RegisterMainActivity extends AppCompatActivity {
                 password2=Password2.getText().toString();
 
                 if(user==null||user.equals("")){
-                    Toast.makeText(getApplicationContext(), "Please enter user student number！", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "enter student id", Toast.LENGTH_SHORT).show();
                 }
                 if(password1==null||password1.equals("")){
-                    Toast.makeText(getApplicationContext(), "Please enter your password！", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "enter password", Toast.LENGTH_SHORT).show();
                 }
                 if(!password1.equals(password2)){
-                    Toast.makeText(getApplicationContext(), "The two passwords do not match!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "two passwords are different!", Toast.LENGTH_SHORT).show();
                 }
                 checkUser(user,password1);
             }
@@ -89,13 +67,13 @@ public class RegisterMainActivity extends AppCompatActivity {
 
     //检查学号是否存在
     private void checkUser(String user,String pwd){
-        DatabaseHelper dbhelper = new DatabaseHelper(this, "users.db", null, 1);
+        DatabaseHelper dbhelper = new DatabaseHelper(this);
         SQLiteDatabase db=dbhelper.getReadableDatabase();
         try{
             String sql="SELECT * FROM users WHERE userId=?";
             Cursor cursor=db.rawQuery(sql,new String[]{user});
             if(cursor.getCount()>0){
-                Toast.makeText(getApplicationContext(), "Student ID already exists！", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "user id already exist!", Toast.LENGTH_SHORT).show();
             }
             else{
                 ContentValues values = new ContentValues();
@@ -103,7 +81,7 @@ public class RegisterMainActivity extends AppCompatActivity {
                 values.put("userId",user);
                 values.put("passWord",pwd);
                 db.insert("users",null,values);//插入第一条数据
-                Toast.makeText(getApplicationContext(), "Registered successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Registration succeed!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(RegisterMainActivity.this,LoginMainActivity.class);
                 startActivity(intent);
             }

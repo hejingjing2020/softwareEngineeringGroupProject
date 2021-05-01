@@ -7,32 +7,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
-    private Context mContext;
-
-    public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
-        mContext = context;
+    private static final String dbname="mydb";
+    public DatabaseHelper(Context context) {
+        super(context, dbname, null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("create table if not exists Comment("
-                + "s_id integer not null,"
-                + "course_code varchar(10) not null,"
-                + "prof_name varchar(20) not null,"
-                + "comment varchar(1000) not null,"
-                + "primary key(s_id, course_code)"//主键
-                + ")");
-        ContentValues cv = new ContentValues();
-        cv.put("s_id",2);
-        cv.put("course_code","csc4001");
-        cv.put("prof_name","Jane");
-        cv.put("comment","hi");
-        Long l = db.insert("comment", null, cv);
-
         //账号userId，密码passWord，姓名name，专业subject，电话phone，QQ号qq,地址address
-        db.execSQL("create table if not exists User" +
+        db.execSQL("create table if not exists users" +
                 "(userId varchar(20) primary key," +
                 "passWord varchar(20) not null," +
                 "name varchar(20)," +
@@ -40,17 +24,15 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 "phone varchar(15)," +
                 "qq varchar(15)," +
                 "address varchar(50))");
+
+
         //商品编号id，发布者账号userId，标题title，类别kind，内容info，价格price，图片image
         db.execSQL("create table if not exists iteminfo(" +
-                "id integer primary key  AUTOINCREMENT," +
-                "userId varchar(100)," +
-                "title varchar(200)," +
-                "kind varchar(100)," +
-                "info varchar(1000)," +
-                "price varchar(100)," +
-                "image blob," +
-                "time DATETIME," +
-                "contact varchar(50))");
+                "s_id varchar(100) not null," +
+                "course_code varchar(20) not null," +
+                "prof_name varchar(20) not null," +
+                "comment varchar(1000) not null," +
+                "primary key(s_id, course_code))");
         //评论者账号userId，评论商品编号itemId，评论内容comment，评论时间time
         db.execSQL("create table if not exists comments(" +
                 "userId varchar(100)," +

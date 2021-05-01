@@ -26,7 +26,7 @@ public class SDS extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_s_d_s);
-        DatabaseHelper dbtest = new DatabaseHelper(this, "courseEvaluation.db", null, 1);
+        DatabaseHelper dbtest = new DatabaseHelper(this);
         final SQLiteDatabase db = dbtest.getWritableDatabase();
         ListView listView = (ListView)findViewById(R.id.kind_list1);
         Map<String, Object> item = new HashMap<String, Object>();

@@ -35,20 +35,19 @@ public class main_page extends AppCompatActivity implements View.OnClickListener
     private Button button_6;
     private Button course_evaluation_page;
     private Button recruit_page;
+    String TABLENAME = "commentInfo";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
+        DatabaseHelper database = new DatabaseHelper(this);
+        final SQLiteDatabase db = database.getWritableDatabase();
 
-        RadioButton btn4 = (RadioButton)findViewById(R.id.button_main_page);
-        RadioButton btn6 = (RadioButton)findViewById(R.id.button_self_center);
-        Button btn7 = (Button)findViewById(R.id.course_evaluation_page);
-        Button btn8 = (Button)findViewById(R.id.recruit_page);
 
-        btn4.setOnClickListener(this);
-        btn6.setOnClickListener(this);
-        btn7.setOnClickListener(this);
-        btn8.setOnClickListener(this);
+        Button btn1 = (Button)findViewById(R.id.course_evaluation_page);
+        Button btn2 = (Button)findViewById(R.id.recruit_page);
+        btn1.setOnClickListener(this);
+        btn2.setOnClickListener(this);
     }
 
 

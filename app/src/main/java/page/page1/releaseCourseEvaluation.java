@@ -45,7 +45,7 @@ import static page.page1.LoginMainActivity.post_userid;
 public class releaseCourseEvaluation extends AppCompatActivity {
     private static final byte REQUEST_SYSTEM_PIC = 10;
     //private static PreparedStatement dbHelper;
-    DatabaseHelper dbHelper = new DatabaseHelper(this, "courseEvaluation.db", null, 1);
+    DatabaseHelper dbHelper = new DatabaseHelper(this);
     //SQLiteDatabase db = dbHelper.getWritableDatabase();
     private Spinner sp;
     private ImageButton imageButton;
@@ -101,7 +101,7 @@ public class releaseCourseEvaluation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_release_course_evaluation);
-/*        final SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss ");
+       final SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss ");
         //dbHelper=new MyDatabaseHelper(this,"courseEvaluation.db",null,1);
         dbHelper = new DatabaseHelper(this);
         final SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -133,23 +133,22 @@ public class releaseCourseEvaluation extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                EditText courseTitle=(EditText)findViewById(R.id.m1_course_code);
-                EditText prof=(EditText)findViewById(R.id.m1_prof);
-                EditText comment=(EditText)findViewById(R.id.m1_comment);
-                Date curDate = new Date(System.currentTimeMillis());
-                //String time = formatter.format(curDate);
-                ContentValues values=new ContentValues();
-                values.put("s_id",post_userid);
-                values.put("course_code",courseTitle.getText().toString());
-                //values.put("time",time);
-                values.put("prof_name",prof.getText().toString());
-                // values.put("info",nr.getText().toString());
-                values.put("comment", comment.getText().toString());
-                db.insert("Comment",null,values);
-                Intent intent=new Intent(releaseCourseEvaluation.this,releaseCourseEvaluation.class);
-                Toast.makeText(getApplicationContext(), "Comment Submitted", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
-            }
+                    EditText title=(EditText)findViewById(R.id.m1_course_code);
+                    EditText prof=(EditText)findViewById(R.id.m1_prof);
+                    EditText s_id=(EditText)findViewById(R.id.m1_sid);
+                    EditText comment=(EditText)findViewById(R.id.m1_comment);
+                    Date curDate = new Date(System.currentTimeMillis());
+                    String time = formatter.format(curDate);
+                    ContentValues values=new ContentValues();
+                    values.put("s_id",post_userid);
+                    values.put("course_code",title.getText().toString());
+                    values.put("prof_name", prof.getText().toString());
+                    values.put("comment",comment.getText().toString());
+                    db.insert("iteminfo",null,values);
+                    Intent intent=new Intent(releaseCourseEvaluation.this, courseEvaluation.class);
+                    Toast.makeText(getApplicationContext(), "Submitted", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
         });
 
         ImageButton butHome = (ImageButton)findViewById(R.id.imageButton_home);
@@ -169,7 +168,7 @@ public class releaseCourseEvaluation extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-*/
+
     }
 
     @Override
@@ -202,7 +201,7 @@ public class releaseCourseEvaluation extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        /*
+
         switch (requestCode) {
             case 1:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -211,6 +210,6 @@ public class releaseCourseEvaluation extends AppCompatActivity {
                 }
                 break;
             default:
-        }*/
+        }
     }
 }

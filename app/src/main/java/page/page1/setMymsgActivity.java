@@ -53,7 +53,7 @@ public class setMymsgActivity extends AppCompatActivity {
             startActivity(intent);
         }
       //账号userId，密码passWord，姓名name，专业subject，电话phone，QQ号qq,地址address
-        DatabaseHelper dbhelper = new DatabaseHelper(this, "users.db", null, 1);
+        DatabaseHelper dbhelper = new DatabaseHelper(this);
         SQLiteDatabase db=dbhelper.getReadableDatabase();
 
         usersave.setOnClickListener(new View.OnClickListener() {
@@ -97,7 +97,7 @@ public class setMymsgActivity extends AppCompatActivity {
         });
     }
     private void saveValues(ContentValues values){
-        DatabaseHelper dbhelper = new DatabaseHelper(this, "users.db", null, 1);
+        DatabaseHelper dbhelper = new DatabaseHelper(this);
         SQLiteDatabase db=dbhelper.getReadableDatabase();
         db.update("users",values,"userId=?",new String[] {id});
         db.close();

@@ -78,22 +78,6 @@
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/m1_sid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:minWidth="250dp"
-                android:textSize="20dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Student ID"
-                android:textSize="20dp" />
-
-            <EditText
                 android:id="@+id/m1_course_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -101,6 +85,8 @@
                 android:layout_marginLeft="10dp"
                 android:minWidth="250dp"
                 android:textSize="20dp" />
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -134,7 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Comments"
+                android:text="Comment"
                 android:textSize="20dp" />
 
             <EditText

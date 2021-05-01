@@ -25,7 +25,7 @@ import java.util.logging.Handler;
 
 public class courseEvaluation extends AppCompatActivity implements View.OnClickListener{
 
-    String TABLENAME = "Comment";
+    String TABLENAME = "iteminfo";
     Intent intent;
     byte[] imagedata;
     Bitmap imagebm;
@@ -51,7 +51,7 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_course_evaluation);
 
 
-        DatabaseHelper database = new DatabaseHelper(this, "courseEvaluation.db", null, 1);
+        DatabaseHelper database = new DatabaseHelper(this);
         final SQLiteDatabase db = database.getWritableDatabase();
         ListView listView = (ListView)findViewById(R.id.listView);
         mList = new LinkedList<CommentData>();
