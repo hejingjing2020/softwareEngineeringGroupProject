@@ -147,7 +147,7 @@ public class releaseCourseEvaluation extends AppCompatActivity {
                     values.put("comment",comment.getText().toString());
                     db.insert("iteminfo",null,values);
                     // int s_id, String course_code, String prof_name, String comment
-                    (courseEvaluation.mList).add(new CommentData(Integer.valueOf(post_userid), title.getText().toString(), prof.getText().toString(), comment.getText().toString()));
+                    //(courseEvaluation.mList).add(new CommentData(Integer.valueOf(post_userid), title.getText().toString(), prof.getText().toString(), comment.getText().toString()));
                     Intent intent=new Intent(releaseCourseEvaluation.this, courseEvaluation.class);
                     Toast.makeText(getApplicationContext(), "Submitted", Toast.LENGTH_SHORT).show();
 

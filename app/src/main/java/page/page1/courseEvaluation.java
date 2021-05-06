@@ -40,6 +40,7 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mList = new LinkedList<CommentData>();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_evaluation);
         this.lv = (ListView) findViewById(R.id.listView);
@@ -69,6 +70,21 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
 
 
         if (cursor.moveToFirst()){
+            while (cursor.moveToNext()) {
+                CommentData cd = new CommentData();  // 为列表项赋值
+                cd.setS_id(cursor.getInt(0));
+                cd.setCourse_code(cursor.getString(1));
+                cd.setProf_name(cursor.getString(2));
+                cd.setComment(cursor.getString(3));
+                mList.add(cd);
+                /*
+                item.put("s_id",cursor.getInt(0));
+                item.put("course_code",cursor.getString(1));
+                item.put("prof_name",cursor.getString(2));
+                item.put("comment",cursor.getString(3));
+                */
+            }
+            /*
             while (!cursor.isAfterLast()){
 
                 item = new HashMap<String, Object>();  // 为列表项赋值
@@ -79,10 +95,11 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
                 //imagedata = cursor.getBlob(6);
                 //item.put("image",imagebm);
                 cursor.moveToNext();
+
                 data.add(item); // 加入到列表中
 
 
-            }
+            }*/
         }
 
 
