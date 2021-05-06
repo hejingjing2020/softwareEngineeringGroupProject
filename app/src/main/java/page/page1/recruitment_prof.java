@@ -56,7 +56,12 @@ public class recruitment_prof extends AppCompatActivity implements View.OnClickL
         ListView listView = (ListView)findViewById(R.id.listView);
         mList = new LinkedList<CommentData>();
 
-        mAdapter = new myAdapter(mList, recruitment_prof.this);
+        mAdapter = new myAdapter<CommentData>(mList, recruitment_prof.this, R.layout.listitem) {
+            @Override
+            protected void convertView(ViewHolder holder, CommentData commentData) {
+
+            }
+        };
         //这里在每次更新数据时刷新listView
         //listView.setAdapter(mAdapter);
 

@@ -56,7 +56,7 @@ public class courseEvaluation_prof extends AppCompatActivity implements View.OnC
         ListView listView = (ListView)findViewById(R.id.listView);
         mList = new LinkedList<CommentData>();
 
-        mAdapter = new myAdapter(mList, courseEvaluation_prof.this);
+        //mAdapter = new myAdapter(mList, courseEvaluation_prof.this);
         //这里在每次更新数据时刷新listView
         //listView.setAdapter(mAdapter);
 

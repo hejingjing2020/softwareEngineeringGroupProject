@@ -30,35 +30,37 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
     byte[] imagedata;
     Bitmap imagebm;
     private EditText et_name;
-    private LinkedList<CommentData> mList;
+
     private myAdapter mAdapter;
     private ListView mListView;
     private Handler mHandler;
-
-    /*
-    @Override
-    protected void onResume() {
-
-        super.onResume();
-
-        onCreate(null);
-
-    }*/
+    private android.widget.ListView lv;
+    public static LinkedList<CommentData> mList = new LinkedList<CommentData>();
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_evaluation);
+        this.lv = (ListView) findViewById(R.id.listView);
 
 
         DatabaseHelper database = new DatabaseHelper(this);
         final SQLiteDatabase db = database.getWritableDatabase();
         ListView listView = (ListView)findViewById(R.id.listView);
-        mList = new LinkedList<CommentData>();
 
-        mAdapter = new myAdapter(mList, courseEvaluation.this);
+        mAdapter = new myAdapter(mList, courseEvaluation.this, R.layout.listitem) {
+            @Override
+            public void convertView(ViewHolder holder, CommentData commentData) {
+                holder.set(R.id.title, commentData.getCourse_code())
+                        .set(R.id.kind, commentData.getProf())
+                        .set(R.id.info, commentData.getComment());
+            }
+        };
         //这里在每次更新数据时刷新listView
-        //listView.setAdapter(mAdapter);
+        lv.setAdapter(mAdapter);//listView里应该是mList的内容
+        mAdapter.notifyDataSetChanged();
+        //先setAdapter再notifyDataChanged
 
 
         Map<String, Object> item;  // 列表项内容用Map存储
@@ -68,6 +70,7 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
 
         if (cursor.moveToFirst()){
             while (!cursor.isAfterLast()){
+
                 item = new HashMap<String, Object>();  // 为列表项赋值
                 item.put("s_id",cursor.getInt(0));
                 item.put("course_code",cursor.getString(1));
@@ -77,11 +80,15 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
                 //item.put("image",imagebm);
                 cursor.moveToNext();
                 data.add(item); // 加入到列表中
+
+
             }
         }
+
+
         // 使用SimpleAdapter布局 listview
         // listitem.xml
-        //myAdapter mAdapter = new myAdapter();
+        //为什么不能用simpleAdapter？因为它的信息是hard-coded在listitem.xml里的
 
         ImageView kind1 = (ImageView) findViewById(R.id.kind1);
         kind1.setOnClickListener(this);
@@ -100,7 +107,7 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 intent = new Intent(courseEvaluation.this, item_info.class);
-                intent.putExtra("id", data.get(position).get("id").toString()); // 获取该列表项的key为id的键值，即商品的id，将其储存在Bundle传递给打开的页面
+                intent.putExtra("Sid", mList.get(position).getSid()); // 获取该列表项的key为id的键值，即商品的id，将其储存在Bundle传递给打开的页面
                 startActivity(intent);
             }
         });

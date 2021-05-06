@@ -16,6 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
 
         //账号userId，密码passWord，姓名name，专业subject，电话phone，QQ号qq,地址address
+
         db.execSQL("create table if not exists users" +
                 "(userId varchar(20) primary key," +
                 "passWord varchar(20) not null," +

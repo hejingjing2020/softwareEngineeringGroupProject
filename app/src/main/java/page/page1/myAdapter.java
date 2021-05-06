@@ -12,20 +12,32 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 
-public class myAdapter extends BaseAdapter {
+public abstract class myAdapter<T> extends BaseAdapter {
 
     private Context mContext;
     private LinkedList<CommentData> mData;
+    protected int mLayoutId;
 
-    public myAdapter(LinkedList<CommentData> list, Context context) {
+    public myAdapter(LinkedList<CommentData> list, Context context, int layoutId) {
         mData = list;
         mContext = context;
+        mLayoutId=layoutId;
     }
 
     public void refresh(LinkedList<CommentData> list) {
         mData = list;
         notifyDataSetChanged();
     }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder holder = ViewHolder.getHolder(mContext, mLayoutId, convertView, parent);
+        convertView(holder, mData.get(position));
+        return holder.getConvertView();
+    }
+
+    protected abstract void convertView(ViewHolder holder, CommentData commentData);
+
 
     @Override
     public int getCount() {
@@ -42,9 +54,4 @@ public class myAdapter extends BaseAdapter {
         return 0;
     }
 
-    @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-
-        return null;
-    }
 }

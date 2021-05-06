@@ -7,8 +7,6 @@ public class CommentData {
         private String prof_name;
         private String comment;
 
-        public CommentData() {}
-
         public CommentData(int s_id, String course_code, String prof_name, String comment) {
             this.s_id = s_id;
             this.course_code = course_code;
@@ -23,6 +21,12 @@ public class CommentData {
         public String getCourse_code() {
             return course_code;
         }
+        public String getProf() {
+        return prof_name;
+    }
+        public String getComment() {
+        return comment;
+    }
 
         public void setProf_name() {
             this.prof_name = prof_name;

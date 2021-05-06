@@ -34,6 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -145,8 +146,11 @@ public class releaseCourseEvaluation extends AppCompatActivity {
                     values.put("prof_name", prof.getText().toString());
                     values.put("comment",comment.getText().toString());
                     db.insert("iteminfo",null,values);
+                    // int s_id, String course_code, String prof_name, String comment
+                    (courseEvaluation.mList).add(new CommentData(Integer.valueOf(post_userid), title.getText().toString(), prof.getText().toString(), comment.getText().toString()));
                     Intent intent=new Intent(releaseCourseEvaluation.this, courseEvaluation.class);
                     Toast.makeText(getApplicationContext(), "Submitted", Toast.LENGTH_SHORT).show();
+
                     startActivity(intent);
                 }
         });

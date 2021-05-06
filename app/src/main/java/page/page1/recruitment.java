@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.SimpleAdapter;
 
+import java.net.CookieHandler;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -56,7 +57,12 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
         ListView listView = (ListView)findViewById(R.id.listView);
         mList = new LinkedList<CommentData>();
 
-        mAdapter = new myAdapter(mList, recruitment.this);
+        mAdapter = new myAdapter<CommentData>(mList, recruitment.this, R.layout.listitem) {
+            @Override
+            protected void convertView(ViewHolder holder, CommentData commentData) {
+
+            }
+        };
         //这里在每次更新数据时刷新listView
         //listView.setAdapter(mAdapter);
 
