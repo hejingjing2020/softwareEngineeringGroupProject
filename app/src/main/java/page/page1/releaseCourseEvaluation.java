@@ -24,6 +24,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -50,6 +52,7 @@ public class releaseCourseEvaluation extends AppCompatActivity {
     //SQLiteDatabase db = dbHelper.getWritableDatabase();
     private Spinner sp;
     private ImageButton imageButton;
+    private RadioButton radioGroupSchool;
     private byte[] image;
 
     public releaseCourseEvaluation() throws SQLException {
@@ -215,6 +218,32 @@ public class releaseCourseEvaluation extends AppCompatActivity {
                 }
                 break;
             default:
+        }
+    }
+    class MyOnClickListener implements View.OnClickListener {
+        //按钮点击
+        @Override
+        public void onClick(View view) {
+            if (view.getId() == R.id.login) {//被点击的是确认按钮
+                //获取选中项
+                RadioGroup radioGroup = findViewById(R.id.radioGroupSchool);
+                String role = "";
+                if (radioGroup.getCheckedRadioButtonId() == R.id.radiohss) {
+                    role = "HSS";
+                }
+                if (radioGroup.getCheckedRadioButtonId() == R.id.radiosse) {
+                    role = "SSE";
+                }
+                if (radioGroup.getCheckedRadioButtonId() == R.id.radiosme) {
+                    role = "SME";
+                }
+                if (radioGroup.getCheckedRadioButtonId() == R.id.radiosds) {
+                    role = "SDS";
+                }
+                if (radioGroup.getCheckedRadioButtonId() == R.id.radiolhs) {
+                    role = "LHS";
+                }
+            }
         }
     }
 }

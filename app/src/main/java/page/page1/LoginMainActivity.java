@@ -22,9 +22,7 @@ public class LoginMainActivity extends Activity {
     private Button button_login;
     private TextView first;
     private TextView toRegister;
-    private RadioButton button1;
-    private RadioButton button2;
-    private RadioButton button3;
+    private RadioButton radioGroupRole;
     protected Intent intent;
     protected static String post_userid;
     String user=null;
