@@ -49,7 +49,6 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
 
         DatabaseHelper database = new DatabaseHelper(this);
         final SQLiteDatabase db = database.getWritableDatabase();
-        ListView listView = (ListView)findViewById(R.id.listView);
 
         mAdapter = new myAdapter(mList, courseEvaluation.this, R.layout.listitem) {
             @Override
@@ -99,7 +98,7 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
 
 
         // 为列表项设置监听器
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 intent = new Intent(courseEvaluation.this, item_info.class);
