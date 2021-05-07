@@ -15,6 +15,7 @@ import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -22,33 +23,47 @@ public class LHS extends AppCompatActivity {
     String TABLENAME = "iteminfo";
     byte[] imagedata;
     Bitmap imagebm;
+    private android.widget.ListView lv;
+    private myAdapter mAdapter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
+        LinkedList<CommentData> mList = new LinkedList<CommentData>();
         setContentView(R.layout.activity_l_h_s);
+
+        this.lv = (ListView) findViewById(R.id.kind_list1);//这个一定要放在setContentView后面，不然没法确定是哪个layout
         DatabaseHelper dbtest = new DatabaseHelper(this);
         final SQLiteDatabase db = dbtest.getWritableDatabase();
-        ListView listView = (ListView)findViewById(R.id.kind_list1);
-        Map<String, Object> item = new HashMap<String, Object>();
         List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
-        Cursor cursor = db.query(TABLENAME,null,"school=?",new String[]{"Course Evaluation"},null,null,null,null); // 数据库查询
+        Cursor cursor = db.query(TABLENAME,null,"school=?",new String[]{"LHS"},null,null,null,null); // 数据库查询
         if (cursor.moveToFirst()){
-            while (!cursor.isAfterLast()){
-                item = new HashMap<String, Object>();  // 为列表项赋值
-                item.put("id",cursor.getInt(0));
-                item.put("userid",cursor.getString(1));
-                item.put("title",cursor.getString(2));
-                item.put("kind",cursor.getString(3));
-                item.put("info",cursor.getString(4));
-                item.put("price",cursor.getString(5));
-                imagedata = cursor.getBlob(6);
-                imagebm = BitmapFactory.decodeByteArray(imagedata, 0, imagedata.length);
-                //kind1.setImageBitmap(imagebm);
-                item.put("image",imagebm);
+            while (!cursor.isAfterLast()) {
+                CommentData cd = new CommentData();  // 为列表项赋值
+                cd.setS_id(cursor.getInt(0));
+                cd.setCourse_code(cursor.getString(1));
+                cd.setProf_name(cursor.getString(2));
+                cd.setComment(cursor.getString(3));
+                cd.setCid();
+                mList.add(cd);
                 cursor.moveToNext();
-                data.add(item); // 加入到列表中
             }
         }
+        mAdapter = new myAdapter<CommentData>(mList, LHS.this, R.layout.listitem) {
+            @Override
+            public void convertView(ViewHolder holder, CommentData Data) {
+                holder.set(R.id.title, Data.getCourse_code())
+                        .set(R.id.kind, Data.getProf())
+                        .set(R.id.info, Data.getComment());
+            }
+        };
+        //这里在每次更新数据时刷新listView
+        lv.setAdapter(mAdapter);//listView里应该是mList的内容
+        mAdapter.notifyDataSetChanged();
+        //先setAdapter再notifyDataChanged
         SimpleAdapter simpleAdapter = new SimpleAdapter(this, data, R.layout.listitem, new String[] { "image", "title", "kind", "info", "price" },
                 new int[] { R.id.item_image, R.id.title, R.id.kind, R.id.info, R.id.price });
         simpleAdapter.setViewBinder(new SimpleAdapter.ViewBinder() {
@@ -63,7 +78,6 @@ public class LHS extends AppCompatActivity {
                 }
             }
         });
-        listView.setAdapter(simpleAdapter);
     }
     public void onClick(View v){
         switch (v.getId()){

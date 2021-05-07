@@ -105,6 +105,7 @@ public class releaseCourseEvaluation extends AppCompatActivity {
 
         Button submit=(Button)findViewById(R.id.release_comment);
         submit.setOnClickListener(new View.OnClickListener() {
+            RadioGroup radioGroup = findViewById(R.id.radioGroupSchool);
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
@@ -192,12 +193,14 @@ public class releaseCourseEvaluation extends AppCompatActivity {
             default:
         }
     }
+
+
     class MyOnClickListener implements View.OnClickListener {
 
         //按钮点击
         @Override
         public void onClick(View view) {
-            if (view.getId() == R.id.login) {//被点击的是确认按钮
+            if (view.getId() == R.id.radioGroupSchool) {//被点击的是确认按钮
                 //获取选中项
                 RadioGroup radioGroup = findViewById(R.id.radioGroupSchool);
                 if (radioGroup.getCheckedRadioButtonId() == R.id.radiohss) {

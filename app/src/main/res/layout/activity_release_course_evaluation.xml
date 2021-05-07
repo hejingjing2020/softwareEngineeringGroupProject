@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:background="@color/blue">
+        android:background="#660066">
 
         <TextView
             android:id="@+id/textView"
@@ -22,7 +22,7 @@
             android:paddingTop="10dp"
             android:text="Course Evaluation"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:textSize="30sp" />
 
         <ImageButton

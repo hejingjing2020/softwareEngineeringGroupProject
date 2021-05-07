@@ -41,7 +41,7 @@ public class HSS extends AppCompatActivity {
         List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
         Cursor cursor = db.query(TABLENAME,null,"school=?",new String[]{"HSS"},null,null,null,null); // 数据库查询
         if (cursor.moveToFirst()){
-            while (cursor.moveToNext()) {
+            while (!cursor.isAfterLast()) {
                 CommentData cd = new CommentData();  // 为列表项赋值
                 cd.setS_id(cursor.getInt(0));
                 cd.setCourse_code(cursor.getString(1));
@@ -49,6 +49,7 @@ public class HSS extends AppCompatActivity {
                 cd.setComment(cursor.getString(3));
                 cd.setCid();
                 mList.add(cd);
+                cursor.moveToNext();
             }
         }
         mAdapter = new myAdapter<CommentData>(mList, HSS.this, R.layout.listitem) {
