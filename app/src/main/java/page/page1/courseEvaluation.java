@@ -5,17 +5,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Message;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,12 +46,12 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
         DatabaseHelper database = new DatabaseHelper(this);
         final SQLiteDatabase db = database.getWritableDatabase();
 
-        mAdapter = new myAdapter(mList, courseEvaluation.this, R.layout.listitem) {
+        mAdapter = new myAdapter<CommentData>(mList, courseEvaluation.this, R.layout.listitem) {
             @Override
-            public void convertView(ViewHolder holder, CommentData commentData) {
-                holder.set(R.id.title, commentData.getCourse_code())
-                        .set(R.id.kind, commentData.getProf())
-                        .set(R.id.info, commentData.getComment());
+            public void convertView(ViewHolder holder, CommentData Data) {
+                holder.set(R.id.title, Data.getCourse_code())
+                        .set(R.id.kind, Data.getProf())
+                        .set(R.id.info, Data.getComment());
             }
         };
         //这里在每次更新数据时刷新listView

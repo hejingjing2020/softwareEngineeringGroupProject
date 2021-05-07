@@ -56,7 +56,7 @@ public class releaseRecruitment_RA extends AppCompatActivity {
 
     public static List<HashMap<String,Object>> getinfo() throws SQLException {
 
-        String TABLENAME = "Comment";
+        String TABLENAME = "recruitment";
 //       先定义一个List<HashMap<String,Object>>类型的数据并实例化
         List<HashMap<String,Object>> list=new ArrayList<HashMap<String, Object>>();
 
@@ -82,13 +82,7 @@ public class releaseRecruitment_RA extends AppCompatActivity {
     // activity_main_m1.xml
     SimpleAdapter mAdapter = new SimpleAdapter(getApplicationContext(), listItem, R.layout.activity_release_recruitment__r,
             new String[]{"s_id", "course_code", "prof_name", "comment"}, new int[]{R.id.m1_sid, R.id.m1_course_code, R.id.m1_prof, R.id.m1_comment});
-    /*
-        @Override
-        protected void onResume() {
-            super.onResume();
-            onCreate(null);
-        }
-    */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,21 +120,24 @@ public class releaseRecruitment_RA extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                EditText courseTitle=(EditText)findViewById(R.id.m1_course_code);
+                EditText title=(EditText)findViewById(R.id.m1_course_code);
                 EditText prof=(EditText)findViewById(R.id.m1_prof);
+                EditText s_id=(EditText)findViewById(R.id.m1_sid);
                 EditText comment=(EditText)findViewById(R.id.m1_comment);
                 Date curDate = new Date(System.currentTimeMillis());
-                //String time = formatter.format(curDate);
+                String time = formatter.format(curDate);
                 ContentValues values=new ContentValues();
                 values.put("s_id",post_userid);
-                values.put("course_code",courseTitle.getText().toString());
-                //values.put("time",time);
-                values.put("prof_name",prof.getText().toString());
-                // values.put("info",nr.getText().toString());
+                values.put("course_code", title.getText().toString());
+                values.put("prof_name", prof.getText().toString());
                 values.put("comment", comment.getText().toString());
-                db.insert("Comment",null,values);
-                Intent intent=new Intent(releaseRecruitment_RA.this,releaseRecruitment_USTF.class);
-                Toast.makeText(getApplicationContext(), "Comment Submitted", Toast.LENGTH_SHORT).show();
+                values.put("cid", (String.valueOf(post_userid)+title.getText().toString()));
+                db.insert("iteminfo",null,values);
+                // int s_id, String course_code, String prof_name, String comment
+                //(courseEvaluation.mList).add(new CommentData(Integer.valueOf(post_userid), title.getText().toString(), prof.getText().toString(), comment.getText().toString()));
+                Intent intent=new Intent(releaseRecruitment_RA.this, courseEvaluation.class);
+                Toast.makeText(getApplicationContext(), "Submitted", Toast.LENGTH_SHORT).show();
+
                 startActivity(intent);
             }
         });

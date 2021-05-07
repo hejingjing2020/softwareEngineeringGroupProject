@@ -1,30 +1,26 @@
 package page.page1;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 
 public abstract class myAdapter<T> extends BaseAdapter {
 
     private Context mContext;
-    private LinkedList<CommentData> mData;
+    private LinkedList<T> mData;
     protected int mLayoutId;
 
-    public myAdapter(LinkedList<CommentData> list, Context context, int layoutId) {
+    public myAdapter(LinkedList<T> list, Context context, int layoutId) {
         mData = list;
         mContext = context;
         mLayoutId=layoutId;
     }
 
-    public void refresh(LinkedList<CommentData> list) {
+    public void refresh(LinkedList<T> list) {
         mData = list;
         notifyDataSetChanged();
     }
@@ -36,7 +32,7 @@ public abstract class myAdapter<T> extends BaseAdapter {
         return holder.getConvertView();
     }
 
-    protected abstract void convertView(ViewHolder holder, CommentData commentData);
+    protected abstract void convertView(ViewHolder holder, T Data);
 
 
     @Override

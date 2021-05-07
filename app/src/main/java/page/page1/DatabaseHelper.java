@@ -26,6 +26,16 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 "qq varchar(15)," +
                 "address varchar(50))");
 
+        db.execSQL("create table if not exists recruitment" +
+                "(rid varchar(20) primary key," +
+                "uid varchar(20)," +
+                "title varchar(50) not null," +
+                "email varchar(15)," +
+                "salary varchar(15)," +
+                "type varchar(5)," +
+                "decription varchar(20))");
+
+
 
         //商品编号id，发布者账号userId，标题title，类别kind，内容info，价格price，图片image
         db.execSQL("create table if not exists iteminfo(" +

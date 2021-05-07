@@ -5,18 +5,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.SimpleAdapter;
 
-import java.net.CookieHandler;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -26,12 +22,12 @@ import java.util.logging.Handler;
 
 public class recruitment extends AppCompatActivity implements View.OnClickListener{
 
-    String TABLENAME = "Comment";
+    String TABLENAME = "recruitment";
     Intent intent;
     byte[] imagedata;
     Bitmap imagebm;
     private EditText et_name;
-    private LinkedList<CommentData> mList;
+    private LinkedList<RecruitmentData> mList;
     private myAdapter mAdapter;
     private ListView mListView;
     private Handler mHandler;
@@ -55,11 +51,11 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
         DatabaseHelper database = new DatabaseHelper(this);
         final SQLiteDatabase db = database.getWritableDatabase();
         ListView listView = (ListView)findViewById(R.id.listView);
-        mList = new LinkedList<CommentData>();
+        mList = new LinkedList<RecruitmentData>();
 
-        mAdapter = new myAdapter<CommentData>(mList, recruitment.this, R.layout.listitem) {
+        mAdapter = new myAdapter<RecruitmentData>(mList, recruitment.this, R.layout.list_recruitment_item) {
             @Override
-            protected void convertView(ViewHolder holder, CommentData commentData) {
+            protected void convertView(ViewHolder holder, RecruitmentData Data) {
 
             }
         };
@@ -73,16 +69,16 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
 
 
         if (cursor.moveToFirst()){
-            while (!cursor.isAfterLast()){
-                item = new HashMap<String, Object>();  // 为列表项赋值
-                item.put("s_id",cursor.getInt(0));
-                item.put("course_code",cursor.getString(1));
-                item.put("prof_name",cursor.getString(2));
-                item.put("comment",cursor.getString(3));
-                //imagedata = cursor.getBlob(6);
-                //item.put("image",imagebm);
-                cursor.moveToNext();
-                data.add(item); // 加入到列表中
+            while (cursor.moveToNext()) {
+                RecruitmentData cd = new RecruitmentData();  // 为列表项赋值
+                cd.setRid(cursor.getString(0));
+                cd.setUid(cursor.getString(1));
+                cd.setTitle(cursor.getString(2));
+                cd.setEmail(cursor.getString(3));
+                cd.setSalary(cursor.getString(4));
+                cd.setType(cursor.getString(5));
+                cd.setDescription(cursor.getString(6));
+                mList.add(cd);
             }
         }
         // 使用SimpleAdapter布局 listview
@@ -106,7 +102,7 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 intent = new Intent(recruitment.this, item_info.class);
-                intent.putExtra("id", data.get(position).get("id").toString()); // 获取该列表项的key为id的键值，即商品的id，将其储存在Bundle传递给打开的页面
+                intent.putExtra("rid", data.get(position).get("rid").toString()); // 获取该列表项的key为id的键值，即商品的id，将其储存在Bundle传递给打开的页面
                 startActivity(intent);
             }
         });

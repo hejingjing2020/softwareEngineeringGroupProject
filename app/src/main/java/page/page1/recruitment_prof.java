@@ -5,16 +5,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,7 +55,7 @@ public class recruitment_prof extends AppCompatActivity implements View.OnClickL
 
         mAdapter = new myAdapter<CommentData>(mList, recruitment_prof.this, R.layout.listitem) {
             @Override
-            protected void convertView(ViewHolder holder, CommentData commentData) {
+            protected void convertView(ViewHolder holder, CommentData Data) {
 
             }
         };
