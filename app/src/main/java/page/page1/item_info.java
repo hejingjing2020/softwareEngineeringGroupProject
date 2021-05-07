@@ -46,17 +46,17 @@ public class item_info extends AppCompatActivity {
         TextView title = (TextView)findViewById(R.id.item_title) ;
         TextView info = (TextView)findViewById(R.id.item_info);
         TextView contact = (TextView)findViewById(R.id.contact);
-        Cursor cursor = db.query(TABLENAME,null,"cid=?",new String[]{intent.getStringExtra("cid")},null,null,null,null); // 根据接收到的id进行数据库查询
+        Cursor cursor = db.query("iteminfo",null,"cid=?",new String[]{intent.getStringExtra("cid")},null,null,null,null); // 根据接收到的id进行数据库查询
         Log.i("The comment s_id is",intent.getStringExtra("cid"));
         if (cursor.moveToFirst()){
             while (!cursor.isAfterLast()){
-                imagedata = cursor.getBlob(6);
-                imagebm = BitmapFactory.decodeByteArray(imagedata, 0, imagedata.length);
-                image.setImageBitmap(imagebm);
-                title.setText(cursor.getString(2));
-                price.setText(cursor.getString(5));
-                info.setText(cursor.getString(4));
-                contact.setText(cursor.getString(8));
+                //imagedata = cursor.getBlob(6);
+                //imagebm = BitmapFactory.decodeByteArray(imagedata, 0, imagedata.length);
+                //image.setImageBitmap(imagebm);
+                title.setText(cursor.getString(1));
+                price.setText(cursor.getString(2));
+                info.setText(cursor.getString(3));
+                //contact.setText(cursor.getString(8));
                 cursor.moveToNext();
             }
         }
@@ -88,14 +88,14 @@ public class item_info extends AppCompatActivity {
                 String time = formatter.format(curDate);
                 ContentValues values=new ContentValues();
                 values.put("userId",post_userid);
-                values.put("itemId",intent.getStringExtra("cid"));
+                values.put("cid",intent.getStringExtra("cid"));
                 values.put("comment",submit_comment);
                 values.put("time",time);
                 db.insert("comments",null,values);
-                Log.i("1","评论成功");
-                Toast.makeText(getApplicationContext(), "评论成功", Toast.LENGTH_SHORT).show();
+                Log.i("1","Comment submitted");
+                Toast.makeText(getApplicationContext(), "Submitted", Toast.LENGTH_SHORT).show();
                 Intent intent_=new Intent(item_info.this,item_info.class);
-                intent_.putExtra("id",intent.getStringExtra("id"));
+                intent_.putExtra("cid",intent.getStringExtra("cid"));
                 startActivity(intent_);
             }
         });

@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
-    private static final String dbname="mydb";
+    private static final String dbname="mydb.dp";
     public DatabaseHelper(Context context) {
         super(context, dbname, null, 1);
     }
@@ -38,7 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         //评论者账号userId，评论商品编号itemId，评论内容comment，评论时间time
         db.execSQL("create table if not exists comments(" +
                 "userId varchar(100)," +
-                "itemId integer," +
+                "cid varvhar(120)," +
                 "comment varchar(1000)," +
                 "time DATETIME)");
     }
