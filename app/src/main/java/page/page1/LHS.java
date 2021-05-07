@@ -31,7 +31,7 @@ public class LHS extends AppCompatActivity {
         ListView listView = (ListView)findViewById(R.id.kind_list1);
         Map<String, Object> item = new HashMap<String, Object>();
         List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
-        Cursor cursor = db.query(TABLENAME,null,"kind=?",new String[]{"Course Evaluation"},null,null,null,null); // 数据库查询
+        Cursor cursor = db.query(TABLENAME,null,"school=?",new String[]{"Course Evaluation"},null,null,null,null); // 数据库查询
         if (cursor.moveToFirst()){
             while (!cursor.isAfterLast()){
                 item = new HashMap<String, Object>();  // 为列表项赋值

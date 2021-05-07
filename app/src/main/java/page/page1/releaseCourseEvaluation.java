@@ -24,6 +24,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -50,6 +52,7 @@ public class releaseCourseEvaluation extends AppCompatActivity {
     //SQLiteDatabase db = dbHelper.getWritableDatabase();
     private Spinner sp;
     private ImageButton imageButton;
+    private RadioButton radioGroupSchool;
     private byte[] image;
 
     public releaseCourseEvaluation() throws SQLException {
@@ -104,7 +107,7 @@ public class releaseCourseEvaluation extends AppCompatActivity {
         setContentView(R.layout.activity_release_course_evaluation);
        final SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss ");
         //dbHelper=new MyDatabaseHelper(this,"courseEvaluation.db",null,1);
-        //dbHelper = new DatabaseHelper(this);
+        dbHelper = new DatabaseHelper(this);
         final SQLiteDatabase db = dbHelper.getReadableDatabase();
         String[] ctype = new String[]{"生活用品", "学习用品", "电子产品", "体育用品"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ctype);  //创建一个数组适配器
@@ -215,6 +218,32 @@ public class releaseCourseEvaluation extends AppCompatActivity {
                 }
                 break;
             default:
+        }
+    }
+    class MyOnClickListener implements View.OnClickListener {
+        //按钮点击
+        @Override
+        public void onClick(View view) {
+            if (view.getId() == R.id.login) {//被点击的是确认按钮
+                //获取选中项
+                RadioGroup radioGroup = findViewById(R.id.radioGroupSchool);
+                String role = "";
+                if (radioGroup.getCheckedRadioButtonId() == R.id.radiohss) {
+                    role = "HSS";
+                }
+                if (radioGroup.getCheckedRadioButtonId() == R.id.radiosse) {
+                    role = "SSE";
+                }
+                if (radioGroup.getCheckedRadioButtonId() == R.id.radiosme) {
+                    role = "SME";
+                }
+                if (radioGroup.getCheckedRadioButtonId() == R.id.radiosds) {
+                    role = "SDS";
+                }
+                if (radioGroup.getCheckedRadioButtonId() == R.id.radiolhs) {
+                    role = "LHS";
+                }
+            }
         }
     }
 }
