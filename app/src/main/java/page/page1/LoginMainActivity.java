@@ -42,6 +42,12 @@ public class LoginMainActivity extends Activity {
         button_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //为了测试，直接跳转
+                Intent intent = new Intent(LoginMainActivity.this,main_page.class);
+
+                startActivity(intent);
+
+
                 user=User.getText().toString();
                 password=Password.getText().toString();
 
@@ -74,6 +80,8 @@ public class LoginMainActivity extends Activity {
     private void checkUser(String user,String password){
         DatabaseHelper dbhelper = new DatabaseHelper(this);
         SQLiteDatabase db=dbhelper.getReadableDatabase();
+
+
         try{
             String sql="SELECT * FROM users WHERE userId=? and passWord=?";
             Cursor cursor=db.rawQuery(sql,new String[]{user,password});

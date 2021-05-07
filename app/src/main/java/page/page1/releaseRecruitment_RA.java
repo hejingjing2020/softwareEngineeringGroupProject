@@ -54,35 +54,6 @@ public class releaseRecruitment_RA extends AppCompatActivity {
     }
 
 
-    public static List<HashMap<String,Object>> getinfo() throws SQLException {
-
-        String TABLENAME = "recruitment";
-//       先定义一个List<HashMap<String,Object>>类型的数据并实例化
-        List<HashMap<String,Object>> list=new ArrayList<HashMap<String, Object>>();
-
-//        定义sql语句
-        Cursor cursor = db.query(TABLENAME,null,null,null,null,null,null,null);
-        Map<String, Object> item = new HashMap<String, Object>();
-        List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
-        if (cursor.moveToFirst()){
-            while (!cursor.isAfterLast()){
-                item = new HashMap<String, Object>();  // 为列表项赋值
-                item.put("s_id",cursor.getInt(0));
-                item.put("course_code",cursor.getString(1));
-                item.put("prof_name",cursor.getString(2));
-                item.put("comment",cursor.getString(3));
-                cursor.moveToNext();
-                data.add(item); // 加入到列表中
-            }
-        }
-        return list;
-    }
-
-    List<HashMap<String,Object>> listItem = getinfo();
-    // activity_main_m1.xml
-    SimpleAdapter mAdapter = new SimpleAdapter(getApplicationContext(), listItem, R.layout.activity_release_recruitment__r,
-            new String[]{"s_id", "course_code", "prof_name", "comment"}, new int[]{R.id.m1_sid, R.id.m1_course_code, R.id.m1_prof, R.id.m1_comment});
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,24 +86,36 @@ public class releaseRecruitment_RA extends AppCompatActivity {
             }
         });
 
-        Button fabu=(Button)findViewById(R.id.release_comment);
-        fabu.setOnClickListener(new View.OnClickListener() {
+        Button submit=(Button)findViewById(R.id.release_comment);
+        submit.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
+            /*
+              "(rid varchar(20) primary key," +
+                "uid varchar(20)," +
+                "title varchar(50) not null," +
+                "email varchar(15)," +
+                "salary varchar(15)," +
+                "type varchar(5)," +
+                "decription varchar(20))");
+
+             */
             public void onClick(View v) {
-                EditText title=(EditText)findViewById(R.id.m1_course_code);
-                EditText prof=(EditText)findViewById(R.id.m1_prof);
-                EditText s_id=(EditText)findViewById(R.id.m1_sid);
-                EditText comment=(EditText)findViewById(R.id.m1_comment);
+                EditText title=(EditText)findViewById(R.id.m1_title);
+                EditText email=(EditText)findViewById(R.id.m1_email);
+                EditText description=(EditText)findViewById(R.id.m1_description);
+                EditText salary=(EditText)findViewById(R.id.m1_salary);
                 Date curDate = new Date(System.currentTimeMillis());
                 String time = formatter.format(curDate);
                 ContentValues values=new ContentValues();
-                values.put("s_id",post_userid);
-                values.put("course_code", title.getText().toString());
-                values.put("prof_name", prof.getText().toString());
-                values.put("comment", comment.getText().toString());
-                values.put("cid", (String.valueOf(post_userid)+title.getText().toString()));
-                db.insert("iteminfo",null,values);
+                values.put("rid", String.valueOf(post_userid)+title.getText());
+                values.put("uid",post_userid);
+                values.put("title", title.getText().toString());
+                values.put("email", email.getText().toString());
+                values.put("salary", salary.getText().toString());
+                values.put("type", "RA");
+                values.put("description", description.getText().toString());
+                db.insert("recruitment",null,values);
                 // int s_id, String course_code, String prof_name, String comment
                 //(courseEvaluation.mList).add(new CommentData(Integer.valueOf(post_userid), title.getText().toString(), prof.getText().toString(), comment.getText().toString()));
                 Intent intent=new Intent(releaseRecruitment_RA.this, courseEvaluation.class);
@@ -200,3 +183,4 @@ public class releaseRecruitment_RA extends AppCompatActivity {
         }
     }
 }
+

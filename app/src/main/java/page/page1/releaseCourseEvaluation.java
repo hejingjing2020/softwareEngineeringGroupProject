@@ -46,6 +46,7 @@ import static page.page1.LoginMainActivity.post_userid;
 
 
 public class releaseCourseEvaluation extends AppCompatActivity {
+    String school = "HSS";
     private static final byte REQUEST_SYSTEM_PIC = 10;
     //private static PreparedStatement dbHelper;
     DatabaseHelper dbHelper = new DatabaseHelper(this);
@@ -75,7 +76,7 @@ public class releaseCourseEvaluation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_release_course_evaluation);
-       final SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss ");
+        final SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss ");
         //dbHelper=new MyDatabaseHelper(this,"courseEvaluation.db",null,1);
         dbHelper = new DatabaseHelper(this);
         final SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -102,8 +103,8 @@ public class releaseCourseEvaluation extends AppCompatActivity {
             }
         });
 
-        Button fabu=(Button)findViewById(R.id.release_comment);
-        fabu.setOnClickListener(new View.OnClickListener() {
+        Button submit=(Button)findViewById(R.id.release_comment);
+        submit.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
@@ -119,6 +120,7 @@ public class releaseCourseEvaluation extends AppCompatActivity {
                     values.put("prof_name", prof.getText().toString());
                     values.put("comment", comment.getText().toString());
                     values.put("cid", (String.valueOf(post_userid)+title.getText().toString()));
+                    values.put("school", school);
                     db.insert("iteminfo",null,values);
                     // int s_id, String course_code, String prof_name, String comment
                     //(courseEvaluation.mList).add(new CommentData(Integer.valueOf(post_userid), title.getText().toString(), prof.getText().toString(), comment.getText().toString()));
@@ -191,27 +193,27 @@ public class releaseCourseEvaluation extends AppCompatActivity {
         }
     }
     class MyOnClickListener implements View.OnClickListener {
+
         //按钮点击
         @Override
         public void onClick(View view) {
             if (view.getId() == R.id.login) {//被点击的是确认按钮
                 //获取选中项
                 RadioGroup radioGroup = findViewById(R.id.radioGroupSchool);
-                String role = "";
                 if (radioGroup.getCheckedRadioButtonId() == R.id.radiohss) {
-                    role = "HSS";
+                    school = "HSS";
                 }
                 if (radioGroup.getCheckedRadioButtonId() == R.id.radiosse) {
-                    role = "SSE";
+                    school = "SSE";
                 }
                 if (radioGroup.getCheckedRadioButtonId() == R.id.radiosme) {
-                    role = "SME";
+                    school = "SME";
                 }
                 if (radioGroup.getCheckedRadioButtonId() == R.id.radiosds) {
-                    role = "SDS";
+                    school = "SDS";
                 }
                 if (radioGroup.getCheckedRadioButtonId() == R.id.radiolhs) {
-                    role = "LHS";
+                    school = "LHS";
                 }
             }
         }

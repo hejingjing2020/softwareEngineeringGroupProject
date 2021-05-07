@@ -29,8 +29,6 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
     private EditText et_name;
 
     private myAdapter mAdapter;
-    private ListView mListView;
-    private Handler mHandler;
     private android.widget.ListView lv;
     public static LinkedList<CommentData> mList = new LinkedList<CommentData>();
     
@@ -42,10 +40,31 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_course_evaluation);
         this.lv = (ListView) findViewById(R.id.listView);
 
+        //先setAdapter再notifyDataChanged
 
         DatabaseHelper database = new DatabaseHelper(this);
         final SQLiteDatabase db = database.getWritableDatabase();
 
+
+
+
+        Map<String, Object> item;  // 列表项内容用Map存储
+        final List<Map<String, Object>> data = new ArrayList<Map<String, Object>>(); // 列表
+        Cursor cursor = db.query(TABLENAME,null,null,null,null,null,null,null); // 数据库查询
+
+
+        if (cursor.moveToFirst()){
+            while (!cursor.isAfterLast()) {
+                CommentData cd = new CommentData();  // 为列表项赋值
+                cd.setS_id(cursor.getInt(0));
+                cd.setCourse_code(cursor.getString(1));
+                cd.setProf_name(cursor.getString(2));
+                cd.setComment(cursor.getString(3));
+                cd.setCid();
+                mList.add(cd);
+                cursor.moveToNext();
+            }
+        }
         mAdapter = new myAdapter<CommentData>(mList, courseEvaluation.this, R.layout.listitem) {
             @Override
             public void convertView(ViewHolder holder, CommentData Data) {
@@ -57,26 +76,6 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
         //这里在每次更新数据时刷新listView
         lv.setAdapter(mAdapter);//listView里应该是mList的内容
         mAdapter.notifyDataSetChanged();
-        //先setAdapter再notifyDataChanged
-
-
-        Map<String, Object> item;  // 列表项内容用Map存储
-        final List<Map<String, Object>> data = new ArrayList<Map<String, Object>>(); // 列表
-        Cursor cursor = db.query(TABLENAME,null,null,null,null,null,null,null); // 数据库查询
-
-
-        if (cursor.moveToFirst()){
-            while (cursor.moveToNext()) {
-                CommentData cd = new CommentData();  // 为列表项赋值
-                cd.setS_id(cursor.getInt(0));
-                cd.setCourse_code(cursor.getString(1));
-                cd.setProf_name(cursor.getString(2));
-                cd.setComment(cursor.getString(3));
-                cd.setCid();
-                mList.add(cd);
-            }
-        }
-
 
         // 使用SimpleAdapter布局 listview
         // listitem.xml

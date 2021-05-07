@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 public class RA extends AppCompatActivity {
-    String TABLENAME = "iteminfo";
+    String TABLENAME = "recruitment";
     byte[] imagedata;
     Bitmap imagebm;
     @Override
@@ -31,7 +31,7 @@ public class RA extends AppCompatActivity {
         ListView listView = (ListView)findViewById(R.id.kind_list1);
         Map<String, Object> item = new HashMap<String, Object>();
         List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
-        Cursor cursor = db.query(TABLENAME,null,"kind=?",new String[]{"Course Evaluation"},null,null,null,null); // 数据库查询
+        Cursor cursor = db.query(TABLENAME,null,"type=?",new String[]{"RA"},null,null,null,null); // 数据库查询
         if (cursor.moveToFirst()){
             while (!cursor.isAfterLast()){
                 item = new HashMap<String, Object>();  // 为列表项赋值
@@ -41,8 +41,8 @@ public class RA extends AppCompatActivity {
                 item.put("kind",cursor.getString(3));
                 item.put("info",cursor.getString(4));
                 item.put("price",cursor.getString(5));
-                imagedata = cursor.getBlob(6);
-                imagebm = BitmapFactory.decodeByteArray(imagedata, 0, imagedata.length);
+               // imagedata = cursor.getBlob(6);
+               // imagebm = BitmapFactory.decodeByteArray(imagedata, 0, imagedata.length);
                 //kind1.setImageBitmap(imagebm);
                 item.put("image",imagebm);
                 cursor.moveToNext();
@@ -73,7 +73,7 @@ public class RA extends AppCompatActivity {
                 startActivity(button1);
                 break;
             case R.id.button_post_comment:
-                Intent button2 = new Intent(this, releaseCourseEvaluation.class);
+                Intent button2 = new Intent(this, releaseRecruitment_RA.class);
                 startActivity(button2);
                 break;
             case R.id.button_self_center:

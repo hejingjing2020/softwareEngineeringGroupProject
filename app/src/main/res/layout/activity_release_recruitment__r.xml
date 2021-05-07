@@ -60,11 +60,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Course Code"
+                android:text="Title"
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/m1_sid"
+                android:id="@+id/m1_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -82,11 +82,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Professor"
+                android:text="Email"
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/m1_prof"
+                android:id="@+id/m1_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:minWidth="250dp"
+                android:textSize="20dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Salary"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/m1_salary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -104,11 +119,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Comments"
+                android:text="Description"
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/m1_comment"
+                android:id="@+id/m1_description"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
@@ -118,7 +133,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/release_comment"
+            android:id="@+id/release_recruitment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"

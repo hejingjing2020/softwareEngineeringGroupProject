@@ -31,26 +31,18 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
     private myAdapter mAdapter;
     private ListView mListView;
     private Handler mHandler;
+    private android.widget.ListView lv;
 
-    /*
-    @Override
-    protected void onResume() {
-
-        super.onResume();
-
-        onCreate(null);
-
-    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recruitment);
+        this.lv = (ListView) findViewById(R.id.listView);
 
 
         DatabaseHelper database = new DatabaseHelper(this);
         final SQLiteDatabase db = database.getWritableDatabase();
-        ListView listView = (ListView)findViewById(R.id.listView);
         mList = new LinkedList<RecruitmentData>();
 
         mAdapter = new myAdapter<RecruitmentData>(mList, recruitment.this, R.layout.list_recruitment_item) {
@@ -84,7 +76,7 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
         // 使用SimpleAdapter布局 listview
         // listitem.xml
         //myAdapter mAdapter = new myAdapter();
-
+/*
         ImageView kind1 = (ImageView) findViewById(R.id.kind1);
         kind1.setOnClickListener(this);
         ImageView kind2 = (ImageView) findViewById(R.id.kind2);
@@ -93,11 +85,12 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
         kind3.setOnClickListener(this);
         ImageView kind4 = (ImageView) findViewById(R.id.kind4);
         kind4.setOnClickListener(this);
+*/
 
-
-
+        lv.setAdapter(mAdapter);//listView里应该是mList的内容
+        mAdapter.notifyDataSetChanged();
         // 为列表项设置监听器
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -107,12 +100,17 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
             }
         });
 
-        RadioButton btn1 = (RadioButton)findViewById(R.id.button_main_page);
-        RadioButton btn2 = (RadioButton)findViewById(R.id.button_post_comment);
-        RadioButton btn3 = (RadioButton)findViewById(R.id.button_self_center);
-        btn1.setOnClickListener(this);
-        btn2.setOnClickListener(this);
-        btn3.setOnClickListener(this);
+        ImageView kind1 = (ImageView) findViewById(R.id.ra);
+        kind1.setOnClickListener(this);
+
+        ImageView kind2 = (ImageView) findViewById(R.id.ustf);
+        kind2.setOnClickListener(this);
+
+        RadioButton btn_main_page = (RadioButton)findViewById(R.id.button_main_page);
+        RadioButton btn_self_center = (RadioButton)findViewById(R.id.button_self_center);
+
+        btn_main_page.setOnClickListener(this);
+        btn_self_center.setOnClickListener(this);
     }
     private ArrayList<Map<String, Object>> getData(){
         ArrayList<Map<String, Object>> list=new ArrayList<Map<String, Object>>();
@@ -128,11 +126,11 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v){
         switch (v.getId()){
-            case R.id.kind2:
+            case R.id.ra:
                 Intent KindIntent2 = new Intent(this,RA.class);
                 startActivity(KindIntent2);
                 break;
-            case R.id.kind3:
+            case R.id.ustf:
                 Intent KindIntent3 = new Intent(this,USTF.class);
                 startActivity(KindIntent3);
                 break;
