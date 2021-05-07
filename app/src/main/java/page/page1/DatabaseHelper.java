@@ -33,7 +33,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 "course_code varchar(20) not null," +
                 "prof_name varchar(20) not null," +
                 "comment varchar(1000) not null," +
-                "primary key(s_id, course_code))");
+                "cid varchar(120) not null," +
+                "primary key(cid))");
         //评论者账号userId，评论商品编号itemId，评论内容comment，评论时间time
         db.execSQL("create table if not exists comments(" +
                 "userId varchar(100)," +

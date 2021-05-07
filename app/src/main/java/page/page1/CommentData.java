@@ -6,16 +6,20 @@ public class CommentData {
         private String course_code;
         private String prof_name;
         private String comment;
+        private String cid;
 
         public CommentData() {}
 
         public CommentData(int s_id, String course_code, String prof_name, String comment) {
+            this.cid = String.valueOf(s_id) + course_code;
             this.s_id = s_id;
             this.course_code = course_code;
             this.prof_name = prof_name;
             this.comment = comment;
         }
-        public void setS_id(int sid) {this.s_id = sid;}
+        public String getCid() { return cid; }
+        public void setCid() { this.cid = String.valueOf(s_id)+course_code; }
+        public void setS_id(int sid) { this.s_id = sid; }
         public int getSid() {
             return s_id;
         }

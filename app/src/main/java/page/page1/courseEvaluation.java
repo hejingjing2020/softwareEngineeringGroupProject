@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Message;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -76,30 +77,9 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
                 cd.setCourse_code(cursor.getString(1));
                 cd.setProf_name(cursor.getString(2));
                 cd.setComment(cursor.getString(3));
+                cd.setCid();
                 mList.add(cd);
-                /*
-                item.put("s_id",cursor.getInt(0));
-                item.put("course_code",cursor.getString(1));
-                item.put("prof_name",cursor.getString(2));
-                item.put("comment",cursor.getString(3));
-                */
             }
-            /*
-            while (!cursor.isAfterLast()){
-
-                item = new HashMap<String, Object>();  // 为列表项赋值
-                item.put("s_id",cursor.getInt(0));
-                item.put("course_code",cursor.getString(1));
-                item.put("prof_name",cursor.getString(2));
-                item.put("comment",cursor.getString(3));
-                //imagedata = cursor.getBlob(6);
-                //item.put("image",imagebm);
-                cursor.moveToNext();
-
-                data.add(item); // 加入到列表中
-
-
-            }*/
         }
 
 
@@ -122,9 +102,8 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 intent = new Intent(courseEvaluation.this, item_info.class);
-                intent.putExtra("Sid", mList.get(position).getSid()); // 获取该列表项的key为id的键值，即商品的id，将其储存在Bundle传递给打开的页面
+                intent.putExtra("cid", mList.get(position).getCid()); // 获取该列表项的key为id的键值，即商品的id，将其储存在Bundle传递给打开的页面
                 startActivity(intent);
             }
         });

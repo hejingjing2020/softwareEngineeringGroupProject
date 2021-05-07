@@ -142,9 +142,10 @@ public class releaseCourseEvaluation extends AppCompatActivity {
                     String time = formatter.format(curDate);
                     ContentValues values=new ContentValues();
                     values.put("s_id",post_userid);
-                    values.put("course_code",title.getText().toString());
+                    values.put("course_code", title.getText().toString());
                     values.put("prof_name", prof.getText().toString());
-                    values.put("comment",comment.getText().toString());
+                    values.put("comment", comment.getText().toString());
+                    values.put("cid", (String.valueOf(post_userid)+title.getText().toString()));
                     db.insert("iteminfo",null,values);
                     // int s_id, String course_code, String prof_name, String comment
                     //(courseEvaluation.mList).add(new CommentData(Integer.valueOf(post_userid), title.getText().toString(), prof.getText().toString(), comment.getText().toString()));

@@ -23,12 +23,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import static page.page1.LoginMainActivity.post_userid;
 
 public class item_info extends AppCompatActivity {
+    // 这里是展示之前选中的课程评价的
     String TABLENAME = "iteminfo";
     byte[] imagedata;
     Bitmap imagebm;
@@ -44,8 +46,8 @@ public class item_info extends AppCompatActivity {
         TextView title = (TextView)findViewById(R.id.item_title) ;
         TextView info = (TextView)findViewById(R.id.item_info);
         TextView contact = (TextView)findViewById(R.id.contact);
-        Cursor cursor = db.query(TABLENAME,null,"id=?",new String[]{intent.getStringExtra("id")},null,null,null,null); // 根据接收到的id进行数据库查询
-        Log.i("商品的id是",intent.getStringExtra("id"));
+        Cursor cursor = db.query(TABLENAME,null,"cid=?",new String[]{intent.getStringExtra("cid")},null,null,null,null); // 根据接收到的id进行数据库查询
+        Log.i("The comment s_id is",intent.getStringExtra("cid"));
         if (cursor.moveToFirst()){
             while (!cursor.isAfterLast()){
                 imagedata = cursor.getBlob(6);
@@ -60,10 +62,10 @@ public class item_info extends AppCompatActivity {
         }
         ListView commentList = (ListView)findViewById(R.id.commentList);
         Map<String, Object> item;  // 列表项内容用Map存储
-        final List<Map<String, Object>> data = new ArrayList<Map<String, Object>>(); // 列表
-        Cursor cursor_ = db.query("comments",null,"itemId=?",new String[]{intent.getStringExtra("id")},null,null,null,null); // 数据库查询
+        final List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
+        Cursor cursor_ = db.query("comments",null,"cid=?",new String[]{intent.getStringExtra("cid")},null,null,null,null); // 数据库查询
         if (cursor_.moveToFirst()){
-            while (!cursor_.isAfterLast()){
+            while (cursor.moveToNext()) {
                 item = new HashMap<String, Object>();  // 为列表项赋值
                 item.put("userId",cursor_.getString(0));
                 item.put("comment",cursor_.getString(2));
@@ -86,7 +88,7 @@ public class item_info extends AppCompatActivity {
                 String time = formatter.format(curDate);
                 ContentValues values=new ContentValues();
                 values.put("userId",post_userid);
-                values.put("itemId",intent.getStringExtra("id"));
+                values.put("itemId",intent.getStringExtra("cid"));
                 values.put("comment",submit_comment);
                 values.put("time",time);
                 db.insert("comments",null,values);
