@@ -92,7 +92,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="30dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -103,18 +103,18 @@
 
             <EditText
                 android:id="@+id/m1_prof"
-                android:layout_width="262dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
-                android:minWidth="100dp"
+                android:minWidth="250dp"
                 android:textSize="20dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="30dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -126,7 +126,7 @@
             <EditText
                 android:id="@+id/m1_comment"
                 android:layout_width="wrap_content"
-                android:layout_height="193dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:minWidth="250dp"
