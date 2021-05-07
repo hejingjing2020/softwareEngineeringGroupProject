@@ -66,9 +66,60 @@
         android:layout_marginTop="20dp"
         android:orientation="vertical">
 
+        <RadioGroup
+            android:id="@+id/radioGroupRole"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <RadioButton
+                android:id="@+id/radiohss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="HSS"
+                android:textColorHighlight="#2E0909"
+                android:textColorLink="#674F4F"
+                android:textSize="20sp"/>
+
+            <RadioButton
+                android:id="@+id/radiosse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SSE"
+                android:textSize="20sp"/>
+
+            <RadioButton
+                android:id="@+id/radiosme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SME"
+                android:textSize="20sp"/>
+
+            <RadioButton
+                android:id="@+id/radiosds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SDS"
+                android:textSize="20sp"/>
+
+            <RadioButton
+                android:id="@+id/radiolhs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LHS"
+                android:textSize="20sp"/>
+
+        </RadioGroup>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp">
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp">
 
             <TextView
                 android:layout_width="wrap_content"
