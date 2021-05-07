@@ -46,11 +46,14 @@ public class LoginMainActivity extends Activity {
                 password=Password.getText().toString();
 
                 if(user.equals("")||user==null){
+
                     Toast.makeText(getApplicationContext(), "Please enter user account！", Toast.LENGTH_SHORT).show();
                 }
                 if(password.equals("")||password==null){
                     Toast.makeText(getApplicationContext(), "Please enter the user password！", Toast.LENGTH_SHORT).show();
                 }
+                System.out.println(user);
+                System.out.println(password);
                 checkUser(user,password);
 
             }
@@ -75,6 +78,7 @@ public class LoginMainActivity extends Activity {
             String sql="SELECT * FROM users WHERE userId=? and passWord=?";
             Cursor cursor=db.rawQuery(sql,new String[]{user,password});
             if(cursor.getCount()==0){
+                System.out.println(sql);
                 Toast.makeText(getApplicationContext(), "The user password is wrong！", Toast.LENGTH_SHORT).show();
             }
             else{
