@@ -8,8 +8,6 @@
     android:backgroundTint="@color/purple"
     android:orientation="vertical">
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -75,12 +73,19 @@
 
         </RelativeLayout>
 
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search Here" />
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="20"
+        android:layout_weight="4"
         android:orientation="horizontal">
 
         <ListView
@@ -93,29 +98,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_weight="00.3"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/last_page"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:background="#00FFFFFF"
-            android:src="@drawable/shangyiye" />
-
-        <ImageButton
-            android:id="@+id/next_page"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:backgroundTint="#00FFFFFF"
-            android:src="@drawable/xiayiye" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_weight="0.8"
         android:gravity="bottom"
         android:orientation="vertical">
 
@@ -185,6 +169,5 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
         </RadioGroup>
-
     </LinearLayout>
 </LinearLayout>
