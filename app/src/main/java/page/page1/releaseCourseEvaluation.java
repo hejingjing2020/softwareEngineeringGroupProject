@@ -46,7 +46,7 @@ import static page.page1.LoginMainActivity.post_userid;
 
 
 public class releaseCourseEvaluation extends AppCompatActivity {
-    String school = "HSS";
+    public String school;
     private static final byte REQUEST_SYSTEM_PIC = 10;
     //private static PreparedStatement dbHelper;
     DatabaseHelper dbHelper = new DatabaseHelper(this);
@@ -71,6 +71,8 @@ public class releaseCourseEvaluation extends AppCompatActivity {
     }
         List<HashMap<String,Object>> listItem = getinfo();
         // activity_main_m1.l
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,6 +105,34 @@ public class releaseCourseEvaluation extends AppCompatActivity {
             }
         });
 
+        RadioGroup selectedschool=(RadioGroup)findViewById((R.id.radioGroupSchool)) ;
+        imageButton.setOnClickListener(new View.OnClickListener(){
+               @Override
+               public void onClick(View view) {
+                   if (view.getId() == R.id.radioGroupSchool) {//被点击的是确认按钮
+                       //获取选中项
+                       RadioGroup radioGroup = findViewById(R.id.radioGroupSchool);
+                       if (radioGroup.getCheckedRadioButtonId() == R.id.radiohss) {
+                           school = "HSS";
+                       }
+                       if (radioGroup.getCheckedRadioButtonId() == R.id.radiosse) {
+                           school = "SSE";
+                       }
+                       if (radioGroup.getCheckedRadioButtonId() == R.id.radiosme) {
+                           school = "SME";
+                       }
+                       if (radioGroup.getCheckedRadioButtonId() == R.id.radiosds) {
+                           school = "SDS";
+                       }
+                       if (radioGroup.getCheckedRadioButtonId() == R.id.radiolhs) {
+                           school = "LHS";
+                       }
+                   }
+               }
+
+        });
+
+
         Button submit=(Button)findViewById(R.id.release_comment);
         submit.setOnClickListener(new View.OnClickListener() {
             RadioGroup radioGroup = findViewById(R.id.radioGroupSchool);
@@ -113,6 +143,7 @@ public class releaseCourseEvaluation extends AppCompatActivity {
                     EditText prof=(EditText)findViewById(R.id.m1_prof);
                     EditText s_id=(EditText)findViewById(R.id.m1_sid);
                     EditText comment=(EditText)findViewById(R.id.m1_comment);
+
                     Date curDate = new Date(System.currentTimeMillis());
                     String time = formatter.format(curDate);
                     ContentValues values=new ContentValues();
@@ -195,30 +226,5 @@ public class releaseCourseEvaluation extends AppCompatActivity {
     }
 
 
-    class MyOnClickListener implements View.OnClickListener {
 
-        //按钮点击
-        @Override
-        public void onClick(View view) {
-            if (view.getId() == R.id.radioGroupSchool) {//被点击的是确认按钮
-                //获取选中项
-                RadioGroup radioGroup = findViewById(R.id.radioGroupSchool);
-                if (radioGroup.getCheckedRadioButtonId() == R.id.radiohss) {
-                    school = "HSS";
-                }
-                if (radioGroup.getCheckedRadioButtonId() == R.id.radiosse) {
-                    school = "SSE";
-                }
-                if (radioGroup.getCheckedRadioButtonId() == R.id.radiosme) {
-                    school = "SME";
-                }
-                if (radioGroup.getCheckedRadioButtonId() == R.id.radiosds) {
-                    school = "SDS";
-                }
-                if (radioGroup.getCheckedRadioButtonId() == R.id.radiolhs) {
-                    school = "LHS";
-                }
-            }
-        }
-    }
 }
