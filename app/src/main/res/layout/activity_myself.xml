@@ -56,8 +56,7 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
-                android:src="@drawable/person"
-                app:srcCompat="@drawable/jiushini" />
+                android:src="@drawable/jiushini" />
 
             <Button
                 android:id="@+id/myself"
@@ -81,8 +80,7 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/pic_search"
-                app:srcCompat="@drawable/dingdan" />
+                android:src="@drawable/dingdan" />
 
             <Button
                 android:id="@+id/myShow"
@@ -106,8 +104,7 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/pic_set"
-                app:srcCompat="@drawable/shezhi" />
+                android:src="@drawable/shezhi" />
 
             <Button
                 android:id="@+id/changepwd"
@@ -131,8 +128,7 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/pic_about"
-                app:srcCompat="@drawable/gonggao" />
+                android:src="@drawable/gonggao" />
 
             <Button
                 android:id="@+id/about"
@@ -156,8 +152,7 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/pic_login"
-                app:srcCompat="@drawable/yuanquan_guanbi" />
+                android:src="@drawable/yuanquan_guanbi" />
 
             <Button
                 android:id="@+id/login"
