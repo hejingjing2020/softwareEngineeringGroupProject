@@ -106,7 +106,7 @@ public class releaseCourseEvaluation extends AppCompatActivity {
         });
 
         RadioGroup selectedschool=(RadioGroup)findViewById((R.id.radioGroupSchool)) ;
-        imageButton.setOnClickListener(new View.OnClickListener(){
+        selectedschool.setOnClickListener(new View.OnClickListener(){
                @Override
                public void onClick(View view) {
                    if (view.getId() == R.id.radioGroupSchool) {//被点击的是确认按钮
