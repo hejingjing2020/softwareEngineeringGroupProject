@@ -1,32 +1,28 @@
 package page.page1;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
-import android.view.animation.RotateAnimation;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
-import android.widget.TextView;
+import android.widget.SearchView;
+import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Handler;
 
 public class courseEvaluation extends AppCompatActivity implements View.OnClickListener{
 
@@ -38,12 +34,8 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
 
     private myAdapter mAdapter;
     private android.widget.ListView lv;
-    private ImageButton last_page;
-    private ImageButton next_page;
-    private int VIEW_COUNT = 5; //每页显示条目数
-    private int index = 0;  //当前页数索引
     public static LinkedList<CommentData> mList = new LinkedList<CommentData>();
-
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +43,8 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_evaluation);
         this.lv = (ListView) findViewById(R.id.listView);
+        ArrayAdapter<CommentData> adapter;
+        SearchView searchView;
 
 
         //先setAdapter再notifyDataChanged
@@ -115,21 +109,46 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
             }
         });
 
+
+        searchView = (SearchView) findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                                              @Override
+                                              public boolean onQueryTextSubmit(String query) {
+
+                                                  Cursor search_cursor = db.query(TABLENAME,null,"course_code like ? OR prof_name like ?",new String[]{"%"+query+"%", "%"+query+"%"},null,null,null,null); // 数据库查询
+                                                  //Cursor search_cursor = db.rawQuery("SELECT * FROM iteminfo where course_code like '%?%' OR prof_name like '%?%'", new String[]{query, query});
+                                                  mList.clear();
+                                                  if (search_cursor.moveToFirst()){
+                                                      while (!search_cursor.isAfterLast()) {
+                                                          CommentData cd = new CommentData();  // 为列表项赋值
+                                                          cd.setS_id(search_cursor.getInt(0));
+                                                          cd.setCourse_code(search_cursor.getString(1));
+                                                          cd.setProf_name(search_cursor.getString(2));
+                                                          cd.setComment(search_cursor.getString(3));
+                                                          cd.setCid();
+                                                          mList.add(cd);
+                                                          search_cursor.moveToNext();
+                                                      }
+                                                  }
+                                                  mAdapter.notifyDataSetChanged();
+                                                  return true;
+                                              }
+
+
+                                              @Override
+                                              public boolean onQueryTextChange(String newText) {
+                                                  //    adapter.getFilter().filter(newText);
+                                                  return false;
+                                              }
+                                          });
+
         RadioButton btn1 = (RadioButton)findViewById(R.id.button_main_page);
         RadioButton btn2 = (RadioButton)findViewById(R.id.button_post_comment);
         RadioButton btn3 = (RadioButton)findViewById(R.id.button_self_center);
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
         btn3.setOnClickListener(this);
-
-        last_page = (ImageButton) findViewById(R.id.last_page);
-        next_page = (ImageButton) findViewById(R.id.next_page);
-
-        last_page.setOnClickListener(this);
-        next_page.setOnClickListener(this);
     }
-
-
     private ArrayList<Map<String, Object>> getData(){
         ArrayList<Map<String, Object>> list=new ArrayList<Map<String, Object>>();
         Map<String,Object> hashmap=new HashMap<String, Object>();
@@ -142,26 +161,26 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
+    public void onClick(View v){
+        switch (v.getId()){
             case R.id.kind1:
-                Intent KindIntent1 = new Intent(this, HSS.class);
+                Intent KindIntent1 = new Intent(this,HSS.class);
                 startActivity(KindIntent1);
                 break;
             case R.id.kind2:
-                Intent KindIntent2 = new Intent(this, SSE.class);
+                Intent KindIntent2 = new Intent(this,SSE.class);
                 startActivity(KindIntent2);
                 break;
             case R.id.kind3:
-                Intent KindIntent3 = new Intent(this, SME.class);
+                Intent KindIntent3 = new Intent(this,SME.class);
                 startActivity(KindIntent3);
                 break;
             case R.id.kind4:
-                Intent KindIntent4 = new Intent(this, SDS.class);
+                Intent KindIntent4 = new Intent(this,SDS.class);
                 startActivity(KindIntent4);
                 break;
             case R.id.kind5:
-                Intent KindIntent5 = new Intent(this, LHS.class);
+                Intent KindIntent5 = new Intent(this,LHS.class);
                 startActivity(KindIntent5);
                 break;
             case R.id.button_main_page:
@@ -177,10 +196,7 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
                 startActivity(button3);
                 break;
 
-
         }
-
     }
 }
-
 
