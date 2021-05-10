@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple"
+    android:background="#0C238697"
     android:orientation="vertical"
     tools:context="page.page1.releaseCourseEvaluation">
 
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:background="#660066">
+        android:background="@color/blue">
 
         <TextView
             android:id="@+id/textView"
@@ -84,35 +84,35 @@
                 android:text="HSS"
                 android:textColorHighlight="#2E0909"
                 android:textColorLink="#674F4F"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/radiosse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SSE"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/radiosme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SME"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/radiosds"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SDS"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/radiolhs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="LHS"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
         </RadioGroup>
 
@@ -189,7 +189,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:background="@color/blue"
+            android:background="@drawable/shape_corner"
+            android:backgroundTint="@color/blue"
             android:text="Confirm"
             android:textSize="30dp" />
 

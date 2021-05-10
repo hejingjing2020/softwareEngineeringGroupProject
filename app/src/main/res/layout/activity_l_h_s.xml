@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="46dp"
         android:layout_marginTop="0dp"
-        android:background="@color/blue"
+        android:background="@color/purple"
         android:gravity="center"
         android:text="LHS"
         android:textColor="#000000"

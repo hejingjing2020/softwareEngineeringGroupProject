@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/buttonColor"
+    android:background="#0C238697"
     android:orientation="vertical">
 
     <LinearLayout
@@ -15,6 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="78dp"
             android:layout_marginTop="-4dp"
+            android:background="#B38787"
             android:src="@drawable/xiaohui" />
 
     </LinearLayout>
@@ -23,24 +24,59 @@
         android:layout_width="match_parent"
         android:layout_height="550dp"
         android:layout_weight="1"
+        android:background="@color/buttonColor"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/course_evaluation_page"
-            android:layout_width="100dp"
-            android:layout_height="300dp"
+            android:layout_width="300dp"
+            android:layout_height="10dp"
+            android:layout_margin="20dp"
             android:layout_weight="2.5"
+            android:background="@drawable/shape_corner"
             android:backgroundTint="#99CEE6"
-            android:text="Course evaluation" />
+            android:text="Course evaluation"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Discover the course you would like to know"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="0.1"
+            android:background="?android:attr/listDivider"
+            android:outlineSpotShadowColor="@color/black" />
 
         <Button
             android:id="@+id/recruit_page"
-            android:layout_width="100dp"
-            android:layout_height="300dp"
+            android:layout_width="300dp"
+            android:layout_height="10dp"
+            android:layout_margin="20dp"
             android:layout_weight="2.5"
+            android:background="@drawable/shape_corner"
             android:backgroundTint="#99CEE6"
-            android:text="recruit" />
+            android:text="recruit"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Be a part of University intern staff group"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -68,7 +104,7 @@
             <RadioButton
                 android:id="@+id/button_main_page"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/buttonColor"
                 android:button="@null"
@@ -94,7 +130,7 @@
             <RadioButton
                 android:id="@+id/button_self_center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="69dp"
                 android:layout_weight="1"
                 android:background="#6FD1DCE3"
                 android:button="@null"

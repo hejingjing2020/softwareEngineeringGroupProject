@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple"
+    android:background="#0C238697"
     android:orientation="vertical"
     tools:context="page.page1.releaseRecruitment_RA">
 
@@ -93,6 +93,7 @@
                 android:layout_marginLeft="10dp"
                 android:minWidth="250dp"
                 android:textSize="20dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -137,7 +138,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:background="@color/blue"
+            android:background="@drawable/shape_corner"
+            android:backgroundTint="@color/blue"
             android:text="Confirm"
             android:textSize="30dp" />
 

@@ -151,7 +151,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:background="#9FFF9900"
+            android:backgroundTint="#9FFF9900"
+            android:background="@drawable/shape_corner"
             android:text="Change User Info"
             android:textColor="#000000"
             android:textSize="30dp" />
@@ -161,7 +162,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="#9766CCFF"
+            android:backgroundTint="#9766CCFF"
+            android:background="@drawable/shape_corner"
             android:text="Return "
             android:textSize="30dp"
             tools:layout_marginTop="20dp" />
