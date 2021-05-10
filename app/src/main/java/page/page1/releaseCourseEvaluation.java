@@ -53,7 +53,13 @@ public class releaseCourseEvaluation extends AppCompatActivity {
     //SQLiteDatabase db = dbHelper.getWritableDatabase();
     private Spinner sp;
     private ImageButton imageButton;
-    private RadioButton radioGroupSchool;
+    private RadioGroup selectedschool;
+    private RadioButton HSS;
+    private RadioButton SSE;
+    private RadioButton SME;
+    private RadioButton SDS;
+    private RadioButton LHS;
+
     private byte[] image;
 
     public releaseCourseEvaluation() throws SQLException {
@@ -105,40 +111,35 @@ public class releaseCourseEvaluation extends AppCompatActivity {
             }
         });
 
-        RadioGroup selectedschool=(RadioGroup)findViewById((R.id.radioGroupSchool)) ;
-        selectedschool.setOnClickListener(new View.OnClickListener(){
-               @Override
-               public void onClick(View view) {
-                   if (view.getId() == R.id.radioGroupSchool) {//被点击的是确认按钮
-                       //获取选中项
-                       RadioGroup radioGroup = findViewById(R.id.radioGroupSchool);
-                       if (radioGroup.getCheckedRadioButtonId() == R.id.radiohss) {
-                           school = "HSS";
-                       }
-                       if (radioGroup.getCheckedRadioButtonId() == R.id.radiosse) {
-                           school = "SSE";
-                       }
-                       if (radioGroup.getCheckedRadioButtonId() == R.id.radiosme) {
-                           school = "SME";
-                       }
-                       if (radioGroup.getCheckedRadioButtonId() == R.id.radiosds) {
-                           school = "SDS";
-                       }
-                       if (radioGroup.getCheckedRadioButtonId() == R.id.radiolhs) {
-                           school = "LHS";
-                       }
-                   }
-               }
-
-        });
-
-
         Button submit=(Button)findViewById(R.id.release_comment);
+        selectedschool=(RadioGroup)findViewById((R.id.radioGroupSchool)) ;
+        HSS=(RadioButton) findViewById((R.id.radiohss));
+        SSE=(RadioButton) findViewById((R.id.radiosse));
+        SME=(RadioButton) findViewById((R.id.radiosme));
+        SDS=(RadioButton) findViewById((R.id.radiosds));
+        LHS=(RadioButton) findViewById((R.id.radiolhs));
         submit.setOnClickListener(new View.OnClickListener() {
-            RadioGroup radioGroup = findViewById(R.id.radioGroupSchool);
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
+                int selected = selectedschool.getCheckedRadioButtonId();
+
+                    if (selected == R.id.radiohss){
+                        school = "HSS";
+                    }
+                    if (selected == R.id.radiosse){
+                        school = "SSE";
+                    }
+                    if (selected == R.id.radiosme){
+                        school = "SME";
+                    }
+                    if (selected == R.id.radiosds){
+                        school = "SDS";
+                    }
+                    if (selected == R.id.radiolhs){
+                        school = "LHS";
+                    }
+
                     EditText title=(EditText)findViewById(R.id.m1_course_code);
                     EditText prof=(EditText)findViewById(R.id.m1_prof);
                     EditText s_id=(EditText)findViewById(R.id.m1_sid);

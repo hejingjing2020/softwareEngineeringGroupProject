@@ -16,15 +16,17 @@ import android.widget.Toast;
 
 
 public class LoginMainActivity extends Activity {
-
+    public String role;
     private EditText User;
     private EditText Password;
     private Button button_login;
     private TextView first;
     private TextView toRegister;
-    private RadioButton radioGroupRole;
+    private RadioGroup radioGroupRole;
     protected Intent intent;
     protected static String post_userid;
+    private RadioButton student;
+    private RadioButton teacher;
     String user=null;
     String password=null;
     @Override
@@ -38,10 +40,23 @@ public class LoginMainActivity extends Activity {
         button_login=(Button)findViewById(R.id.login);
         toRegister=(TextView)findViewById(R.id.toRegister);
         post_userid="";
+        radioGroupRole=(RadioGroup)findViewById((R.id.radioGroupSchool)) ;
+        student=(RadioButton) findViewById((R.id.radioStudent));
+        teacher=(RadioButton) findViewById((R.id.radioTeacher));
         //登录验证，成功后跳转到主页
         button_login.setOnClickListener(new View.OnClickListener() {
+
+            RadioGroup radioGroup = findViewById(R.id.radioGroupSchool);
             @Override
             public void onClick(View v) {
+                int selected = radioGroupRole.getCheckedRadioButtonId();
+
+                if (selected == R.id.radioStudent){
+                    role = "Student";
+                }
+                if (selected == R.id.radioTeacher){
+                    role = "Teacher";
+                }
                 //为了测试，直接跳转
                 Intent intent = new Intent(LoginMainActivity.this,main_page.class);
 
@@ -50,6 +65,7 @@ public class LoginMainActivity extends Activity {
 
                 user=User.getText().toString();
                 password=Password.getText().toString();
+
 
                 if(user.equals("")||user==null){
 
@@ -99,22 +115,6 @@ public class LoginMainActivity extends Activity {
             db.close();
         }catch (SQLiteException e){
             Toast.makeText(getApplicationContext(), "Login failed", Toast.LENGTH_SHORT).show();
-        }
-    }
-    class MyOnClickListener implements View.OnClickListener {
-        //按钮点击
-        @Override
-        public void onClick(View view) {
-            if (view.getId() == R.id.login) {//被点击的是确认按钮
-                //获取选中项
-                RadioGroup radioGroup = findViewById(R.id.radioGroupRole);
-                String role = "";
-                if (radioGroup.getCheckedRadioButtonId() == R.id.radioTeacher) {
-                    role = "Teacher";
-                } else {
-                    role = "Student";
-                }
-            }
         }
     }
 
