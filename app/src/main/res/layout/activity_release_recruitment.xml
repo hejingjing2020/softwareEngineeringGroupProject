@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#0C238697"
     android:orientation="vertical"
-    tools:context="page.page1.releaseRecruitment_RA">
+    tools:context="page.page1.releaseRecruitment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -95,7 +95,7 @@
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/m1_sid"
+                android:id="@+id/m1_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -140,7 +140,7 @@
                 android:text="Contact Email" />
 
             <EditText
-                android:id="@+id/salary"
+                android:id="@+id/m1_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -164,7 +164,7 @@
                 android:text="Salary" />
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/m1_salary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -186,7 +186,7 @@
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/m1_comment"
+                android:id="@+id/m1_description"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
