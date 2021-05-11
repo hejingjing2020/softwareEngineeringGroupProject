@@ -77,7 +77,7 @@ public class USTF extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v){
         switch (v.getId()){
             case R.id.button_post_comment:
-                Intent post = new Intent(this, releaseRecruitment_USTF.class);
+                Intent post = new Intent(this, releaseRecruitment.class);
                 startActivity(post);
                 break;
             case R.id.button_main_page:

@@ -73,7 +73,7 @@ public class RA extends AppCompatActivity {
                 startActivity(button1);
                 break;
             case R.id.button_post_comment:
-                Intent button2 = new Intent(this, releaseRecruitment_RA.class);
+                Intent button2 = new Intent(this, releaseRecruitment.class);
                 startActivity(button2);
                 break;
             case R.id.button_self_center:
