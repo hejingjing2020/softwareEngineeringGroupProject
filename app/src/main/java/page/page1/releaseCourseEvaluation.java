@@ -122,21 +122,20 @@ public class releaseCourseEvaluation extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                int selected = selectedschool.getCheckedRadioButtonId();
 
-                    if (selected == R.id.radiohss){
+                    if (HSS.isChecked()){
                         school = "HSS";
                     }
-                    if (selected == R.id.radiosse){
+                    if (SSE.isChecked()){
                         school = "SSE";
                     }
-                    if (selected == R.id.radiosme){
+                    if (SME.isChecked()){
                         school = "SME";
                     }
-                    if (selected == R.id.radiosds){
+                    if (SDS.isChecked()){
                         school = "SDS";
                     }
-                    if (selected == R.id.radiolhs){
+                    if (LHS.isChecked()){
                         school = "LHS";
                     }
 

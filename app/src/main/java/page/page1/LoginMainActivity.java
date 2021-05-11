@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 
 public class LoginMainActivity extends Activity {
-    public String role;
+    public String role = "Student";
     private EditText User;
     private EditText Password;
     private Button button_login;
@@ -35,26 +35,26 @@ public class LoginMainActivity extends Activity {
         setContentView(R.layout.activity_login_main);
 
 
+        radioGroupRole=(RadioGroup)findViewById((R.id.radioGroupSchool)) ;
+        student=(RadioButton) findViewById((R.id.radioStudent));
+        teacher=(RadioButton) findViewById((R.id.radioTeacher));
+
         User=(EditText)findViewById(R.id.login_user);
         Password=(EditText)findViewById(R.id.login_password);
         button_login=(Button)findViewById(R.id.login);
         toRegister=(TextView)findViewById(R.id.toRegister);
         post_userid="";
-        radioGroupRole=(RadioGroup)findViewById((R.id.radioGroupSchool)) ;
-        student=(RadioButton) findViewById((R.id.radioStudent));
-        teacher=(RadioButton) findViewById((R.id.radioTeacher));
+
         //登录验证，成功后跳转到主页
         button_login.setOnClickListener(new View.OnClickListener() {
 
-            RadioGroup radioGroup = findViewById(R.id.radioGroupSchool);
             @Override
             public void onClick(View v) {
-                int selected = radioGroupRole.getCheckedRadioButtonId();
 
-                if (selected == R.id.radioStudent){
+                if (student.isChecked()){
                     role = "Student";
                 }
-                if (selected == R.id.radioTeacher){
+                if (teacher.isChecked()){
                     role = "Teacher";
                 }
                 //为了测试，直接跳转
