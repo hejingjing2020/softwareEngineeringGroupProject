@@ -48,12 +48,11 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
         mAdapter = new myAdapter<RecruitmentData>(mList, recruitment.this, R.layout.list_recruitment_item) {
             @Override
             protected void convertView(ViewHolder holder, RecruitmentData Data) {
-
+                holder.set(R.id.title, Data.getTitle())
+                        .set(R.id.kind, Data.getEmail())
+                        .set(R.id.info, Data.getDescription());
             }
         };
-        //这里在每次更新数据时刷新listView
-        //listView.setAdapter(mAdapter);
-
 
         Map<String, Object> item;  // 列表项内容用Map存储
         final List<Map<String, Object>> data = new ArrayList<Map<String, Object>>(); // 列表
@@ -73,19 +72,6 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
                 mList.add(cd);
             }
         }
-        // 使用SimpleAdapter布局 listview
-        // listitem.xml
-        //myAdapter mAdapter = new myAdapter();
-/*
-        ImageView kind1 = (ImageView) findViewById(R.id.kind1);
-        kind1.setOnClickListener(this);
-        ImageView kind2 = (ImageView) findViewById(R.id.kind2);
-        kind2.setOnClickListener(this);
-        ImageView kind3 = (ImageView) findViewById(R.id.kind3);
-        kind3.setOnClickListener(this);
-        ImageView kind4 = (ImageView) findViewById(R.id.kind4);
-        kind4.setOnClickListener(this);
-*/
 
         lv.setAdapter(mAdapter);//listView里应该是mList的内容
         mAdapter.notifyDataSetChanged();
@@ -109,6 +95,8 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
         RadioButton btn_main_page = (RadioButton)findViewById(R.id.button_main_page);
         RadioButton btn_self_center = (RadioButton)findViewById(R.id.button_self_center);
 
+        RadioButton btn_post = (RadioButton)findViewById(R.id.button_post_comment);
+        btn_post.setOnClickListener(this);
         btn_main_page.setOnClickListener(this);
         btn_self_center.setOnClickListener(this);
     }
@@ -133,6 +121,10 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
             case R.id.ustf:
                 Intent KindIntent3 = new Intent(this,USTF.class);
                 startActivity(KindIntent3);
+                break;
+            case R.id.button_post_comment:
+                Intent post = new Intent(this, releaseRecruitment_RA.class);
+                startActivity(post);
                 break;
             case R.id.button_main_page:
                 Intent button1 = new Intent(recruitment.this, main_page.class);
