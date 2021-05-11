@@ -21,33 +21,39 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:layout_weight="1"
-        android:background="@color/buttonColor"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <Button
             android:id="@+id/course_evaluation_page"
-            android:layout_width="300dp"
-            android:layout_height="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_margin="20dp"
             android:layout_weight="2.5"
             android:background="@drawable/shape_corner"
-            android:backgroundTint="#99CEE6"
-            android:text="Course evaluation"
-            android:textSize="25dp" />
+            android:backgroundTint="#654EA3"
+        android:typeface="serif"
+            android:textSize="25dp">
+
+        <TextView
+            android:id="@+id/textViewCourseEvaluation"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:layout_weight="1"
+            android:text="Course Evaluation"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:typeface="serif"
+            android:textSize="60dp" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="42dp"
             android:layout_weight="1"
             android:text="Discover the course you would like to know"
+            android:typeface="serif"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:textColor="@android:color/white"
+            android:textSize="25dp" />
 
         <View
             android:id="@+id/divider"
@@ -56,18 +62,31 @@
             android:layout_weight="0.1"
             android:background="?android:attr/listDivider"
             android:outlineSpotShadowColor="@color/black" />
+    </LinearLayout>
 
-        <Button
+    <LinearLayout
             android:id="@+id/recruit_page"
-            android:layout_width="300dp"
-            android:layout_height="10dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_margin="20dp"
             android:layout_weight="2.5"
             android:background="@drawable/shape_corner"
-            android:backgroundTint="#99CEE6"
+            android:backgroundTint="#654EA3"
             android:text="recruit"
-            android:textSize="25dp" />
+            android:textSize="25dp" >
 
+        <TextView
+            android:id="@+id/textViewRercruitment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Recruitment"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="60dp" />
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
@@ -75,8 +94,8 @@
             android:layout_weight="1"
             android:text="Be a part of University intern staff group"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:textColor="@android:color/white"
+            android:textSize="25dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -144,6 +163,8 @@
 
     </LinearLayout>
 </LinearLayout>
+
+
 
 
 
