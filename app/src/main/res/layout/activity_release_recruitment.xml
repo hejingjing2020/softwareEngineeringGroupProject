@@ -48,9 +48,9 @@
         android:layout_width="361dp"
         android:layout_height="643dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="0dp"
         android:orientation="vertical"
-        tools:layout_marginTop="60dp">
+        tools:layout_marginTop="20dp">
 
         <RadioGroup
             android:id="@+id/radioGroupJob"
@@ -85,7 +85,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp">
+            android:layout_height="60dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -100,13 +100,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
-                android:minWidth="250dp"
+                android:minWidth="300dp"
                 android:textSize="20dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="60dp"
             android:layout_marginTop="30dp">
 
             <TextView
@@ -122,21 +122,22 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
-                android:minWidth="250dp"
+                android:minWidth="300dp"
                 android:textSize="20dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="60dp"
             android:layout_marginTop="30dp">
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:textSize="20dp"
-                android:text="Salary" />
+                android:text="Contact Email" />
 
             <EditText
                 android:id="@+id/salary"
@@ -144,7 +145,31 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
-                android:minWidth="250dp"
+                android:minWidth="300dp"
+                android:textSize="20dp"  />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Salary" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:minWidth="300dp"
                 android:textSize="20dp"  />
         </LinearLayout>
 
