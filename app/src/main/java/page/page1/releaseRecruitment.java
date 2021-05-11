@@ -27,9 +27,6 @@ import static page.page1.LoginMainActivity.post_userid;
 public class releaseRecruitment extends AppCompatActivity {
     public String job;
     private static final byte REQUEST_SYSTEM_PIC = 10;
-    //private static PreparedStatement dbHelper;
-    public static DatabaseHelper dbHelper;
-    static final SQLiteDatabase db = dbHelper.getReadableDatabase();
     private Spinner sp;
     private ImageButton imageButton;
     private byte[] image;
@@ -47,13 +44,9 @@ public class releaseRecruitment extends AppCompatActivity {
         setContentView(R.layout.activity_release_recruitment);
         final SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss ");
         //dbHelper=new MyDatabaseHelper(this,"1600802129.db",null,1);
-        dbHelper = new DatabaseHelper(this);
+
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
         final SQLiteDatabase db = dbHelper.getReadableDatabase();
-        String[] ctype = new String[]{"生活用品", "学习用品", "电子产品", "体育用品"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ctype);  //创建一个数组适配器
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);     //设置下拉列表框的下拉选项样式
-
-
 
         Button post=(Button)findViewById(R.id.release_comment);
         selectedjob=(RadioGroup)findViewById((R.id.radioGroupJob)) ;
@@ -84,7 +77,7 @@ public class releaseRecruitment extends AppCompatActivity {
                 values.put("type", job);
                 values.put("description", description.getText().toString());
                 db.insert("recruitment",null,values);
-                Intent intent=new Intent(releaseRecruitment.this, courseEvaluation.class);
+                Intent intent=new Intent(releaseRecruitment.this, recruitment_prof.class);
                 Toast.makeText(getApplicationContext(), "Submitted", Toast.LENGTH_SHORT).show();
 
                 startActivity(intent);

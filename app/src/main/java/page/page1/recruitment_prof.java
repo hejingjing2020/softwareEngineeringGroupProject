@@ -22,46 +22,37 @@ import java.util.logging.Handler;
 
 public class recruitment_prof extends AppCompatActivity implements View.OnClickListener{
 
-    String TABLENAME = "Comment";
+    String TABLENAME = "recruitment";
     Intent intent;
     byte[] imagedata;
     Bitmap imagebm;
     private EditText et_name;
-    private LinkedList<CommentData> mList;
+    private LinkedList<RecruitmentData> mList;
     private myAdapter mAdapter;
     private ListView mListView;
     private Handler mHandler;
+    private android.widget.ListView lv;
 
-    /*
-    @Override
-    protected void onResume() {
-
-        super.onResume();
-
-        onCreate(null);
-
-    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recruitment_prof);
+        this.lv = (ListView) findViewById(R.id.listView);
 
 
         DatabaseHelper database = new DatabaseHelper(this);
         final SQLiteDatabase db = database.getWritableDatabase();
-        ListView listView = (ListView)findViewById(R.id.listView);
-        mList = new LinkedList<CommentData>();
+        mList = new LinkedList<RecruitmentData>();
 
-        mAdapter = new myAdapter<CommentData>(mList, recruitment_prof.this, R.layout.listitem) {
+        mAdapter = new myAdapter<RecruitmentData>(mList, recruitment_prof.this, R.layout.list_recruitment_item) {
             @Override
-            protected void convertView(ViewHolder holder, CommentData Data) {
-
+            protected void convertView(ViewHolder holder, RecruitmentData Data) {
+                holder.set(R.id.title, Data.getTitle())
+                        .set(R.id.kind, Data.getEmail())
+                        .set(R.id.info, Data.getDescription());
             }
         };
-        //这里在每次更新数据时刷新listView
-        //listView.setAdapter(mAdapter);
-
 
         Map<String, Object> item;  // 列表项内容用Map存储
         final List<Map<String, Object>> data = new ArrayList<Map<String, Object>>(); // 列表
@@ -69,80 +60,66 @@ public class recruitment_prof extends AppCompatActivity implements View.OnClickL
 
 
         if (cursor.moveToFirst()){
-            while (!cursor.isAfterLast()){
-                item = new HashMap<String, Object>();  // 为列表项赋值
-                item.put("s_id",cursor.getInt(0));
-                item.put("course_code",cursor.getString(1));
-                item.put("prof_name",cursor.getString(2));
-                item.put("comment",cursor.getString(3));
-                //imagedata = cursor.getBlob(6);
-                //item.put("image",imagebm);
+            while (!cursor.isAfterLast()) {
+                RecruitmentData cd = new RecruitmentData();  // 为列表项赋值
+                cd.setRid(cursor.getString(0));
+                cd.setUid(cursor.getString(1));
+                cd.setTitle(cursor.getString(2));
+                cd.setEmail(cursor.getString(3));
+                cd.setSalary(cursor.getString(4));
+                cd.setType(cursor.getString(5));
+                cd.setDescription(cursor.getString(6));
+                mList.add(cd);
                 cursor.moveToNext();
-                data.add(item); // 加入到列表中
             }
         }
-        // 使用SimpleAdapter布局 listview
-        // listitem.xml
-        //myAdapter mAdapter = new myAdapter();
 
-        ImageView kind1 = (ImageView) findViewById(R.id.kind1);
-        kind1.setOnClickListener(this);
-        ImageView kind2 = (ImageView) findViewById(R.id.kind2);
-        kind2.setOnClickListener(this);
-        ImageView kind3 = (ImageView) findViewById(R.id.kind3);
-        kind3.setOnClickListener(this);
-        ImageView kind4 = (ImageView) findViewById(R.id.kind4);
-        kind4.setOnClickListener(this);
-
-
-
+        lv.setAdapter(mAdapter);//listView里应该是mList的内容
+        mAdapter.notifyDataSetChanged();
         // 为列表项设置监听器
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 intent = new Intent(recruitment_prof.this, item_info.class);
-                intent.putExtra("id", data.get(position).get("id").toString()); // 获取该列表项的key为id的键值，即商品的id，将其储存在Bundle传递给打开的页面
+                intent.putExtra("rid", data.get(position).get("rid").toString()); // 获取该列表项的key为id的键值，即商品的id，将其储存在Bundle传递给打开的页面
                 startActivity(intent);
             }
         });
 
-        RadioButton btn1 = (RadioButton)findViewById(R.id.button_main_page);
-        RadioButton btn2 = (RadioButton)findViewById(R.id.button_post_comment);
-        RadioButton btn3 = (RadioButton)findViewById(R.id.button_self_center);
-        btn1.setOnClickListener(this);
-        btn2.setOnClickListener(this);
-        btn3.setOnClickListener(this);
-    }
-    private ArrayList<Map<String, Object>> getData(){
-        ArrayList<Map<String, Object>> list=new ArrayList<Map<String, Object>>();
-        Map<String,Object> hashmap=new HashMap<String, Object>();
-        for(int i=0;i<5;i++){
-            hashmap.put("key1", "data1");
-            hashmap.put("key2", "data2");
-            list.add(hashmap);
-        }
-        return list;
+        ImageView kind1 = (ImageView) findViewById(R.id.ra);
+        kind1.setOnClickListener(this);
+
+        ImageView kind2 = (ImageView) findViewById(R.id.ustf);
+        kind2.setOnClickListener(this);
+
+        RadioButton btn_main_page = (RadioButton)findViewById(R.id.button_main_page);
+        RadioButton btn_self_center = (RadioButton)findViewById(R.id.button_self_center);
+
+        RadioButton btn_post = (RadioButton)findViewById(R.id.button_post_comment);
+        btn_post.setOnClickListener(this);
+        btn_main_page.setOnClickListener(this);
+        btn_self_center.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v){
         switch (v.getId()){
-            case R.id.kind1:
-                Intent KindIntent1 = new Intent(this,RA.class);
-                startActivity(KindIntent1);
-                break;
-            case R.id.kind2:
-                Intent KindIntent2 = new Intent(this,USTF.class);
+            case R.id.ra:
+                Intent KindIntent2 = new Intent(this,RA.class);
                 startActivity(KindIntent2);
+                break;
+            case R.id.ustf:
+                Intent KindIntent3 = new Intent(this,USTF.class);
+                startActivity(KindIntent3);
+                break;
+            case R.id.button_post_comment:
+                Intent post = new Intent(this, releaseRecruitment.class);
+                startActivity(post);
                 break;
             case R.id.button_main_page:
                 Intent button1 = new Intent(recruitment_prof.this, main_page.class);
                 startActivity(button1);
-                break;
-            case R.id.button_post_comment:
-                Intent button2 = new Intent(recruitment_prof.this, releaseRecruitment.class);
-                startActivity(button2);
                 break;
             case R.id.button_self_center:
                 Intent button3 = new Intent(this, MyselfActivity.class);

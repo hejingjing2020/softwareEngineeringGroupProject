@@ -60,7 +60,7 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
 
 
         if (cursor.moveToFirst()){
-            while (cursor.moveToNext()) {
+            while (!cursor.isAfterLast()) {
                 RecruitmentData cd = new RecruitmentData();  // 为列表项赋值
                 cd.setRid(cursor.getString(0));
                 cd.setUid(cursor.getString(1));
@@ -70,6 +70,7 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
                 cd.setType(cursor.getString(5));
                 cd.setDescription(cursor.getString(6));
                 mList.add(cd);
+                cursor.moveToNext();
             }
         }
 
@@ -95,8 +96,6 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
         RadioButton btn_main_page = (RadioButton)findViewById(R.id.button_main_page);
         RadioButton btn_self_center = (RadioButton)findViewById(R.id.button_self_center);
 
-        RadioButton btn_post = (RadioButton)findViewById(R.id.button_post_comment);
-        btn_post.setOnClickListener(this);
         btn_main_page.setOnClickListener(this);
         btn_self_center.setOnClickListener(this);
     }
@@ -121,10 +120,6 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
             case R.id.ustf:
                 Intent KindIntent3 = new Intent(this,USTF.class);
                 startActivity(KindIntent3);
-                break;
-            case R.id.button_post_comment:
-                Intent post = new Intent(this, releaseRecruitment.class);
-                startActivity(post);
                 break;
             case R.id.button_main_page:
                 Intent button1 = new Intent(recruitment.this, main_page.class);

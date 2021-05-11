@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +25,9 @@ public class MyRelease extends AppCompatActivity implements View.OnClickListener
     String TABLENAME = "iteminfo";
     byte[] imagedata;
     Bitmap imagebm;
+    private myAdapter mAdapter;
+    private android.widget.ListView lv;
+    public static LinkedList<CommentData> mList = new LinkedList<CommentData>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,27 +35,41 @@ public class MyRelease extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_my_release);
         DatabaseHelper database = new DatabaseHelper(this);
         final SQLiteDatabase db = database.getWritableDatabase();
-        ListView listView = (ListView)findViewById(R.id.show_fabu);
-        Map<String, Object> item;  // 列表项内容用Map存储
-        final List<Map<String, Object>> data = new ArrayList<Map<String, Object>>(); // 列表
+
+
         Cursor cursor = db.query(TABLENAME,null,null,null,null,null,null,null); // 数据库查询
+
         if (cursor.moveToFirst()){
-            while (!cursor.isAfterLast()){
-                item = new HashMap<String, Object>();  // 为列表项赋值
-                item.put("id",cursor.getInt(0));
-                item.put("userid",cursor.getString(1));
-                item.put("title",cursor.getString(2));
-                item.put("kind",cursor.getString(3));
-                item.put("info",cursor.getString(4));
-                item.put("price",cursor.getString(5));
-                imagedata = cursor.getBlob(6);
-                imagebm = BitmapFactory.decodeByteArray(imagedata, 0, imagedata.length);
-                //kind1.setImageBitmap(imagebm);
-                item.put("image",imagebm);
+            while (!cursor.isAfterLast()) {
+                CommentData cd = new CommentData();  // 为列表项赋值
+                cd.setS_id(cursor.getInt(0));
+                cd.setCourse_code(cursor.getString(1));
+                cd.setProf_name(cursor.getString(2));
+                cd.setComment(cursor.getString(3));
+                cd.setCid();
+                cd.setImage(cursor.getBlob(6));
+                mList.add(cd);
                 cursor.moveToNext();
-                data.add(item); // 加入到列表中
             }
         }
+        mAdapter = new myAdapter<CommentData>(mList, MyRelease.this, R.layout.listitem) {
+            @Override
+            public void convertView(ViewHolder holder, CommentData Data) {
+                holder.set(R.id.title, Data.getCourse_code())
+                        .set(R.id.kind, Data.getProf())
+                        .set(R.id.info, Data.getComment());
+                ImageView iv = findViewById(R.id.item_image);
+                byte[] imagedata = Data.getImage();
+                if (imagedata!=null) {
+                    Bitmap imagebm = BitmapFactory.decodeByteArray(imagedata, 0, imagedata.length);
+                    iv.setImageBitmap((Bitmap) imagebm);
+                }
+
+            }
+        };
+        //这里在每次更新数据时刷新listView
+        lv.setAdapter(mAdapter);//listView里应该是mList的内容
+        mAdapter.notifyDataSetChanged();
         /*
         item = new HashMap<String, Object>();
         item.put("id",1);
@@ -82,36 +100,7 @@ public class MyRelease extends AppCompatActivity implements View.OnClickListener
         data.add(item);
         */
         // 使用SimpleAdapter布局listview
-        SimpleAdapter simpleAdapter = new SimpleAdapter(this, data, R.layout.activity_my_fabu, new String[] { "image", "title", "kind", "info", "price" },
-                new int[] { R.id.item_image, R.id.title, R.id.kind, R.id.info, R.id.price });
-        simpleAdapter.setViewBinder(new SimpleAdapter.ViewBinder() {
-            @Override
-            public boolean setViewValue(View view, Object data, String textRepresentation) {
-                if(view instanceof ImageView && data instanceof Bitmap){
-                    ImageView iv = (ImageView)view;
-                    iv.setImageBitmap( (Bitmap)data );
-                    return true;
-                }else{
-                    return false;
-                }
-            }
-        });
-        listView.setAdapter(simpleAdapter);
 
-
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                String delId = data.get(position).get("id").toString();
-                if(db.delete(TABLENAME,"id=?",new String[]{delId}) > 0) {
-                    Toast.makeText(getApplicationContext(), "Delete successfully, please refresh page", Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-                else {
-                    return false;
-                }
-            }
-        });
 
     }
 

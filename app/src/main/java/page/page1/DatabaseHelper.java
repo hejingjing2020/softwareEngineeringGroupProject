@@ -33,7 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 "email varchar(15)," +
                 "salary varchar(15)," +
                 "type varchar(5)," +
-                "decription varchar(20))");
+                "description varchar(20))");
 
 
 

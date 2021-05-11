@@ -44,7 +44,6 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_evaluation);
         this.lv = (ListView) findViewById(R.id.listView);
-        ArrayAdapter<CommentData> adapter;
         SearchView searchView;
 
 
@@ -54,12 +53,7 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
         final SQLiteDatabase db = database.getWritableDatabase();
 
 
-
-
-        Map<String, Object> item;  // 列表项内容用Map存储
-        final List<Map<String, Object>> data = new ArrayList<Map<String, Object>>(); // 列表
         Cursor cursor = db.query(TABLENAME,null,null,null,null,null,null,null); // 数据库查询
-
 
         if (cursor.moveToFirst()){
             while (!cursor.isAfterLast()) {
@@ -92,10 +86,6 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
         //这里在每次更新数据时刷新listView
         lv.setAdapter(mAdapter);//listView里应该是mList的内容
         mAdapter.notifyDataSetChanged();
-
-        // 使用SimpleAdapter布局 listview
-        // listitem.xml
-        //为什么不能用simpleAdapter？因为它的信息是hard-coded在listitem.xml里的
 
         ImageView kind1 = (ImageView) findViewById(R.id.kind1);
         kind1.setOnClickListener(this);

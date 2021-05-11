@@ -66,20 +66,10 @@ public class USTF extends AppCompatActivity implements View.OnClickListener {
             }
         });
         listView.setAdapter(simpleAdapter);
-        RadioButton btn_post_comment = (RadioButton)findViewById(R.id.button_post_comment);
-        btn_post_comment.setOnClickListener(this);
-        RadioButton btn_self_center = (RadioButton)findViewById(R.id.button_post_comment);
-        btn_self_center.setOnClickListener(this);
-        RadioButton btn_post = (RadioButton) findViewById(R.id.button_post_comment);
-        btn_post.setOnClickListener(this);
 
     }
     public void onClick(View v){
         switch (v.getId()){
-            case R.id.button_post_comment:
-                Intent post = new Intent(this, releaseRecruitment.class);
-                startActivity(post);
-                break;
             case R.id.button_main_page:
                 Intent button1 = new Intent(this, main_page.class);
                 startActivity(button1);
