@@ -85,10 +85,6 @@ public class LHS extends AppCompatActivity {
                 Intent button1 = new Intent(LHS.this, main_page.class);
                 startActivity(button1);
                 break;
-            case R.id.button_post_comment:
-                Intent button2 = new Intent(LHS.this, releaseCourseEvaluation.class);
-                startActivity(button2);
-                break;
             case R.id.button_self_center:
                 Intent button3 = new Intent(this, MyselfActivity.class);
                 startActivity(button3);

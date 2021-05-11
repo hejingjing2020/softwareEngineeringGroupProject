@@ -72,18 +72,6 @@
                 android:layout_height="match_parent"
                 android:background="#CCCCCC" />
             <!--第二个RadioButton-->
-            <RadioButton
-                android:id="@+id/button_post_comment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/buttonColor"
-                android:button="@null"
-                android:drawableTop="@drawable/pic_add"
-                android:gravity="center"
-                android:text="Post Comment"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
             <!--第三个RadioButton-->
             <View
                 android:layout_width="2dp"
