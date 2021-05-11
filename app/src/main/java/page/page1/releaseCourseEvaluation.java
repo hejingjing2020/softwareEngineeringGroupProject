@@ -92,7 +92,6 @@ public class releaseCourseEvaluation extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ctype);  //创建一个数组适配器
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);     //设置下拉列表框的下拉选项样式
 
-
         imageButton=(ImageButton)findViewById(R.id.m1_image);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,22 +125,21 @@ public class releaseCourseEvaluation extends AppCompatActivity {
                     if (HSS.isChecked()){
                         school = "HSS";
                     }
-                    if (SSE.isChecked()){
+                    else if (SSE.isChecked()){
                         school = "SSE";
                     }
-                    if (SME.isChecked()){
+                    else if (SME.isChecked()){
                         school = "SME";
                     }
-                    if (SDS.isChecked()){
+                    else if (SDS.isChecked()){
                         school = "SDS";
                     }
-                    if (LHS.isChecked()){
+                    else if (LHS.isChecked()){
                         school = "LHS";
                     }
 
                     EditText title=(EditText)findViewById(R.id.m1_course_code);
                     EditText prof=(EditText)findViewById(R.id.m1_prof);
-                    EditText s_id=(EditText)findViewById(R.id.m1_sid);
                     EditText comment=(EditText)findViewById(R.id.m1_comment);
 
                     Date curDate = new Date(System.currentTimeMillis());
@@ -153,6 +151,7 @@ public class releaseCourseEvaluation extends AppCompatActivity {
                     values.put("comment", comment.getText().toString());
                     values.put("cid", (String.valueOf(post_userid)+title.getText().toString()));
                     values.put("school", school);
+                    values.put("image",image);
                     db.insert("iteminfo",null,values);
                     // int s_id, String course_code, String prof_name, String comment
                     //(courseEvaluation.mList).add(new CommentData(Integer.valueOf(post_userid), title.getText().toString(), prof.getText().toString(), comment.getText().toString()));
@@ -186,7 +185,7 @@ public class releaseCourseEvaluation extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        super.onActivityResult(requestCode, resultCode, data);/*
+        super.onActivityResult(requestCode, resultCode, data);
         //获取图片路径
         if (requestCode == 1 && resultCode == Activity.RESULT_OK && data != null) {
             Uri selectedImage = data.getData();
@@ -198,17 +197,17 @@ public class releaseCourseEvaluation extends AppCompatActivity {
             showImage(imagePath);
             c.close();
         }
-        */
+
     }
 
     //加载图片
     private void showImage(String imaePath) {
-        /*
+
         Bitmap bm = BitmapFactory.decodeFile(imaePath);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bm.compress(Bitmap.CompressFormat.PNG, 100, baos);
         image = baos.toByteArray();
-        imageButton.setImageBitmap(bm);*/
+        imageButton.setImageBitmap(bm);
     }
 
     @Override
