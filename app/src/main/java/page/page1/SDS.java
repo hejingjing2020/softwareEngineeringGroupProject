@@ -33,7 +33,7 @@ public class SDS extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         LinkedList<CommentData> mList = new LinkedList<CommentData>();
-        setContentView(R.layout.activity_h_s_s);
+        setContentView(R.layout.activity_s_d_s);
 
         this.lv = (ListView) findViewById(R.id.kind_list1);//这个一定要放在setContentView后面，不然没法确定是哪个layout
         DatabaseHelper dbtest = new DatabaseHelper(this);
