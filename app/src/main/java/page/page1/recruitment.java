@@ -123,7 +123,7 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
                 startActivity(KindIntent3);
                 break;
             case R.id.button_post_comment:
-                Intent post = new Intent(this, releaseRecruitment_RA.class);
+                Intent post = new Intent(this, releaseRecruitment.class);
                 startActivity(post);
                 break;
             case R.id.button_main_page:
