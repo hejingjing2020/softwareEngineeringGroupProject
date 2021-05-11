@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -68,6 +69,7 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
                 cd.setProf_name(cursor.getString(2));
                 cd.setComment(cursor.getString(3));
                 cd.setCid();
+                cd.setImage(cursor.getBlob(6));
                 mList.add(cd);
                 cursor.moveToNext();
             }
@@ -78,6 +80,13 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
                 holder.set(R.id.title, Data.getCourse_code())
                         .set(R.id.kind, Data.getProf())
                         .set(R.id.info, Data.getComment());
+                ImageView iv = findViewById(R.id.item_image);
+                byte[] imagedata = Data.getImage();
+                    if (imagedata!=null) {
+                        Bitmap imagebm = BitmapFactory.decodeByteArray(imagedata, 0, imagedata.length);
+                        iv.setImageBitmap((Bitmap) imagebm);
+                    }
+
             }
         };
         //这里在每次更新数据时刷新listView
