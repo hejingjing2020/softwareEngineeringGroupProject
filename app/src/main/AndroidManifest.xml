@@ -11,8 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".releaseRecruitment_USTF"></activity>
-        <activity android:name=".releaseRecruitment_RA" />
+        <activity android:name=".releaseRecruitment"></activity>
         <activity android:name=".releaseCourseEvaluation" />
         <activity android:name=".LoginMainActivity">
             <intent-filter>

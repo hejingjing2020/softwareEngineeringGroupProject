@@ -52,6 +52,37 @@
         android:orientation="vertical"
         tools:layout_marginTop="60dp">
 
+        <RadioGroup
+            android:id="@+id/radioGroupJob"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <RadioButton
+                android:id="@+id/radiora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="RA"
+                android:textColorHighlight="#2E0909"
+                android:textColorLink="#674F4F"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/radioustf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="USTF"
+                android:textSize="20sp" />
+
+
+
+        </RadioGroup>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp">
@@ -60,11 +91,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Title"
+                android:text="Job Title"
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/m1_title"
+                android:id="@+id/m1_sid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -82,33 +113,39 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Email"
+                android:text="Professor"
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/m1_email"
+                android:id="@+id/m1_prof"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:minWidth="250dp"
                 android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp">
 
             <TextView
+                android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Salary"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:text="Salary" />
 
             <EditText
-                android:id="@+id/m1_salary"
+                android:id="@+id/salary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:minWidth="250dp"
-                android:textSize="20dp" />
+                android:textSize="20dp"  />
         </LinearLayout>
 
         <LinearLayout
@@ -124,7 +161,7 @@
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/m1_description"
+                android:id="@+id/m1_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
@@ -134,7 +171,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/release_recruitment"
+            android:id="@+id/release_comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
