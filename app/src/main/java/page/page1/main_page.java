@@ -1,3 +1,4 @@
+
 package page.page1;
 
 import android.content.Intent;
@@ -25,8 +26,12 @@ public class main_page extends AppCompatActivity implements View.OnClickListener
 
         LinearLayout btn1 = (LinearLayout)findViewById(R.id.course_evaluation_page);
         LinearLayout btn2 = (LinearLayout)findViewById(R.id.recruit_page);
+        Button btn3 = (Button) findViewById(R.id.button_main_page);
+        Button btn4 = (Button)findViewById(R.id.button_self_center);
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
+        btn3.setOnClickListener(this);
+        btn4.setOnClickListener(this);
     }
 
 
@@ -66,5 +71,4 @@ public class main_page extends AppCompatActivity implements View.OnClickListener
     }
 
 }
-
 
