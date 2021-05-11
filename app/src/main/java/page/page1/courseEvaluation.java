@@ -96,6 +96,8 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
         kind3.setOnClickListener(this);
         ImageView kind4 = (ImageView) findViewById(R.id.kind4);
         kind4.setOnClickListener(this);
+        ImageView kind5 = (ImageView) findViewById(R.id.kind5);
+        kind5.setOnClickListener(this);
 
 
 
@@ -199,4 +201,6 @@ public class courseEvaluation extends AppCompatActivity implements View.OnClickL
         }
     }
 }
+
+
 
