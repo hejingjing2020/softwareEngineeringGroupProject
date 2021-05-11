@@ -37,11 +37,13 @@ public class main_page extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        String role = intent.getStringExtra("role");
+        Boolean role = intent.getBooleanExtra("role", true);
+        System.out.println("The user is " + role);
         switch (v.getId()) {
             case R.id.course_evaluation_page:
                 Intent KindIntent1;
-                if (role=="Student") {
+                if (role) {
+                    System.out.println("Bring user to student page");
                     KindIntent1 = new Intent(main_page.this, courseEvaluation.class);
                 }
                 else {
@@ -51,7 +53,7 @@ public class main_page extends AppCompatActivity implements View.OnClickListener
                 break;
             case R.id.recruit_page:
                 Intent KindIntent2;
-                if (role=="Student") {
+                if (role) {
                     KindIntent2 = new Intent(main_page.this, recruitment.class);
                 }
                 else {
