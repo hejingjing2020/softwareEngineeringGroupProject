@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 
 public class LoginMainActivity extends Activity {
-    public String role = "Student";
+    public String role = "Teacher";
     private EditText User;
     private EditText Password;
     private Button button_login;
@@ -54,11 +54,12 @@ public class LoginMainActivity extends Activity {
                 if (student.isChecked()){
                     role = "Student";
                 }
-                if (teacher.isChecked()){
+                else if (teacher.isChecked()){
                     role = "Teacher";
                 }
                 //为了测试，直接跳转
                 Intent intent = new Intent(LoginMainActivity.this,main_page.class);
+                intent.putExtra("role", role);
 
                 startActivity(intent);
 
@@ -108,6 +109,7 @@ public class LoginMainActivity extends Activity {
             else{
                 Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(LoginMainActivity.this,main_page.class);
+                intent.putExtra("role", role);
                 post_userid=user;
                 startActivity(intent);
             }
