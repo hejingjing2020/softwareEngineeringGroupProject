@@ -9,8 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class USTF extends AppCompatActivity {
+public class USTF extends AppCompatActivity implements View.OnClickListener {
     String TABLENAME = "recruitment";
     byte[] imagedata;
     Bitmap imagebm;
@@ -64,9 +66,20 @@ public class USTF extends AppCompatActivity {
             }
         });
         listView.setAdapter(simpleAdapter);
+        RadioButton btn_post_comment = (RadioButton)findViewById(R.id.button_post_comment);
+        btn_post_comment.setOnClickListener(this);
+        RadioButton btn_self_center = (RadioButton)findViewById(R.id.button_post_comment);
+        btn_self_center.setOnClickListener(this);
+        RadioButton btn_post = (RadioButton) findViewById(R.id.button_post_comment);
+        btn_post.setOnClickListener(this);
+
     }
     public void onClick(View v){
         switch (v.getId()){
+            case R.id.button_post_comment:
+                Intent post = new Intent(this, releaseRecruitment_USTF.class);
+                startActivity(post);
+                break;
             case R.id.button_main_page:
                 Intent button1 = new Intent(this, main_page.class);
                 startActivity(button1);
