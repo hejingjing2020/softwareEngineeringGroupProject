@@ -41,6 +41,8 @@
         <activity android:name=".setMymsgActivity" />
         <activity android:name=".userMsgActivity" />
         <activity android:name=".MyRelease" />
+
     </application>
+
 
 </manifest>
