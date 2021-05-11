@@ -45,6 +45,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 "comment varchar(1000) not null," +
                 "cid varchar(120) not null," +
                 "school varchar(5)," +
+                "image blob," +
                 "primary key(cid))");
         //评论者账号userId，评论商品编号itemId，评论内容comment，评论时间time
         db.execSQL("create table if not exists comments(" +
