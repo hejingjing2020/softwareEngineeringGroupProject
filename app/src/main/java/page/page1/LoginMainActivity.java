@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +17,7 @@ import android.widget.Toast;
 
 
 public class LoginMainActivity extends Activity {
-    public String role = "Teacher";
+    public Boolean role = false;
     private EditText User;
     private EditText Password;
     private Button button_login;
@@ -52,10 +53,11 @@ public class LoginMainActivity extends Activity {
             public void onClick(View v) {
 
                 if (student.isChecked()){
-                    role = "Student";
+                    role = true;
+                    System.out.println("+++++++++++++++++++++++");
                 }
-                else if (teacher.isChecked()){
-                    role = "Teacher";
+                if (teacher.isChecked()){
+                    role = false;
                 }
                 //为了测试，直接跳转
                 Intent intent = new Intent(LoginMainActivity.this,main_page.class);
@@ -122,3 +124,4 @@ public class LoginMainActivity extends Activity {
 
 
 }
+
