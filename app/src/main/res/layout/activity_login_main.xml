@@ -155,7 +155,6 @@
             android:layout_gravity="center"
             android:layout_marginTop="80dp"
             android:background="@drawable/shape_corner"
-            android:backgroundTint="@color/blue"
             android:text="Sign In"
             android:textColor="#FFFFFFFF"
             android:textSize="28dp"
