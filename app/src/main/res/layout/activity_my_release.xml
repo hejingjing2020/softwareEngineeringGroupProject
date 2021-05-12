@@ -350,7 +350,7 @@
     </TableLayout>-->
 
     <ListView
-        android:id="@+id/show_fabu"
+        android:id="@+id/show_post"
         android:layout_width="match_parent"
         android:layout_height="626dp"></ListView>
 

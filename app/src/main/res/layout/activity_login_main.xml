@@ -157,7 +157,7 @@
             android:background="@drawable/shape_corner"
             android:backgroundTint="@color/blue"
             android:text="Sign In"
-            android:textColor="#2C2929"
+            android:textColor="#FFFFFFFF"
             android:textSize="28dp"
             android:textStyle="bold" />
     </LinearLayout>
