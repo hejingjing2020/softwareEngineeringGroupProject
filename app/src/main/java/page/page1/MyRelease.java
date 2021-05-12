@@ -9,8 +9,10 @@ import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioButton;
 
 import java.util.LinkedList;
 
@@ -20,6 +22,7 @@ public class MyRelease extends AppCompatActivity implements View.OnClickListener
     Bitmap imagebm;
     private myAdapter mAdapter;
     private android.widget.ListView lv;
+    boolean isStudent = true;
 
 
     @Override
@@ -62,10 +65,21 @@ public class MyRelease extends AppCompatActivity implements View.OnClickListener
 
                 }
             };
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(MyRelease.this, item_info.class);
+                    intent.putExtra("cid", mList.get(position).getCid()); // 获取该列表项的key为id的键值，即商品的id，将其储存在Bundle传递给打开的页面
+                    startActivity(intent);
+                }
+            });
+
             lv.setAdapter(mAdapter);//listView里应该是mList的内容
             mAdapter.notifyDataSetChanged();
+
         }
         else {
+            isStudent = false;
             cursor = db.query("recruitment",null,null,null,null,null,null,null);
             LinkedList<RecruitmentData> mList = new LinkedList<RecruitmentData>();
             if (cursor.moveToFirst()) {
@@ -90,9 +104,25 @@ public class MyRelease extends AppCompatActivity implements View.OnClickListener
                             .set(R.id.info, Data.getDescription());
                 }
             };
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(MyRelease.this, item_info.class);
+                    intent.putExtra("rid", mList.get(position).getRid()); // 获取该列表项的key为id的键值，即商品的id，将其储存在Bundle传递给打开的页面
+                    startActivity(intent);
+                }
+            });
+
             lv.setAdapter(mAdapter);//listView里应该是mList的内容
             mAdapter.notifyDataSetChanged();
         }
+
+
+        RadioButton btn_main_page = (RadioButton)findViewById(R.id.button_main_page);
+        RadioButton btn_self_center = (RadioButton)findViewById(R.id.button_self_center);
+
+        btn_main_page.setOnClickListener(this);
+        btn_self_center.setOnClickListener(this);
 
         }
 

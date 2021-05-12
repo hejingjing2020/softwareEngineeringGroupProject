@@ -22,7 +22,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="743dp"
             android:orientation="vertical"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
@@ -75,39 +75,15 @@
                     android:textSize="20dp" />
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Add Comment:"
-                android:textSize="25dp" />
-
-            <EditText
-                android:id="@+id/comment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
 
             <Button
-                android:id="@+id/submit"
+                android:id="@+id/delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Release"
+                android:text="Delete"
                 android:textSize="18dp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:text="Comments:"
-                android:textSize="25dp" />
 
-            <ListView
-                android:id="@+id/commentList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-            </ListView>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

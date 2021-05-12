@@ -31,7 +31,7 @@ import static page.page1.LoginMainActivity.post_userid;
 
 public class item_info extends AppCompatActivity {
     // 这里是展示之前选中的课程评价的
-    String TABLENAME = "iteminfo";
+    String TABLENAME;
     byte[] imagedata;
     Bitmap imagebm;
     @Override
@@ -46,56 +46,46 @@ public class item_info extends AppCompatActivity {
         TextView title = (TextView)findViewById(R.id.item_title) ;
         TextView info = (TextView)findViewById(R.id.item_info);
         TextView contact = (TextView)findViewById(R.id.contact);
-        Cursor cursor = db.query("iteminfo",null,"cid=?",new String[]{intent.getStringExtra("cid")},null,null,null,null); // 根据接收到的id进行数据库查询
-        Log.i("The comment s_id is",intent.getStringExtra("cid"));
+ // 根据接收到的id进行数据库查询
+        Cursor cursor;
+        if (intent.getStringExtra("cid")!=null) {
+            cursor = db.query("iteminfo", null, "cid=?", new String[]{intent.getStringExtra("cid")}, null, null, null, null); // 根据接收到的id进行数据库查询
+        }
+        else {
+
+            cursor = db.query("recruitment", null, "rid=?", new String[]{intent.getStringExtra("rid")}, null, null, null, null);
+        }
         if (cursor.moveToFirst()){
             while (!cursor.isAfterLast()){
-                //imagedata = cursor.getBlob(6);
-                //imagebm = BitmapFactory.decodeByteArray(imagedata, 0, imagedata.length);
-                //image.setImageBitmap(imagebm);
                 title.setText(cursor.getString(1));
                 price.setText(cursor.getString(2));
                 info.setText(cursor.getString(3));
-                //contact.setText(cursor.getString(8));
                 cursor.moveToNext();
             }
         }
-        ListView commentList = (ListView)findViewById(R.id.commentList);
-        Map<String, Object> item;  // 列表项内容用Map存储
-        final List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
-        Cursor cursor_ = db.query("comments",null,"cid=?",new String[]{intent.getStringExtra("cid")},null,null,null,null); // 数据库查询
-        if (cursor_.moveToFirst()){
-            while (cursor.moveToNext()) {
-                item = new HashMap<String, Object>();  // 为列表项赋值
-                item.put("userId",cursor_.getString(0));
-                item.put("comment",cursor_.getString(2));
-                item.put("time",cursor_.getString(3));
-                cursor_.moveToNext();
-                data.add(item); // 加入到列表中
-            }
+
+        String pk;
+        if (intent.getStringExtra("cid")!=null) {
+            pk = pk = intent.getStringExtra("cid");
+            TABLENAME = "iteminfo";
         }
-        SimpleAdapter simpleAdapter = new SimpleAdapter(this, data, R.layout.comment_item, new String[] { "userId", "comment", "time"},
-                new int[] { R.id.userId, R.id.commentInfo, R.id.time });
-        commentList.setAdapter(simpleAdapter);
-        Button submit = (Button)findViewById(R.id.submit);
-        submit.setOnClickListener(new View.OnClickListener() {
+        else {
+            pk = intent.getStringExtra("rid");
+            TABLENAME = "recruitment";
+        }
+
+        Button delete = (Button)findViewById(R.id.delete);
+        String finalPk = pk;
+        delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText comment = (EditText)findViewById(R.id.comment);
-                String submit_comment = comment.getText().toString();
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss ");
-                Date curDate = new Date(System.currentTimeMillis());
-                String time = formatter.format(curDate);
-                ContentValues values=new ContentValues();
-                values.put("userId",post_userid);
-                values.put("cid",intent.getStringExtra("cid"));
-                values.put("comment",submit_comment);
-                values.put("time",time);
-                db.insert("comments",null,values);
-                Log.i("1","Comment submitted");
-                Toast.makeText(getApplicationContext(), "Submitted", Toast.LENGTH_SHORT).show();
-                Intent intent_=new Intent(item_info.this,item_info.class);
-                intent_.putExtra("cid",intent.getStringExtra("cid"));
+                if (TABLENAME=="iteminfo") {
+                    db.delete(TABLENAME, "cid=?", new String[]{finalPk});
+                }
+                else {
+                    db.delete(TABLENAME, "rid=?", new String[]{finalPk});
+                }
+                Intent intent_=new Intent(item_info.this,MyRelease.class);
                 startActivity(intent_);
             }
         });
