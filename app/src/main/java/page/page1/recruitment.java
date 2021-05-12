@@ -55,7 +55,6 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
         };
 
         Map<String, Object> item;  // 列表项内容用Map存储
-        final List<Map<String, Object>> data = new ArrayList<Map<String, Object>>(); // 列表
         Cursor cursor = db.query(TABLENAME,null,null,null,null,null,null,null); // 数据库查询
 
 
@@ -82,7 +81,7 @@ public class recruitment extends AppCompatActivity implements View.OnClickListen
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 intent = new Intent(recruitment.this, item_info.class);
-                intent.putExtra("rid", data.get(position).get("rid").toString()); // 获取该列表项的key为id的键值，即商品的id，将其储存在Bundle传递给打开的页面
+                intent.putExtra("rid", mList.get(position).getRid()); // 获取该列表项的key为id的键值，即商品的id，将其储存在Bundle传递给打开的页面
                 startActivity(intent);
             }
         });

@@ -55,18 +55,24 @@ public class item_info extends AppCompatActivity {
 
             cursor = db.query("recruitment", null, "rid=?", new String[]{intent.getStringExtra("rid")}, null, null, null, null);
         }
+        String str1="";
+        String str2="";
         if (cursor.moveToFirst()){
             while (!cursor.isAfterLast()){
                 title.setText(cursor.getString(1));
                 price.setText(cursor.getString(2));
                 info.setText(cursor.getString(3));
+                str1 = cursor.getString(0);
+                str2 = cursor.getString(1);
+
                 cursor.moveToNext();
             }
         }
 
+
         String pk;
         if (intent.getStringExtra("cid")!=null) {
-            pk = pk = intent.getStringExtra("cid");
+            pk = intent.getStringExtra("cid");
             TABLENAME = "iteminfo";
         }
         else {
@@ -76,17 +82,33 @@ public class item_info extends AppCompatActivity {
 
         Button delete = (Button)findViewById(R.id.delete);
         String finalPk = pk;
+        String finalStr = str1;
+        String finalStr1 = str2;
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (TABLENAME=="iteminfo") {
-                    db.delete(TABLENAME, "cid=?", new String[]{finalPk});
+                    String userid = finalStr;
+                    if (userid == post_userid) {
+                        db.delete(TABLENAME, "cid=?", new String[]{finalPk});
+                        Intent intent_=new Intent(item_info.this,MyRelease.class);
+                        startActivity(intent_);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "You can only delete your own post.", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
                 else {
-                    db.delete(TABLENAME, "rid=?", new String[]{finalPk});
+                    String userid = finalStr1;
+                    if (userid == post_userid) {
+                        db.delete(TABLENAME, "rid=?", new String[]{finalPk});
+                        Intent intent_=new Intent(item_info.this,MyRelease.class);
+                        startActivity(intent_);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "You can only delete your own post.", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
-                Intent intent_=new Intent(item_info.this,MyRelease.class);
-                startActivity(intent_);
             }
         });
     }
