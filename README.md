@@ -33,10 +33,10 @@ Two systems are introduced to solve problem described above. The 1st system: cou
 A course evaluation system will be introduced for students to make better decision in
 course choosing.
 The user can do the following operations:
- Search Courses
+(1) Search Courses
 1) Enter keyword in quick search bar, related courses in the database would be shown to users
 2) Select tags in the slider bar at the top of the view, we would select related courses in the database
- Press to enter the secondary interface showing all comment of the course
+(2) Press to enter the secondary interface showing all comment of the course
 1) If user is valid student of the course, they are able to leave one comment
 (cannot re-comment a course)
 2) If user is valid student of the course, they can press "useful" or "useless" for
@@ -44,17 +44,18 @@ a specific comment (cannot press both)
 
 ### Intern Employment System (Done)
 An intern employment system will be introduced for both students and teaching staff to achieve convenient internship job application. Teaching staffs can post internship request along with requirement. Students can search jobs by keywords and send their resumes directly in application.
-For teaching staff users, they can do the following operations:  Post a recruit
+For teaching staff users, they can do the following operations: 
+(1) Post a recruit
 
- Enter self-center:
+(2) Enter self-center:
 1)All recruit listed
 2)Delete a recruit post
 3)Press a recruit and look all resumes received.
 
 For student users, they can do the following:
- Click apply for a recruit, upload a resume and submit
- Search for jobs by keywords. The system would return related recruit
- Select tags (RA, USTF) in the slider bar at the top of the view, we would select related
+(1) Click apply for a recruit, upload a resume and submit
+(2) Search for jobs by keywords. The system would return related recruit
+(3) Select tags (RA, USTF) in the slider bar at the top of the view, we would select related
 
 
 
@@ -62,5 +63,7 @@ For student users, they can do the following:
 
 [CUHKSZ]
 Back-end programmar: He Jingjing 118010092@link.cuhk.edu.cn; Xia Minghong 118010340@link.cuhk.edu.cn
+
 Front-end programmar: Yang Jiani 11810366@link.cuhk.edu.cn
+
 Test programmar: Li Qingjun 118010147@link.cuhk.edu.cn
